@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@cycjimmy/jsmpeg-player": "^6.0.5",
     "@fontsource/nunito": "^4.5.12",
     "@fontsource/poppins": "^4.5.10",
     "@testing-library/jest-dom": "^5.16.5",
