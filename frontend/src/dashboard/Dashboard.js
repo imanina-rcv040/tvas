@@ -1,6 +1,6 @@
 // import libraries
 import { useMediaQuery } from "@mui/material";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import JSMpeg from "@cycjimmy/jsmpeg-player";
 
 // import components
@@ -30,6 +30,12 @@ export const MyDashboard = (props) => {
   let videoUrl = `ws://${ffmpegIP}:6789/`;
   let player;
 
+  let mqttClient = props.mqttClient;
+  let mqttTopic = props.mqttTopic;
+
+  const [offloader, setOffloader] = useState("null");
+  const [topic, setTopic] = useState("null");
+
   function reinitStream() {
     try {
       player.destroy();
@@ -44,6 +50,14 @@ export const MyDashboard = (props) => {
   }
   useEffect(() => {
     reinitStream();
+    mqttClient.subscribe(mqttTopic);
+    mqttClient.on("message", function (topic, message) {
+      if (topic === mqttTopic) {
+        let msgJSON = JSON.parse(message);
+        setOffloader(msgJSON);
+        setTopic(topic);
+      }
+    });
   }, []);
 
   return isXSmall ? (
