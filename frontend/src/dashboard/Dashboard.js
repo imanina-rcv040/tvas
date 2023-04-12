@@ -51,7 +51,7 @@ export const MyDashboard = (props) => {
         <MyDashboardTitle />
         <VerticalSpacer />
         <button
-          className="button-refresh"
+          className="button-dashboard"
           style={{ position: "relative", top: "40px", left: "15px" }}
           onClick={reinitStream}
         >
@@ -67,7 +67,7 @@ export const MyDashboard = (props) => {
       </div>
       <div>
         <button
-          className="button-refresh"
+          className="button-dashboard"
           style={{ position: "relative", top: "40px", left: "15px" }}
           onClick={reinitStream}
         >
@@ -83,7 +83,7 @@ export const MyDashboard = (props) => {
         <div style={styles.leftCol}>
           <div>
             <button
-              className="button-refresh"
+              className="button-dashboard"
               style={{ position: "relative", top: "40px", left: "15px" }}
               onClick={reinitStream}
             >
