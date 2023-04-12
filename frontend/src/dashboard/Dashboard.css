@@ -32,7 +32,7 @@ a.menu-primary-text {
   padding-top: 30px;
 }
 
-.button-refresh {
+.button-dashboard {
   color: rgb(0, 0, 0);
   border: none;
   padding: 5px 20px;
@@ -42,11 +42,29 @@ a.menu-primary-text {
   transition: background-color 0.2s ease-in-out;
 }
 
-.button-refresh:hover {
+.button-dashboard:hover {
   cursor: pointer;
   background-color: orange;
 }
 
+h6.alert-text {
+  font-family: "Nunito";
+  font-weight: 600;
+  color: black;
+  font-size: 1.25rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  padding-bottom: 100%;
+}
+
+h2.alert-box-heading {
+  font-family: "Nunito";
+  font-weight: bold;
+}
+
+p.alert-box-content {
+  font-family: "Nunito";
+}
 #cvsVideo {
   margin: auto;
 }
