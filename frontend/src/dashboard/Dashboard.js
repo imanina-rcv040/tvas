@@ -16,9 +16,10 @@ const styles = {
   leftCol: { flex: 1, marginRight: "0.5em" },
   rightCol: { flex: 1, marginLeft: "0.5em" },
   singleCol: { marginTop: "1em", marginBottom: "1em" },
+  trafficOffenceAlert: { marginTop: "1.75em" },
 };
 
-// const Spacer = () => <span style={{ width: "1em" }} />;
+const Spacer = () => <span style={{ width: "1em" }} />;
 const VerticalSpacer = () => <span style={{ height: "1em" }} />;
 
 export const MyDashboard = (props) => {
@@ -89,6 +90,7 @@ export const MyDashboard = (props) => {
             >
               Refresh Stream
             </button>
+            <Spacer />
             <MyLiveStream />
           </div>
         </div>
