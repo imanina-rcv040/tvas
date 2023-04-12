@@ -6,6 +6,7 @@ import JSMpeg from "@cycjimmy/jsmpeg-player";
 // import components
 import { MyDashboardTitle } from "./DashboardTitle";
 import { MyLiveStream } from "./livestream/LiveStream";
+import { MyTrafficOffenceAlert } from "./alert/TrafficOffenceAlert";
 
 // import styling
 import "./Dashboard.css";
@@ -109,6 +110,9 @@ export const MyDashboard = (props) => {
           </div>
         </div>
         <div style={styles.rightCol}>
+          <div style={styles.trafficOffenceAlert}>
+            <MyTrafficOffenceAlert data={offloader} />
+          </div>
           <div style={styles.flex}></div>
         </div>
       </div>
