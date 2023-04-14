@@ -2,6 +2,17 @@ div {
   color: black;
 }
 
+tr td {
+  vertical-align: top;
+}
+
+input[type="text"] {
+  border: #333;
+  font-size: 18px;
+  color: #333;
+  pointer-events: none;
+}
+
 div.dashboard-page {
   background-color: black;
 }
@@ -33,11 +44,13 @@ a.menu-primary-text {
 }
 
 .button-dashboard {
+  margin-top: 1%;
   color: rgb(0, 0, 0);
   border: none;
   padding: 5px 20px;
   border-radius: 5px;
   font-size: 16px;
+  font-family: "Nunito";
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 }
@@ -54,7 +67,8 @@ h6.alert-text {
   font-size: 1.25rem;
   line-height: 1;
   letter-spacing: 0.01em;
-  padding-bottom: 100%;
+  padding-bottom: 1%;
+  margin-bottom: 1%;
 }
 
 h2.alert-box-heading {
@@ -70,6 +84,18 @@ h2.alert-box-heading {
 p.alert-box-content {
   font-family: "Nunito";
 }
+
+.img-captured-vehicle {
+  border-radius: 15px;
+  width: 480px;
+}
+
+.img-captured-lp {
+  width: 128px;
+  height: 40px;
+  padding-bottom: 10px;
+}
+
 #cvsVideo {
   margin: auto;
 }

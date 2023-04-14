@@ -103,10 +103,13 @@ export const MyDashboard = (props) => {
       <MyDashboardTitle />
       <div style={styles.flex}>
         <div style={styles.leftCol}>
-          <div>
+          <div style={styles.singleCol}>
             <button
               className="button-dashboard"
-              style={{ position: "relative", top: "40px", left: "15px" }}
+              style={{
+                position: "absolute",
+                marginLeft: "1%",
+              }}
               onClick={reinitStream}
             >
               Refresh Stream
@@ -116,7 +119,7 @@ export const MyDashboard = (props) => {
           </div>
         </div>
         <div style={styles.rightCol}>
-          <div style={styles.trafficOffenceAlert}>
+          <div style={styles.singleCol}>
             <MyTrafficOffenceAlert data={offloader} />
           </div>
           <div style={styles.flex}></div>
