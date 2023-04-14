@@ -47,9 +47,26 @@ export const MyTrafficOffenceAlert = (props) => {
     event: offence,
   } = props.data;
 
+  let date, dateOptions, timeOptions, humanReadableTime;
+  if (timestamp !== null) {
+    console.log("date type", typeof timestamp);
+    date = new Date(timestamp);
+    dateOptions = { day: "2-digit", month: "2-digit", year: "numeric" };
+    timeOptions = {
+      hour: "numeric",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+    };
+    humanReadableTime =
+      date.toLocaleTimeString("en-US", timeOptions) +
+      ", " +
+      date.toLocaleDateString("en-GB", dateOptions);
+    console.log("humanReadableTime", humanReadableTime);
+  }
+
   if (offence === "illegal_uturn") {
     offence = "Illegal U-turn";
-    timestamp = timestamp[Symbol.toPrimitive]("string");
   }
 
   return (
