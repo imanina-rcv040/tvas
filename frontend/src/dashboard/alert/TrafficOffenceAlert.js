@@ -53,7 +53,6 @@ export const MyTrafficOffenceAlert = (props) => {
 
   let date, dateOptions, timeOptions, humanReadableTime;
   if (timestamp !== null) {
-    console.log("date type", typeof timestamp);
     date = new Date(timestamp);
     dateOptions = { day: "2-digit", month: "2-digit", year: "numeric" };
     timeOptions = {
@@ -66,7 +65,6 @@ export const MyTrafficOffenceAlert = (props) => {
       date.toLocaleTimeString("en-US", timeOptions) +
       ", " +
       date.toLocaleDateString("en-GB", dateOptions);
-    console.log("humanReadableTime", humanReadableTime);
   }
 
   if (offence === "illegal_uturn") {
