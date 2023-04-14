@@ -76,7 +76,7 @@ export const MyTrafficOffenceAlert = (props) => {
   return (
     <>
       {alert && (
-        <Card variant="outlined">
+        <Card variant="outlined" style={{ height: "35em" }}>
           <CardContent>
             <Alert severity="warning" style={{ height: "35em" }}>
               <table>
@@ -148,12 +148,9 @@ export const MyTrafficOffenceAlert = (props) => {
             </Alert>
           </CardContent>
           <CardContent>
-            <button onClick={handleTrafficOffence} className="button-dashboard">
-              View Details
-            </button>
             <Dialog open={open} onClose={handleClose}>
               <DialogTitle className="alert-box-heading">
-                Traffic Offence Description
+                Description of Traffic Violation
               </DialogTitle>
               <DialogContent>
                 <DialogContentText className="alert-box-content">
@@ -162,7 +159,7 @@ export const MyTrafficOffenceAlert = (props) => {
                     gutterBottom
                     className="alert-box-content"
                   >
-                    Offence: {offence}
+                    Violation: {offence}
                   </Typography>
                   <Typography
                     variant="body1"
@@ -176,14 +173,41 @@ export const MyTrafficOffenceAlert = (props) => {
                     gutterBottom
                     className="alert-box-content"
                   >
-                    Timestamp: {timestamp}
+                    Timestamp: {humanReadableTime || ""}
                   </Typography>
                   <Typography
                     variant="body1"
                     gutterBottom
                     className="alert-box-content"
                   >
-                    Image Path: {imgPath}
+                    Vehicle Image:&nbsp;
+                    <a
+                      href={
+                        REACT_APP_BACKEND_FILE_SERVER + "screenshot/" + imgPath
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      click to view
+                    </a>
+                  </Typography>{" "}
+                  <Typography
+                    variant="body1"
+                    gutterBottom
+                    className="alert-box-content"
+                  >
+                    License Plate Image:&nbsp;
+                    <a
+                      href={
+                        REACT_APP_BACKEND_FILE_SERVER +
+                        "licenseplate/" +
+                        imgPath
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      click to view
+                    </a>
                   </Typography>
                 </DialogContentText>
               </DialogContent>
