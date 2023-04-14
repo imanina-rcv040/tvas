@@ -17,6 +17,10 @@ const REACT_APP_BACKEND_FILE_SERVER =
   process.env.REACT_APP_BACKEND_FILE_SERVER || "http://172.17.0.143:6060/";
 console.log("REACT_APP_BACKEND_FILE_SERVER", REACT_APP_BACKEND_FILE_SERVER);
 
+// set image path
+const licensePlateImgUrl = `${REACT_APP_BACKEND_FILE_SERVER}licenseplate/`;
+const vehicleImgUrl = `${REACT_APP_BACKEND_FILE_SERVER}screenshot/`;
+
 export const MyTrafficOffenceAlert = (props) => {
   const [open, setOpen] = useState(false);
   const [alert, setAlert] = useState(false);
@@ -116,11 +120,7 @@ export const MyTrafficOffenceAlert = (props) => {
                     </td>
                     <td>
                       <img
-                        src={
-                          REACT_APP_BACKEND_FILE_SERVER +
-                          "licenseplate/" +
-                          imgPath
-                        }
+                        src={licensePlateImgUrl + imgPath}
                         className="img-fluid img-captured-lp"
                         alt="Captured license plate"
                         title="license plate"
@@ -130,11 +130,7 @@ export const MyTrafficOffenceAlert = (props) => {
                   <tr>
                     <td colSpan={3}>
                       <img
-                        src={
-                          REACT_APP_BACKEND_FILE_SERVER +
-                          "screenshot/" +
-                          imgPath
-                        }
+                        src={vehicleImgUrl + imgPath}
                         className="img-fluid img-captured-vehicle"
                         alt="Captured vehicle"
                         title="vehicle"
@@ -180,9 +176,7 @@ export const MyTrafficOffenceAlert = (props) => {
                   >
                     Vehicle Image:&nbsp;
                     <a
-                      href={
-                        REACT_APP_BACKEND_FILE_SERVER + "screenshot/" + imgPath
-                      }
+                      href={vehicleImgUrl + imgPath}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -196,11 +190,7 @@ export const MyTrafficOffenceAlert = (props) => {
                   >
                     License Plate Image:&nbsp;
                     <a
-                      href={
-                        REACT_APP_BACKEND_FILE_SERVER +
-                        "licenseplate/" +
-                        imgPath
-                      }
+                      href={licensePlateImgUrl + imgPath}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
