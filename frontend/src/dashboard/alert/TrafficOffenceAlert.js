@@ -13,6 +13,11 @@ import {
   Typography,
 } from "@mui/material";
 
+// set image file server
+const REACT_APP_BACKEND_FILE_SERVER =
+  process.env.REACT_APP_BACKEND_FILE_SERVER || "http://172.17.0.143:6060/";
+console.log("REACT_APP_BACKEND_FILE_SERVER", REACT_APP_BACKEND_FILE_SERVER);
+
 export const MyTrafficOffenceAlert = (props) => {
   const [open, setOpen] = useState(false);
   const [alert, setAlert] = useState(false);
@@ -74,10 +79,73 @@ export const MyTrafficOffenceAlert = (props) => {
       {alert && (
         <Card variant="outlined">
           <CardContent>
-            <Alert severity="warning">
-              <Typography variant="h5" component="h6" className="alert-text">
-                Alert: Traffic Offence
-              </Typography>
+            <Alert severity="warning" style={{ height: "35em" }}>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <Typography
+                        variant="h5"
+                        component="h6"
+                        className="alert-text"
+                      >
+                        Traffic Violation:
+                      </Typography>
+                    </td>
+                    <td>
+                      <input type="text" value={offence || ""} readOnly></input>
+                    </td>
+                    <td>
+                      <button
+                        onClick={handleTrafficOffence}
+                        className="button-dashboard"
+                      >
+                        View Description
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <Typography
+                        variant="h5"
+                        component="h6"
+                        className="alert-text"
+                      >
+                        License Plate:
+                      </Typography>
+                    </td>
+                    <td>
+                      <input type="text" value={lpr || ""} readOnly></input>
+                    </td>
+                    <td>
+                      <img
+                        src={
+                          REACT_APP_BACKEND_FILE_SERVER +
+                          "licenseplate/" +
+                          imgPath
+                        }
+                        className="img-fluid img-captured-lp"
+                        alt="Captured license plate"
+                        title="license plate"
+                      ></img>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan={3}>
+                      <img
+                        src={
+                          REACT_APP_BACKEND_FILE_SERVER +
+                          "screenshot/" +
+                          imgPath
+                        }
+                        className="img-fluid img-captured-vehicle"
+                        alt="Captured vehicle"
+                        title="vehicle"
+                      ></img>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </Alert>
           </CardContent>
           <CardContent>
