@@ -40,11 +40,12 @@ export const MyTrafficOffenceAlert = (props) => {
     handleClickOpen();
   };
 
-  let data = props.data;
-  let lpr = data.plate_number;
-  let imgPath = data.image_savename;
-  let timestamp = new Date(data.time);
-  let offence = data.event;
+  let {
+    plate_number: lpr,
+    image_savename: imgPath,
+    time: timestamp,
+    event: offence,
+  } = props.data;
 
   if (offence === "illegal_uturn") {
     offence = "Illegal U-turn";
