@@ -1,10 +1,5 @@
-import cv2
-import numpy as np
-from flask import Flask, request, redirect, url_for
+from flask import Flask
 from flask_cors import CORS
-import os
-import random
-
 
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:3000"])
