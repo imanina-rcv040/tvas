@@ -12,6 +12,12 @@ import { MyLayout } from "./layout/Layout";
 import "@fontsource/nunito"; // Defaults to weight 400.
 import "@fontsource/poppins"; // Defaults to weight 400.
 
+// import data provider
+import { dataProvider } from "./api/dataProvider";
+
+// import resources
+import { HistoryList } from "./resources/HistoryList";
+
 // set ffmpegIP
 const ffmpegIP = "172.17.11.7";
 console.log("ffmpegIP:", ffmpegIP, "connected");
@@ -35,6 +41,7 @@ export default function App() {
           element={
             <Admin
               title="Traffic Offence"
+              dataProvider={dataProvider}
               dashboard={() => (
                 <MyDashboard
                   ffmpegIP={ffmpegIP}
@@ -46,7 +53,7 @@ export default function App() {
               layout={MyLayout}
               disableTelemetry
             >
-              <Resource name="model_list" options={{ label: "Models" }} />
+              <Resource name="history" list={HistoryList} />
             </Admin>
           }
         />
