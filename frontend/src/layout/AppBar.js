@@ -13,7 +13,7 @@ const MyUserMenu = () => (
 
 export const MyAppBar = () => {
   return (
-    <AppBar color="" elevation={1} userMenu={<MyUserMenu />}>
+    <AppBar color="inherit" elevation={1} userMenu={<MyUserMenu />}>
       <MyLogo width="100px" height="50px" />
       <Box component="span" flex={1} />
     </AppBar>
