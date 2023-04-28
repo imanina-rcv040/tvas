@@ -17,9 +17,6 @@ export const MyMenu = () => {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
           }),
-        "&:hover": {
-          background: "orange",
-        },
       }}
     >
       <DashboardMenuItem
