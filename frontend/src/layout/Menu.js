@@ -1,6 +1,7 @@
 // import libraries
 import Box from "@mui/material/Box";
-import { DashboardMenuItem, useSidebarState } from "react-admin";
+import { DashboardMenuItem, useSidebarState, MenuItemLink } from "react-admin";
+import HistoryIcon from "@mui/icons-material/History";
 
 export const MyMenu = () => {
   const [open] = useSidebarState();
@@ -24,6 +25,12 @@ export const MyMenu = () => {
       <DashboardMenuItem
         primaryText="livestream"
         className="menu-primary-text"
+      />
+      <MenuItemLink
+        to="/history"
+        primaryText="history"
+        className="menu-primary-text"
+        leftIcon={<HistoryIcon />}
       />
     </Box>
   );
