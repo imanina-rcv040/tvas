@@ -14,6 +14,7 @@ button.btn-layout-sign-in {
   font-weight: 900;
 }
 
-#username-helper-text,#password-helper-text{
+#username-helper-text,
+#password-helper-text {
   font-family: "Nunito";
 }
