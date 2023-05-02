@@ -13,11 +13,6 @@ export const MyMenu = () => {
         width: open ? 250 : 50,
         marginTop: 1,
         marginBottom: 1,
-        transition: (theme) =>
-          theme.transitions.create("width", {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-          }),
       }}
     >
       <DashboardMenuItem
