@@ -1,18 +1,81 @@
 stages:
-  - release
+  - development
+  - development_test
+  - deploy
+  - deploy_test
 
-# Cache modules in between jobs
-cache:
-  key: $CI_COMMIT_REF_SLUG
-  paths:
-    - .npm/
-
-release:
-  image: node:18.15.0
-  stage: release
+Setup:
+  stage: development
   before_script:
-    - npm install -g semantic-release @semantic-release/gitlab @semantic-release/changelog @semantic-release/commit-analyzer @semantic-release/git
+  - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan $VM_IPADDRESS >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
   script:
-    - semantic-release
+  - echo $HOME/$(echo $CI_REPOSITORY_URL | awk 'i=index($0,"rnd/")-1 {print substr($0,i+1,length($0)-i-4)}')
+  - export DST="$(echo $CI_REPOSITORY_URL | awk 'i=index($0,"rnd/")-1 {print substr($0,i+1,length($0)-i-4)}')"
+  - echo "DST=$DST"
+  - ssh $SSH_USER@$VM_IPADDRESS 'hostname;
+    echo $(date);
+    echo DST=$HOME/'"'$DST'"';
+    cd $HOME/'"'$DST'"';
+    git fetch --all;
+    echo CI_COMMIT_BRANCH='"'$CI_COMMIT_BRANCH'"';
+    git checkout '"'$CI_COMMIT_BRANCH'"';
+    git pull;
+    ./.dev/auto_deploy.sh;'
+
+
+
+Setup-Test:
+  stage: development_test
+  script:
+    - echo "Setup done"
+
+
+
+Deploy:
+  stage: deploy
   only:
     - main
+    - beta
+  when: manual
+  allow_failure: false
+  before_script:
+  - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan $VM_IPADDRESS >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+  script:
+  - echo $HOME/$(echo $CI_REPOSITORY_URL | awk 'i=index($0,"rnd/")-1 {print substr($0,i+1,length($0)-i-4)}')
+  - export DST="$(echo $CI_REPOSITORY_URL | awk 'i=index($0,"rnd/")-1 {print substr($0,i+1,length($0)-i-4)}')"
+  - echo "DST=$DST"
+  - ssh $SSH_USER@$VM_IPADDRESS 'hostname;
+    echo $(date);
+    echo DST=$HOME/'"'$DST'"';
+    cd $HOME/'"'$DST'"';
+    git fetch --all;
+    echo CI_COMMIT_BRANCH='"'$CI_COMMIT_BRANCH'"';
+    git checkout '"'$CI_COMMIT_BRANCH'"';
+    git pull;
+    ./.dev/auto_deploy.sh;'
+
+
+
+Deploy-Test:
+  stage: deploy_test
+  only:
+    - main
+    - beta
+  needs:
+    - Deploy
+  script:
+    - echo "Deploy Done"
+  
+  
