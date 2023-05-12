@@ -5,6 +5,7 @@ stages:
   - deploy_test
 
 Setup:
+  image: alpine:latest
   stage: development
   before_script:
   - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
@@ -38,6 +39,7 @@ Setup-Test:
 
 
 Deploy:
+  image: alpine:latest
   stage: deploy
   only:
     - main
