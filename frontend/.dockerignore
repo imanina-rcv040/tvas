@@ -7,8 +7,11 @@
 # Dockerfile
 # docker-compose.yml
 
-# Ignore Node.js dependencies
+# Ignore Node.js dependencies and yarn
 node_modules
+npm-debug.log
+# package-lock.json
+yarn-error.log
 
 # Ignore build artifacts
 build
@@ -28,3 +31,6 @@ out
 *.bak
 *.tmp
 .DS_Store
+
+# development config files
+.gitlab-ci.yml
