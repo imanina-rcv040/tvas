@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  tvas:
+    image: recocloudapp/recocloud:tvas-v0.5.0
+    networks:
+      - net
+    ports:
+      - 18888:3000
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    mem_limit: 1000m
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "100k"
+        max-file: "500"
+    # command: "npm run start"
+    command: "serve -s build"
+
+networks:
+  net:
