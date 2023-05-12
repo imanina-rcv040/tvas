@@ -1,0 +1,7 @@
+version: "3.8"
+
+services:
+  tvas:
+    volumes:
+      - ./:/root/:ro
+    command: "npm run start"
