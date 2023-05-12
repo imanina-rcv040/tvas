@@ -10,17 +10,11 @@ RUN npm ci
 COPY frontend/public /root/public/
 COPY frontend/src /root/src/
 
-RUN ls
-
-# RUN npm ls mqtt
-# RUN npm install mqtt
 RUN npm run build
 
 FROM node:16.15.0-alpine as runtime
 
 WORKDIR /root
-
-RUN ls
 
 COPY --from=build /root/build/ /root/build/
 
