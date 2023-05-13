@@ -27,7 +27,7 @@ Setup:
     echo CI_COMMIT_BRANCH='"'$CI_COMMIT_BRANCH'"';
     git checkout '"'$CI_COMMIT_BRANCH'"';
     git pull;
-    ./.dev/auto_deploy.sh;'
+    ./.dev/auto-deploy.sh;'
 
 
 
@@ -55,7 +55,7 @@ Deploy:
   - ssh-keyscan $VM_IPADDRESS >> ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
   script:
-  - echo $HOME/$(echo $CI_REPOSITORY_URL | awk 'i=index($0,"rnd/")-1 {print substr($0,i+1,length($0)-i-4)}')
+  - echo $HOME/$(echo $CI_REPOSITORY_URL | awk 'i=index($0,"rnd/")-1 {print substr($0,+1,length($0)-i-4)}')
   - export DST="$(echo $CI_REPOSITORY_URL | awk 'i=index($0,"rnd/")-1 {print substr($0,i+1,length($0)-i-4)}')"
   - echo "DST=$DST"
   - ssh $SSH_USER@$VM_IPADDRESS 'hostname;
@@ -66,7 +66,7 @@ Deploy:
     echo CI_COMMIT_BRANCH='"'$CI_COMMIT_BRANCH'"';
     git checkout '"'$CI_COMMIT_BRANCH'"';
     git pull;
-    ./.dev/auto_deploy.sh;'
+    ./.dev/auto-deploy.sh;'
 
 
 
