@@ -4,9 +4,14 @@ import {
   Datagrid,
   TextField,
   FunctionField,
-  TextInput,
   Filter,
+  DateInput,
+  ReferenceInput,
+  SearchInput,
+  SelectInput,
 } from "react-admin";
+import { Box, Drawer } from "@mui/material";
+import { useState } from "react"; // Import the useState hook
 
 // set image file server
 const REACT_APP_BACKEND_FILE_SERVER =
