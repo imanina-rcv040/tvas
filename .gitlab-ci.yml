@@ -1,9 +1,7 @@
 stages:
   - tag
   - development
-  - development_test
   - deploy
-  - deploy_test
 
 Auto_tagging:
   image: node:18.15.0
@@ -40,11 +38,6 @@ Setup:
     git pull;
     ./.dev/auto-deploy.sh;'
 
-Setup-Test:
-  stage: development_test
-  script:
-    - echo "Setup done"
-
 Deploy:
   image: alpine:latest
   stage: deploy
@@ -72,15 +65,3 @@ Deploy:
     git checkout '"'$CI_COMMIT_BRANCH'"';
     git pull;
     ./.dev/auto-deploy.sh;'
-
-
-
-Deploy-Test:
-  stage: deploy_test
-  only:
-    - main
-    - beta
-  needs:
-    - Deploy
-  script:
-    - echo "Deploy Done"
