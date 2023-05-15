@@ -7,10 +7,12 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 # docker build -t recocloud-app/tvas:v1.0.0 "$SCRIPT_DIR"/../
 
 
-git_version="$(git describe --tags --exact-match --match "v*.*.*"\
- || git describe --match "v*.*.*" --tags\
- || git describe --tags\
- || git rev-parse HEAD)"
+# git_version="$(git describe --tags --exact-match --match "v*.*.*"\
+#  || git describe --match "v*.*.*" --tags\
+#  || git describe --tags\
+#  || git rev-parse HEAD)"
+
+git_version="$(git describe --tags --abbrev=0)"
 
 export DOCKER_BUILDKIT=1
 
