@@ -1,8 +1,7 @@
 // import libraries
-import {Card, Typography } from "@mui/material";
+import { Card, Typography } from "@mui/material";
 
 export const MyDashboardTitle = () => {
-
   return (
     <Card
       sx={{
@@ -11,9 +10,8 @@ export const MyDashboardTitle = () => {
       }}
     >
       <Typography variant="h4" component="h2" className="dashboard-title">
-        LIVESTREAM
+        TRAFFIC VIOLATION ALERT SYSTEM
       </Typography>
     </Card>
   );
 };
-
