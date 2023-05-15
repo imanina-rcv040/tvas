@@ -28,98 +28,43 @@ const styles = {
   singleCol: { marginTop: "1em", marginBottom: "1em" },
 };
 
-export const MyDashboard = (props) => {
+export const MyDashboard = () => {
 
-  let ffmpegIP = props.ffmpegIP;
-  let videoUrl = `ws://${ffmpegIP}:6789/`;
-  let player;
-
-  let mqttClient = props.mqttClient;
-  let mqttTopic = props.mqttTopic;
-
-  const [offloader, setOffloader] = useState("null");
-  const [topic, setTopic] = useState("null");
-
-  function reinitStream() {
-    try {
-      player.destroy();
-    } catch (error) {
-      console.log(error);
-    }
-
-    player = new JSMpeg.VideoElement("#cvsVideo", videoUrl, {
-      autoplay: true,
-    });
-    console.log("player", player);
-  }
-  useEffect(() => {
-    reinitStream();
-    mqttClient.subscribe(mqttTopic);
-    mqttClient.on("message", function (topic, message) {
-      if (topic === mqttTopic) {
-        let msgJSON = JSON.parse(message);
-        setOffloader(msgJSON);
-        setTopic(topic);
-      }
-    });
-  }, []);
-
-  return isXSmall ? (
-    <div>
-      <div style={styles.flexColumn}>
-        <MyDashboardTitle />
-        <VerticalSpacer />
-        <button
-          className="button-dashboard"
-          style={{ position: "relative", top: "40px", left: "15px" }}
-          onClick={reinitStream}
-        >
-          Refresh Stream
-        </button>
-        <MyLiveStream />
-      </div>
-    </div>
-  ) : isSmall ? (
-    <div style={styles.flexColumn}>
-      <div style={styles.singleCol}>
-        <MyDashboardTitle />
-      </div>
-      <div>
-        <button
-          className="button-dashboard"
-          style={{ position: "relative", top: "40px", left: "15px" }}
-          onClick={reinitStream}
-        >
-          Refresh Stream
-        </button>
-        <MyLiveStream />
-      </div>
-    </div>
-  ) : (
+  return (
     <>
       <MyDashboardTitle />
       <div style={styles.flex}>
         <div style={styles.leftCol}>
           <div style={styles.singleCol}>
-            <button
-              className="button-dashboard"
-              style={{
-                position: "absolute",
-                marginLeft: "1%",
-              }}
-              onClick={reinitStream}
-            >
-              Refresh Stream
-            </button>
-            <Spacer />
-            <MyLiveStream />
+            <MyTodayViolationCount />
           </div>
         </div>
         <div style={styles.rightCol}>
           <div style={styles.singleCol}>
-            <MyTrafficOffenceAlert data={offloader} />
+            <TodayLatestViolation />
           </div>
-          <div style={styles.flex}></div>
+        </div>
+        <div style={styles.rightCol}>
+          <div style={styles.singleCol}>
+            <MonthlyComparisonViolation />
+          </div>
+        </div>
+      </div>
+      <div style={styles.flex}>
+        <div style={styles.leftCol}>
+          <div style={styles.singleCol}>
+            <TodayTrafficViolationTrend />
+          </div>
+        </div>
+        <div style={styles.rightCol}>
+          <div style={styles.singleCol}>
+            <TodayViolationTypeReport />
+          </div>
+        </div>
+        <div style={styles.rightCol}>
+          <div style={styles.singleCol}>
+            <MonthlyRegionViolation />
+          </div>
         </div>
       </div>
     </>
