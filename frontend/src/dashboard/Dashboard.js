@@ -1,6 +1,3 @@
-// import libraries
-import { useMediaQuery } from "@mui/material";
-
 // import components
 import { MyDashboardTitle } from "./DashboardTitle";
 import { MyTodayViolationCount } from "./TodayViolationCount/TodayViolationCount";
