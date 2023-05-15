@@ -40,39 +40,55 @@ const HistoryFilters = (props) => (
   </Filter>
 );
 
-export const HistoryList = (props) => (
-  <List {...props} filters={<HistoryFilter />}>
-    <Datagrid>
-      <TextField source="id" />
-      <TextField source="time" />
-      <TextField source="plate_number" label="Plate Number" />
-      <FunctionField
-        source="image_savename"
-        label="Plate Number Image"
-        render={(record) => (
-          <a
-            href={licensePlateImgUrl + record.image_savename}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            click to view
-          </a>
-        )}
-      />
-      <FunctionField
-        source="image_savename"
-        label="Vehicle Image"
-        render={(record) => (
-          <a
-            href={vehicleImgUrl + record.image_savename}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            click to view
-          </a>
-        )}
-      />
-      <TextField source="event" label="Violation Event" />
-    </Datagrid>
-  </List>
-);
+export const HistoryList = (props) => {
+  const [open, setOpen] = useState(false); // Initialize open state as false
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <Box>
+      <List {...props} filters={<HistoryFilters />}>
+        <Datagrid>
+          <TextField source="id" />
+          <TextField source="time" />
+          <TextField source="plate_number" label="Plate Number" />
+          <FunctionField
+            source="image_savename"
+            label="Plate Number Image"
+            render={(record) => (
+              <a
+                href={licensePlateImgUrl + record.image_savename}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                click to view
+              </a>
+            )}
+          />
+          <FunctionField
+            source="image_savename"
+            label="Vehicle Image"
+            render={(record) => (
+              <a
+                href={vehicleImgUrl + record.image_savename}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                click to view
+              </a>
+            )}
+          />
+          <TextField source="event" label="Violation Event" />
+        </Datagrid>
+      </List>
+      <Drawer
+        variant="persistent"
+        open={open}
+        anchor="right"
+        onClose={handleClose}
+        sx={{ zIndex: 100 }}
+      ></Drawer>
+    </Box>
+  );
+};
