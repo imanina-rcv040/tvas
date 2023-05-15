@@ -18,9 +18,7 @@ export const dataProvider = {
     const { page, perPage } = params.pagination;
     const { field, order } = params.sort;
     const query = {
-      sort: JSON.stringify([field, order]),
-      range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
-      filter: JSON.stringify(params.filter),
+      ...params.filter, // Include filter parameters in the query
     };
     const url = `${apiUrl}/${resource}?${stringify(query)}`;
     console.log("URL", url);
