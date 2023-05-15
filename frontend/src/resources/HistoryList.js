@@ -22,9 +22,21 @@ console.log("REACT_APP_BACKEND_FILE_SERVER", REACT_APP_BACKEND_FILE_SERVER);
 const licensePlateImgUrl = `${REACT_APP_BACKEND_FILE_SERVER}licenseplate/`;
 const vehicleImgUrl = `${REACT_APP_BACKEND_FILE_SERVER}screenshot/`;
 
-const HistoryFilter = (props) => (
+const HistoryFilters = (props) => (
   <Filter {...props}>
-    <TextInput source="q" label="Search" alwaysOn />
+    <SearchInput source="q" alwaysOn />
+    <ReferenceInput source="event" reference="history" allowEmpty>
+      <SelectInput
+        source="event"
+        label="Violation Event"
+        choices={[
+          { id: "u-turn", name: "Illegal U-turn" },
+          { id: "parking", name: "Illegal Parking" },
+          { id: "speeding", name: "Speeding" },
+        ]}
+      />
+    </ReferenceInput>
+    <DateInput source="time" label="Date" />
   </Filter>
 );
 
