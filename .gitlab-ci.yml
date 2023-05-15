@@ -4,6 +4,18 @@ stages:
   - deploy
   - deploy_test
 
+.pre:
+  image: node:18.15.0
+  stage: release
+  before_script:
+    - npm install -g semantic-release @semantic-release/gitlab @semantic-release/changelog @semantic-release/commit-analyzer @semantic-release/git
+  script:
+    - semantic-release
+  only:
+    - main
+    - beta
+
+
 Setup:
   image: alpine:latest
   stage: development
@@ -16,27 +28,21 @@ Setup:
   - ssh-keyscan $VM_IPADDRESS >> ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
   script:
-  - echo $HOME/$(echo $CI_REPOSITORY_URL | awk 'i=index($0,"rnd/")-1 {print substr($0,i+1,length($0)-i-4)}')
-  - export DST="$(echo $CI_REPOSITORY_URL | awk 'i=index($0,"rnd/")-1 {print substr($0,i+1,length($0)-i-4)}')"
-  - echo "DST=$DST"
+  - echo "$CI_PROJECT_PATH"
   - ssh $SSH_USER@$VM_IPADDRESS 'hostname;
     echo $(date);
-    echo DST=$HOME/'"'$DST'"';
-    cd $HOME/'"'$DST'"';
+    echo DST=$HOME/'"'$CI_PROJECT_PATH'"';
+    cd $HOME/'"'$CI_PROJECT_PATH'"';
     git fetch --all;
     echo CI_COMMIT_BRANCH='"'$CI_COMMIT_BRANCH'"';
     git checkout '"'$CI_COMMIT_BRANCH'"';
     git pull;
     ./.dev/auto-deploy.sh;'
 
-
-
 Setup-Test:
   stage: development_test
   script:
     - echo "Setup done"
-
-
 
 Deploy:
   image: alpine:latest
@@ -55,13 +61,11 @@ Deploy:
   - ssh-keyscan $VM_IPADDRESS >> ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
   script:
-  - echo $HOME/$(echo $CI_REPOSITORY_URL | awk 'i=index($0,"rnd/")-1 {print substr($0,+1,length($0)-i-4)}')
-  - export DST="$(echo $CI_REPOSITORY_URL | awk 'i=index($0,"rnd/")-1 {print substr($0,i+1,length($0)-i-4)}')"
-  - echo "DST=$DST"
+  - echo "$CI_PROJECT_PATH"
   - ssh $SSH_USER@$VM_IPADDRESS 'hostname;
     echo $(date);
-    echo DST=$HOME/'"'$DST'"';
-    cd $HOME/'"'$DST'"';
+    echo DST=$HOME/'"'$CI_PROJECT_PATH'"';
+    cd $HOME/'"'$CI_PROJECT_PATH'"';
     git fetch --all;
     echo CI_COMMIT_BRANCH='"'$CI_COMMIT_BRANCH'"';
     git checkout '"'$CI_COMMIT_BRANCH'"';
@@ -79,5 +83,3 @@ Deploy-Test:
     - Deploy
   script:
     - echo "Deploy Done"
-  
-  
