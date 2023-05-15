@@ -24,6 +24,20 @@ h2.dashboard-title {
   line-height: 1.5;
 }
 
+h3.dashboard-title-2,
+span {
+  font-family: "Poppins";
+  font-weight: bolder;
+  line-height: 1.5;
+}
+
+h3.dashboard-title-3 {
+  font-family: "Poppins";
+  font-weight: bolder;
+  line-height: 1.5;
+  text-align: center;
+}
+
 a.menu-primary-text {
   font-family: "Nunito";
   font-weight: 900;
@@ -84,6 +98,14 @@ h2.alert-box-heading {
 p.alert-box-content {
   font-family: "Poppins";
 }
+
+p.dashboard-report {
+  font-family: "Poppins";
+}
+
+th.dashboard-report,
+td.dashboard-report {
+  font-family: "Poppins";
 }
 
 .img-captured-vehicle {
