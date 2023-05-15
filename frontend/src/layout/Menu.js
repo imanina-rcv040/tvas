@@ -16,7 +16,7 @@ export const MyMenu = () => {
       }}
     >
       <DashboardMenuItem
-        primaryText="livestream"
+        primaryText="dashboard"
         className="menu-primary-text"
       />
       <MenuItemLink

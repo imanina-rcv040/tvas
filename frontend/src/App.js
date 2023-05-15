@@ -44,9 +44,6 @@ export default function App() {
               dataProvider={dataProvider}
               dashboard={() => (
                 <MyDashboard
-                  ffmpegIP={ffmpegIP}
-                  mqttClient={client}
-                  mqttTopic={REACT_APP_MQTT_DATA_TOPIC}
                 />
               )}
               loginPage={MyLogin}
