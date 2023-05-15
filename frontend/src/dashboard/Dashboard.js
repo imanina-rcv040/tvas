@@ -1,12 +1,14 @@
 // import libraries
 import { useMediaQuery } from "@mui/material";
-import { useState, useEffect } from "react";
-import JSMpeg from "@cycjimmy/jsmpeg-player";
 
 // import components
 import { MyDashboardTitle } from "./DashboardTitle";
-import { MyLiveStream } from "./livestream/LiveStream";
-import { MyTrafficOffenceAlert } from "./alert/TrafficOffenceAlert";
+import { MyTodayViolationCount } from "./TodayViolationCount/TodayViolationCount";
+import { TodayLatestViolation } from "./TodayLatestViolation/TodayLatestViolation";
+import { MonthlyComparisonViolation } from "./MonthlyComparisonViolation/MonthlyComparisonViolation";
+import { TodayTrafficViolationTrend } from "./TodayTrafficViolationTrend/TodayTrafficViolationTrend";
+import { TodayViolationTypeReport } from "./TodayViolationTypeReport/TodayViolationTypeReport";
+import { MonthlyRegionViolation } from "./MonthlyRegionViolation/MonthlyRegionViolation";
 
 // import styling
 import "./Dashboard.css";
