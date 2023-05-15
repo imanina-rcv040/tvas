@@ -15,8 +15,8 @@ git_version="$(git describe --tags --exact-match --match "v*.*.*"\
 
 git_version="tvas-${git_version}"
 
-current_tagname="$docker_image_reponame":"$git_version"
-latest_tagname="$docker_image_reponame":latest
+current_tagname="${docker_image_reponame}:${git_version}"
+latest_tagname="${docker_image_reponame}:tvas-latest"
 
 export DOCKER_BUILDKIT=1
 
