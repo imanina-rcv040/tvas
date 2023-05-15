@@ -20,7 +20,7 @@ export DOCKER_BUILDKIT=1
 
 echo "Building ${docker_image_reponame}-$git_version"
 docker build\
- -t $current_tagname\
+ -t "$current_tagname"\
  -f "$SCRIPT_DIR"/../frontend/dockerfile\
  .
 docker tag "$current_tagname" "$latest_tagname"
