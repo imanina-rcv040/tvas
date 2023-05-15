@@ -23,17 +23,12 @@ const styles = {
   rightCol: {
     flex: 1,
     marginLeft: "0.5em",
-    height: "22em",
+    height: "10em",
   },
   singleCol: { marginTop: "1em", marginBottom: "1em" },
 };
 
-const Spacer = () => <span style={{ width: "1em" }} />;
-const VerticalSpacer = () => <span style={{ height: "1em" }} />;
-
 export const MyDashboard = (props) => {
-  const isXSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const isSmall = useMediaQuery((theme) => theme.breakpoints.down("lg"));
 
   let ffmpegIP = props.ffmpegIP;
   let videoUrl = `ws://${ffmpegIP}:6789/`;
