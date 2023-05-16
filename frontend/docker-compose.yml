@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   tvas:
-    image: recocloudapp/recocloud:tvas-v0.5.0
+    image: recocloudapp/recocloud:tvas-latest
     networks:
       - net
     ports:

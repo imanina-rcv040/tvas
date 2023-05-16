@@ -1,18 +1,67 @@
 stages:
-  - release
+  - tag
+  - development
+  - deploy
 
-# Cache modules in between jobs
-cache:
-  key: $CI_COMMIT_REF_SLUG
-  paths:
-    - .npm/
-
-release:
+auto_tagging:
   image: node:18.15.0
-  stage: release
+  stage: tag
   before_script:
     - npm install -g semantic-release @semantic-release/gitlab @semantic-release/changelog @semantic-release/commit-analyzer @semantic-release/git
   script:
     - semantic-release
   only:
     - main
+    - beta
+
+
+development_setup:
+  image: alpine:latest
+  stage: development
+  before_script:
+  - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan $VM_IPADDRESS >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+  script:
+  - echo "$CI_PROJECT_PATH"
+  - ssh $SSH_USER@$VM_IPADDRESS 'hostname;
+    echo $(date);
+    echo DST=$HOME/'"'$CI_PROJECT_PATH'"';
+    cd $HOME/'"'$CI_PROJECT_PATH'"';
+    git fetch --all;
+    echo CI_COMMIT_BRANCH='"'$CI_COMMIT_BRANCH'"';
+    git checkout '"'$CI_COMMIT_BRANCH'"';
+    git pull;
+    ./.dev/auto-deploy.sh;'
+
+deployment_setup:
+  image: alpine:latest
+  stage: deploy
+  only:
+    - main
+    - beta
+  when: manual
+  allow_failure: false
+  before_script:
+  - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+  - eval $(ssh-agent -s)
+  - echo "$DEPLOY_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan $DEPLOY_IPADDRESS >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+  script:
+  - echo "$CI_PROJECT_PATH"
+  - ssh $SSH_USER@$DEPLOY_IPADDRESS 'hostname;
+    echo $(date);
+    echo DST=$HOME/'"'$CI_PROJECT_PATH'"';
+    cd $HOME/'"'$CI_PROJECT_PATH'"';
+    git fetch --all;
+    echo CI_COMMIT_BRANCH='"'$CI_COMMIT_BRANCH'"';
+    git checkout '"'$CI_COMMIT_BRANCH'"';
+    git pull;
+    ./.dev/auto-deploy.sh;'
