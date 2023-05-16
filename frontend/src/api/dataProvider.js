@@ -18,9 +18,7 @@ export const dataProvider = {
     const { page, perPage } = params.pagination;
     const { field, order } = params.sort;
     const query = {
-      sort: JSON.stringify([field, order]),
-      range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
-      filter: JSON.stringify(params.filter),
+      ...params.filter, // Include filter parameters in the query
     };
     const url = `${apiUrl}/${resource}?${stringify(query)}`;
     console.log("URL", url);
@@ -55,6 +53,23 @@ export const dataProvider = {
       plate_number_link: `${licensePlateImgUrl}${json.ctx.image_savename}`,
       vehicle_link: `${vehicleImgUrl}${json.ctx.image_savename}`,
     };
+    return { data };
+  },
+  getMany: async (resource, params) => {
+    const { event } = params.filter; // Extract the selected event from the filter object
+    const url = `${apiUrl}/${resource}?${stringify({
+      event, // Pass the selected event as a query parameter
+    })}`;
+    const { json } = await httpClient(url);
+    const data = json.ctx.history.map((item) => ({
+      id: item.id,
+      event: item.event,
+      image_savename: item.image_savename,
+      plate_number: item.plate_number,
+      time: item.time,
+      plate_number_link: `${licensePlateImgUrl}${item.image_savename}`,
+      vehicle_link: `${vehicleImgUrl}${item.image_savename}`,
+    }));
     return { data };
   },
 };
