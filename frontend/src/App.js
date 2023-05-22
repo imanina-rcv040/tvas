@@ -6,7 +6,7 @@ import mqtt from "mqtt/dist/mqtt";
 // import components
 import { MyLogin } from "./layout/component/MyLogin";
 import { MyDashboard } from "./page/Dashboard/MyDashboard";
-import { HistoryList } from "./page/History/HistoryList";
+import { HistoryList } from "./page/History/MyHistory";
 
 // import styling
 import { MyLayout } from "./layout/MyLayout";
@@ -15,9 +15,6 @@ import "@fontsource/poppins"; // Defaults to weight 400.
 
 // import data provider
 import { dataProvider } from "./api/dataProvider";
-
-// import resources
-import { HistoryList } from "./resources/HistoryList";
 
 // set ffmpegIP
 const ffmpegIP = "172.17.11.7";
