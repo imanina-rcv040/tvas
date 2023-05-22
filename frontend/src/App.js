@@ -4,19 +4,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import mqtt from "mqtt/dist/mqtt";
 
 // import components
-import { MyLogin } from "./layout/Login";
-import { MyDashboard } from "./dashboard/Dashboard";
+import { MyLogin } from "./layout/component/MyLogin";
+import { MyDashboard } from "./page/Dashboard/MyDashboard";
+import { HistoryList } from "./page/History/MyHistory";
 
 // import styling
-import { MyLayout } from "./layout/Layout";
+import { MyLayout } from "./layout/MyLayout";
 import "@fontsource/nunito"; // Defaults to weight 400.
 import "@fontsource/poppins"; // Defaults to weight 400.
 
 // import data provider
 import { dataProvider } from "./api/dataProvider";
-
-// import resources
-import { HistoryList } from "./resources/HistoryList";
 
 // set ffmpegIP
 const ffmpegIP = "172.17.11.7";
