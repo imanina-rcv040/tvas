@@ -4,11 +4,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import mqtt from "mqtt/dist/mqtt";
 
 // import components
-import { MyLogin } from "./layout/Login";
+import { MyLogin } from "./layout/component/MyLogin";
 import { MyDashboard } from "./dashboard/Dashboard";
 
 // import styling
-import { MyLayout } from "./layout/Layout";
+import { MyLayout } from "./layout/MyLayout";
 import "@fontsource/nunito"; // Defaults to weight 400.
 import "@fontsource/poppins"; // Defaults to weight 400.
 
