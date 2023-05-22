@@ -1,14 +1,14 @@
 // import components
-import { MyDashboardTitle } from "./DashboardTitle";
-import { MyTodayViolationCount } from "./TodayViolationCount/TodayViolationCount";
-import { TodayLatestViolation } from "./TodayLatestViolation/TodayLatestViolation";
-import { MonthlyComparisonViolation } from "./MonthlyComparisonViolation/MonthlyComparisonViolation";
-import { TodayTrafficViolationTrend } from "./TodayTrafficViolationTrend/TodayTrafficViolationTrend";
-import { TodayViolationTypeReport } from "./TodayViolationTypeReport/TodayViolationTypeReport";
-import { MonthlyRegionViolation } from "./MonthlyRegionViolation/MonthlyRegionViolation";
+import { MyDashboardTitle } from "./component/MyPageHeader";
+import { MyTodayViolationCount } from "./component/chart/MyViolationCount";
+import { TodayLatestViolation } from "./component/chart/MyLatestViolation";
+import { MonthlyComparisonViolation } from "./component/chart/MyMonthlyComparison";
+import { TodayTrafficViolationTrend } from "./component/chart/MyTrafficViolationTrend";
+import { TodayViolationTypeReport } from "./component/chart/TodayViolationTypeReport";
+import { MonthlyRegionViolation } from "./component/chart/MyMonthlyRegion";
 
 // import styling
-import "./Dashboard.css";
+import "./MyDashboard.css";
 
 const styles = {
   flex: { display: "flex" },
