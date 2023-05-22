@@ -5,7 +5,8 @@ import mqtt from "mqtt/dist/mqtt";
 
 // import components
 import { MyLogin } from "./layout/component/MyLogin";
-import { MyDashboard } from "./dashboard/Dashboard";
+import { MyDashboard } from "./page/Dashboard/MyDashboard";
+import { HistoryList } from "./page/History/HistoryList";
 
 // import styling
 import { MyLayout } from "./layout/MyLayout";
