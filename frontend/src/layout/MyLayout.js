@@ -2,8 +2,8 @@
 import { Layout } from "react-admin";
 
 // import components
-import { MyAppBar } from "./AppBar";
-import { MyMenu } from "./Menu";
+import { MyAppBar } from "./component/MyAppBar";
+import { MyMenu } from "./component/MyMenu";
 import { useLocation } from "react-router-dom";
 import { MyLivestream } from "../livestream/Livestream";
 

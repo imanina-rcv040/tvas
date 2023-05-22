@@ -12,8 +12,8 @@ import {
 } from "@mui/material";
 
 // import styling
-import "./Layout.css";
-import { MyLogo } from "./Logo";
+import "../MyLayout.css";
+import { MyLogo } from "./MyLogo";
 
 export const MyLogin = () => {
   const [loading, setLoading] = useState(false);
