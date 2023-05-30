@@ -136,6 +136,10 @@ export const MyMonthlyComparison = () => {
           <ResponsiveContainer width="100%" height={275}>
             <BarChart data={violationData} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" />
+              <XAxis type="number" />
+              <YAxis
+                type="category"
+                dataKey="type"
                 width={100}
                 tick={{ fontSize: 13, fontFamily: "Poppins" }}
               />
