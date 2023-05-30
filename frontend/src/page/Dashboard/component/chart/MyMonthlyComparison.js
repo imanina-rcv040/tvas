@@ -149,9 +149,9 @@ export const MyMonthlyComparison = () => {
                 <Bar
                   key={i}
                   dataKey={`violations[${i}].count`}
-                  name={v.type}
+                  name={v.month}
                   fill={colors[i % colors.length]}
-                  barSize={10} 
+                  barSize={10}
                 />
               ))}
             </BarChart>
