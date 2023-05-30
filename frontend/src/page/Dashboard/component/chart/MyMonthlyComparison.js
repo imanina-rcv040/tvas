@@ -134,7 +134,7 @@ export const MyMonthlyComparison = () => {
             <Arrow dataJAN={dataJAN} dataFEB={dataFEB} />
           </Typography>
           <ResponsiveContainer width="100%" height={275}>
-            <BarChart data={violationData}>
+            <BarChart data={violationData} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" />
                 width={100}
                 tick={{ fontSize: 13, fontFamily: "Poppins" }}
