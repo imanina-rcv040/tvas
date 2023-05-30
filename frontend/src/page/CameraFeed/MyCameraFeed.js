@@ -83,3 +83,39 @@ export const MyCameraFeed = () => {
       setSelectedCameraName(initialCamera.cameraName);
     }
   }, [cameras]);
+
+  // fetch TVAS latest event
+  const fetchLatestEvent = async () => {
+    if (selectedCameraName) {
+      try {
+        const API_URL = `http://${REACT_APP_BACKEND_TVAS_SERVER}/event/latest?cameraName=${selectedCameraName}`;
+        const response = await fetch(API_URL);
+        const responseData = await response.json();
+        setLatestEvent(responseData);
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    }
+  };
+
+  // camera change handling
+  const handleCameraChange = (e) => {
+    const selectedCameraName = e.target.value;
+    const selectedCamera = cameras.find(
+      (camera) => camera.cameraName === selectedCameraName
+    );
+    if (selectedCamera) {
+      setCamInfo(selectedCamera);
+    }
+    setSelectedCameraName(selectedCameraName);
+  };
+
+  // open dialogue handling
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  // close dialogue handling
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
