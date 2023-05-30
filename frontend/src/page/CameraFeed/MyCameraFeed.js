@@ -123,3 +123,23 @@ export const MyCameraFeed = () => {
   return (
     <>
       <MyPageHeader />
+      <div className="flex">
+        <div className="leftCol">
+          <div className="singleCol">
+            <Typography variant="h5" component="h3" className="title-sub">
+              TRAFFIC LIVE UPDATES
+            </Typography>
+            <div className="dropdown-wrapper">
+              <select
+                className="stream-dropdown"
+                id="cameraName"
+                value={selectedCameraName || ""}
+                onChange={handleCameraChange}
+              >
+                {cameras.map((camera) => (
+                  <option key={camera.cameraId} value={camera.cameraName}>
+                    {camera.cameraName}
+                  </option>
+                ))}
+              </select>
+            </div>
