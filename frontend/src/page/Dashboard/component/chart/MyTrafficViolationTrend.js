@@ -48,7 +48,7 @@ const styles = {
   },
 };
 
-export const TodayTrafficViolationTrend = () => {
+export const MyTrafficViolationTrend = () => {
   return (
     <Grid>
       <Card sx={styles.card}>

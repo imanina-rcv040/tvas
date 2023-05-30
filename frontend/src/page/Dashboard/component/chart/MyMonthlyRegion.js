@@ -64,7 +64,7 @@ const styles = {
   },
 };
 
-export const MonthlyRegionViolation = () => {
+export const MyMonthlyRegion = () => {
   return (
     <Grid item xs={6} md={3}>
       <Card sx={styles.card}>
