@@ -20,7 +20,7 @@ export const MyMenu = () => {
         className="menu-primary-text"
       />
       <MenuItemLink
-        to="/livestream"
+        to="/camera-feed"
         primaryText="Camera Feed"
         className="menu-primary-text"
         leftIcon={<LiveIcon />}
