@@ -149,3 +149,102 @@ export const MyCameraFeed = () => {
             >
               Update Stream
             </button>
+            <Card>
+              <CardContent title={"live updates"}>
+                <div className="canvas-container">
+                  <div id="cvsVideo" className="canvas-stream" />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        <div className="rightCol">
+          <div className="singleCol">
+            <div className="section-wrapper">
+              <div className="section">
+                <Typography variant="h5" component="h3" className="title-sub">
+                  TRAFFIC VIOLATION LIVE UPDATES
+                </Typography>
+
+                {alert && (
+                  <div>
+                    <Card>
+                      <CardContent title={"violation updates"}>
+                        <div className="canvas-container">
+                          <div id="cvsVideo" className="canvas-stream2" />
+                          <div id="cvsVideo" className="canvas-stream3" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                    <Typography
+                      variant="h5"
+                      component="h3"
+                      className="title-traffic-details"
+                    >
+                      TRAFFIC VIOLATION DETAILS
+                    </Typography>
+                    <Card>
+                      <CardContent title="violation details">
+                        <div className="canvas-container2">
+                          <table className="violation-table">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <Typography
+                                    variant="h5"
+                                    component="h6"
+                                    className="alert-text"
+                                  >
+                                    Event Type:
+                                  </Typography>
+                                </td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    value={violationInfo.eventType}
+                                    readOnly
+                                  />
+                                </td>
+                                <td>
+                                  <button
+                                    onClick={handleOpenDialog}
+                                    className="button-view-desc"
+                                  >
+                                    View Description
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <Typography
+                                    variant="h5"
+                                    component="h6"
+                                    className="alert-text"
+                                  >
+                                    License Plate:
+                                  </Typography>
+                                </td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    value={violationInfo.licensePlate}
+                                    readOnly
+                                  />
+                                </td>
+                                <td>
+                                  <div
+                                    id="cvsVideo2"
+                                    className="canvas-stream4"
+                                  >
+                                    <img
+                                      className="img-fluid img-captured-lp"
+                                      alt="captured license plate"
+                                    />
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </CardContent>
