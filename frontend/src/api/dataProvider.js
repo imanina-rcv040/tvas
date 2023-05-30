@@ -18,19 +18,28 @@ export const dataProvider = {
     const query = {
       ...params.filter, // Include filter parameters in the query
     };
-    const url = `${apiUrl}/${resource}?${stringify(query)}`;
+    const url = `${API_URL}/${resource}`;
     console.log("URL", url);
 
     try {
       const { json } = await httpClient(url);
-      const data = json.ctx.history.map((item) => ({
-        id: item.id,
-        event: item.event,
+      const data = json.items.map((item) => ({
+        id: item.eventId,
+        event: item.typeEvent,
+        plate_number: item.licensePlateNo,
+        time: item.engineTimestamp,
+        image_id: item.imageId,
         image_savename: item.image_savename,
-        plate_number: item.plate_number,
-        time: item.time,
-        plate_number_link: licensePlateImgUrl + item.image_savename,
-        vehicle_link: vehicleImgUrl + item.image_savename,
+        vehicle_xmin: item.vehBboxXmin,
+        vehicle_ymin: item.vehBboxYmin,
+        vehicle_xmax: item.vehBboxXmax,
+        vehicle_ymax: item.vehBboxYmax,
+        lp_xmin: item.lpBboxXmin,
+        lp_ymin: item.lpBboxYmin,
+        lp_xmax: item.lpBboxXmax,
+        lp_ymax: item.lpBboxYmax,
+        camera_id: item.cameraId,
+        snap_timestamp: item.snapTimestamp,
       }));
       return { data, total: data.length };
     } catch (error) {
@@ -40,7 +49,7 @@ export const dataProvider = {
   },
   getOne: async (resource, params) => {
     const { id } = params;
-    const url = `${apiUrl}/${resource}/${id}`;
+    const url = `${API_URL}/${resource}/${id}`;
     const { json } = await httpClient(url);
     const data = {
       id: json.ctx.id,
@@ -55,7 +64,7 @@ export const dataProvider = {
   },
   getMany: async (resource, params) => {
     const { event } = params.filter; // Extract the selected event from the filter object
-    const url = `${apiUrl}/${resource}?${stringify({
+    const url = `${API_URL}/${resource}?${stringify({
       event, // Pass the selected event as a query parameter
     })}`;
     const { json } = await httpClient(url);
