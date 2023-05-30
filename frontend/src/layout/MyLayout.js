@@ -5,7 +5,7 @@ import { Layout } from "react-admin";
 import { MyAppBar } from "./component/MyAppBar";
 import { MyMenu } from "./component/MyMenu";
 import { useLocation } from "react-router-dom";
-// import { MyLivestream } from "../page/livestream/Livestream";
+import { MyCameraFeed } from "../page/CameraFeed/MyCameraFeed";
 
 export const MyLayout = (props) => {
   const location = useLocation();
