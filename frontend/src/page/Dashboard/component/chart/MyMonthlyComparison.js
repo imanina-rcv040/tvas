@@ -111,61 +111,22 @@ export const MyMonthlyComparison = () => {
             </span>
             <Arrow dataJAN={dataJAN} dataFEB={dataFEB} />
           </Typography>
-          <Typography
-            variant="p"
-            component="h3"
-            style={{
-              fontSize: "60%",
-              fontWeight: "bolder",
-              display: "flex",
-              alignItems: "left",
-              justifyContent: "center",
-              gap: "5px",
-            }}
-          >
-            {dataJAN.map((entry, index) => (
-              <span
-                style={{
-                  background: colors[index % colors.length],
-                  padding: "5px 10px",
-                  color: "white",
-                }}
-                key={index}
-              >
-                {entry.type}
-              </span>
-            ))}
-          </Typography>
-          <ResponsiveContainer width="100%" height={250}>
-            <PieChart>
-              <Pie
-                data={dataJAN}
-                dataKey="count"
-                nameKey="type"
-                cx="20%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={100}
-              >
-                {dataJAN.map((entry, index) => (
-                  <Cell key={index} fill={colors[index % colors.length]} />
-                ))}
-              </Pie>
-              <Pie
-                data={dataFEB}
-                dataKey="count"
-                nameKey="type"
-                cx="80%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={100}
-              >
-                {dataFEB.map((entry, index) => (
-                  <Cell key={index} fill={colors[index % colors.length]} />
-                ))}
-              </Pie>
+          <ResponsiveContainer width="100%" height={275}>
+            <BarChart data={violationData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" />
+              <YAxis />
               <Tooltip />
-            </PieChart>
+              <Legend />
+              {violationData[0].violations.map((v, i) => (
+                <Bar
+                  key={i}
+                  dataKey={`violations[${i}].count`}
+                  name={v.type}
+                  fill={colors[i % colors.length]}
+                />
+              ))}
+            </BarChart>
           </ResponsiveContainer>
         </CardContent>
       </Card>
