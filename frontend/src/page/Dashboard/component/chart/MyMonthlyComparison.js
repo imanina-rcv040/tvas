@@ -114,9 +114,9 @@ export const MyMonthlyComparison = () => {
             Monthly Comparison
             <span
               style={{
-                background: "#000",
+                background: colors[0],
                 padding: "5px 10px",
-                color: "white",
+                color: "black",
               }}
             >
               JAN
@@ -124,9 +124,9 @@ export const MyMonthlyComparison = () => {
             vs
             <span
               style={{
-                background: "#000",
+                background: colors[1],
                 padding: "5px 10px",
-                color: "white",
+                color: "black",
               }}
             >
               FEB
@@ -136,8 +136,9 @@ export const MyMonthlyComparison = () => {
           <ResponsiveContainer width="100%" height={275}>
             <BarChart data={violationData}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
+                width={100}
+                tick={{ fontSize: 13, fontFamily: "Poppins" }}
+              />
               <Tooltip />
               <Legend />
               {violationData[0].violations.map((v, i) => (
@@ -146,6 +147,7 @@ export const MyMonthlyComparison = () => {
                   dataKey={`violations[${i}].count`}
                   name={v.type}
                   fill={colors[i % colors.length]}
+                  barSize={10} 
                 />
               ))}
             </BarChart>
