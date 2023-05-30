@@ -15,12 +15,11 @@ import { useState } from "react"; // Import the useState hook
 
 // set image file server
 const REACT_APP_BACKEND_FILE_SERVER =
-  process.env.REACT_APP_BACKEND_FILE_SERVER || "http://172.17.0.143:6060/";
+  process.env.REACT_APP_BACKEND_FILE_SERVER || "172.17.0.143:20004";
 console.log("REACT_APP_BACKEND_FILE_SERVER", REACT_APP_BACKEND_FILE_SERVER);
 
 // set image path
-const licensePlateImgUrl = `${REACT_APP_BACKEND_FILE_SERVER}licenseplate/`;
-const vehicleImgUrl = `${REACT_APP_BACKEND_FILE_SERVER}screenshot/`;
+const imgUrl = `http://${REACT_APP_BACKEND_FILE_SERVER}/evidence/`;
 
 const HistoryFilters = (props) => (
   <Filter {...props}>
