@@ -83,9 +83,16 @@ const styles = {
   },
 };
 export const MyMonthlyComparison = () => {
-  const dataJAN = violationData[0].violations;
+  const dataJAN = violationData.map((data) => ({
+    type: data.type,
+    count: data.violations.find((v) => v.month === "January").count,
+  }));
   console.log("dataJAN", dataJAN);
-  const dataFEB = violationData[1].violations;
+
+  const dataFEB = violationData.map((data) => ({
+    type: data.type,
+    count: data.violations.find((v) => v.month === "February").count,
+  }));
   console.log("dataFEB", dataFEB);
 
   return (
