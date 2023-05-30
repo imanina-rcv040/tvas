@@ -32,23 +32,38 @@ const colors = ["#00C49F", "#FFBB28", "#0088FE", "#8884d8", "#ff8042"];
 
 const violationData = [
   {
-    month: "January",
+    type: "Speeding",
     violations: [
-      { type: "Speeding", count: 100 },
-      { type: "Red Light Running", count: 150 },
-      { type: "Illegal Parking", count: 300 },
-      { type: "Improper Lane Usage", count: 200 },
-      { type: "Illegal U-turn", count: 100 },
+      { month: "January", count: 100 },
+      { month: "February", count: 150 },
     ],
   },
   {
-    month: "February",
+    type: "Red Light Running",
     violations: [
-      { type: "Speeding", count: 150 },
-      { type: "Red Light Running", count: 130 },
-      { type: "Illegal Parking", count: 120 },
-      { type: "Improper Lane Usage", count: 110 },
-      { type: "Illegal U-turn", count: 140 },
+      { month: "January", count: 150 },
+      { month: "February", count: 130 },
+    ],
+  },
+  {
+    type: "Illegal Parking",
+    violations: [
+      { month: "January", count: 300 },
+      { month: "February", count: 120 },
+    ],
+  },
+  {
+    type: "Improper Lane Usage",
+    violations: [
+      { month: "January", count: 200 },
+      { month: "February", count: 110 },
+    ],
+  },
+  {
+    type: "Illegal U-turn",
+    violations: [
+      { month: "January", count: 100 },
+      { month: "February", count: 140 },
     ],
   },
 ];
