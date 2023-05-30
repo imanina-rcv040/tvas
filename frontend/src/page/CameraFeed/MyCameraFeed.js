@@ -119,3 +119,7 @@ export const MyCameraFeed = () => {
   const handleCloseDialog = () => {
     setOpenDialog(false);
   };
+
+  return (
+    <>
+      <MyPageHeader />
