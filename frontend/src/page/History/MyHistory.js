@@ -39,7 +39,7 @@ const HistoryFilters = (props) => (
   </Filter>
 );
 
-export const HistoryList = (props) => {
+export const MyHistory = (props) => {
   const [open, setOpen] = useState(false); // Initialize open state as false
   const handleClose = () => {
     setOpen(false);
