@@ -57,8 +57,6 @@ export const dataProvider = {
       image_savename: json.ctx.image_savename,
       plate_number: json.ctx.plate_number,
       time: json.ctx.time,
-      plate_number_link: `${licensePlateImgUrl}${json.ctx.image_savename}`,
-      vehicle_link: `${vehicleImgUrl}${json.ctx.image_savename}`,
     };
     return { data };
   },
@@ -74,8 +72,6 @@ export const dataProvider = {
       image_savename: item.image_savename,
       plate_number: item.plate_number,
       time: item.time,
-      plate_number_link: `${licensePlateImgUrl}${item.image_savename}`,
-      vehicle_link: `${vehicleImgUrl}${item.image_savename}`,
     }));
     return { data };
   },
