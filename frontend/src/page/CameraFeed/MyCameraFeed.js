@@ -40,3 +40,46 @@ export const MyCameraFeed = () => {
     vehicleImage: "https://example.com/vehicle_image.jpg",
     timestamp: "May 26, 2023 - 2:30 PM",
   });
+
+  // TVAS event
+  useEffect(() => {
+    if (violationInfo != null) {
+      setAlert(true);
+    }
+  }, [violationInfo]);
+
+  // fetch all available camera
+  useEffect(() => {
+    const fetchCameras = async () => {
+      try {
+        const API_URL = `http://${REACT_APP_BACKEND_TVAS_SERVER}/camera`;
+        const response = await fetch(API_URL);
+        console.log("Response", response);
+
+        try {
+          const responseData = await response.json(); // Parse the response body as JSON
+          console.log("Response Data", responseData);
+
+          const camerasData = responseData.items;
+          setCameras(camerasData);
+
+          console.log("Success:", response.status);
+        } catch (error) {
+          console.log("Error:", response.status, error);
+        }
+      } catch (error) {
+        console.log("Error:", error); // Log the error message
+      }
+    };
+
+    fetchCameras();
+  }, []);
+
+  // initial: auto set camera info automatically for selected camera
+  useEffect(() => {
+    if (cameras.length > 0) {
+      const initialCamera = cameras[0];
+      setCamInfo(initialCamera);
+      setSelectedCameraName(initialCamera.cameraName);
+    }
+  }, [cameras]);
