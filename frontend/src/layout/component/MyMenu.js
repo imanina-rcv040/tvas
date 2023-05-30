@@ -16,18 +16,18 @@ export const MyMenu = () => {
       }}
     >
       <DashboardMenuItem
-        primaryText="dashboard"
+        primaryText="Dashboard"
         className="menu-primary-text"
       />
       <MenuItemLink
         to="/livestream"
-        primaryText="livestream"
+        primaryText="Camera Feed"
         className="menu-primary-text"
         leftIcon={<LiveIcon />}
       />
       <MenuItemLink
         to="/history"
-        primaryText="history"
+        primaryText="History"
         className="menu-primary-text"
         leftIcon={<HistoryIcon />}
       />
