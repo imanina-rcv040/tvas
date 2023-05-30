@@ -248,3 +248,96 @@ export const MyCameraFeed = () => {
                           </table>
                         </div>
                       </CardContent>
+
+                      <CardContent>
+                        <Dialog open={openDialog} onClose={handleCloseDialog}>
+                          <DialogTitle className="alert-box-heading">
+                            Description of Traffic Violation
+                          </DialogTitle>
+                          <DialogContent>
+                            <DialogContentText className="alert-box-content">
+                              <Typography
+                                variant="body1"
+                                gutterBottom
+                                className="alert-box-content"
+                              >
+                                Violation Type: {violationInfo.eventType}
+                              </Typography>
+                              <Typography
+                                variant="body1"
+                                gutterBottom
+                                className="alert-box-content"
+                              >
+                                License Plate: {violationInfo.licensePlate}
+                              </Typography>
+                              <Typography
+                                variant="body1"
+                                gutterBottom
+                                className="alert-box-content"
+                              >
+                                License Plate Image:&nbsp;
+                                <a
+                                  href={violationInfo.licensePlateImage}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  click to view
+                                </a>
+                              </Typography>
+                              <Typography
+                                variant="body1"
+                                gutterBottom
+                                className="alert-box-content"
+                              >
+                                Vehicle Image:&nbsp;
+                                <a
+                                  href={violationInfo.vehicleImage}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  click to view
+                                </a>
+                              </Typography>
+                              <Typography
+                                variant="body1"
+                                gutterBottom
+                                className="alert-box-content"
+                              >
+                                Timestamp: {violationInfo.timestamp}
+                              </Typography>
+                            </DialogContentText>
+                          </DialogContent>
+                          <DialogActions>
+                            <button
+                              onClick={handleCloseDialog}
+                              className="button-close-desc"
+                            >
+                              Close
+                            </button>
+                          </DialogActions>
+                        </Dialog>
+                      </CardContent>
+                    </Card>
+                  </div>
+                )}
+
+                {!alert && (
+                  <Card variant="outlined" className="card">
+                    <CardContent>
+                      <Alert severity="info">
+                        <Typography
+                          variant="h5"
+                          component="h6"
+                          className="alert-text2"
+                        >
+                          No traffic violation detected.
+                        </Typography>
+                      </Alert>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
