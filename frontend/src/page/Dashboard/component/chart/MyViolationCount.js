@@ -25,7 +25,7 @@ const styles = {
   },
 };
 
-export const MyTodayViolationCount = () => {
+export const MyViolationCount = () => {
   let violationCount = 10;
   return (
     <Card sx={styles.card}>

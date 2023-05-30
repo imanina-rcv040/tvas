@@ -1,9 +1,11 @@
 import React from "react";
 import { Grid, Card, CardContent, Typography } from "@mui/material";
 import {
-  PieChart,
-  Pie,
-  Cell,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
   ResponsiveContainer,
   Tooltip,
   Legend,
@@ -30,23 +32,38 @@ const colors = ["#00C49F", "#FFBB28", "#0088FE", "#8884d8", "#ff8042"];
 
 const violationData = [
   {
-    month: "January",
+    type: "Speeding",
     violations: [
-      { type: "Speeding", count: 100 },
-      { type: "Red Light Running", count: 150 },
-      { type: "Illegal Parking", count: 300 },
-      { type: "Improper Lane Usage", count: 200 },
-      { type: "Illegal U-turn", count: 100 },
+      { month: "January", count: 100 },
+      { month: "February", count: 150 },
     ],
   },
   {
-    month: "February",
+    type: "Red Light Running",
     violations: [
-      { type: "Speeding", count: 150 },
-      { type: "Red Light Running", count: 130 },
-      { type: "Illegal Parking", count: 120 },
-      { type: "Improper Lane Usage", count: 110 },
-      { type: "Illegal U-turn", count: 140 },
+      { month: "January", count: 150 },
+      { month: "February", count: 130 },
+    ],
+  },
+  {
+    type: "Illegal Parking",
+    violations: [
+      { month: "January", count: 300 },
+      { month: "February", count: 120 },
+    ],
+  },
+  {
+    type: "Improper Lane Usage",
+    violations: [
+      { month: "January", count: 200 },
+      { month: "February", count: 110 },
+    ],
+  },
+  {
+    type: "Illegal U-turn",
+    violations: [
+      { month: "January", count: 100 },
+      { month: "February", count: 140 },
     ],
   },
 ];
@@ -65,10 +82,17 @@ const styles = {
     height: 400,
   },
 };
-export const MonthlyComparisonViolation = () => {
-  const dataJAN = violationData[0].violations;
+export const MyMonthlyComparison = () => {
+  const dataJAN = violationData.map((data) => ({
+    type: data.type,
+    count: data.violations.find((v) => v.month === "January").count,
+  }));
   console.log("dataJAN", dataJAN);
-  const dataFEB = violationData[1].violations;
+
+  const dataFEB = violationData.map((data) => ({
+    type: data.type,
+    count: data.violations.find((v) => v.month === "February").count,
+  }));
   console.log("dataFEB", dataFEB);
 
   return (
@@ -90,9 +114,9 @@ export const MonthlyComparisonViolation = () => {
             Monthly Comparison
             <span
               style={{
-                background: "#000",
+                background: colors[0],
                 padding: "5px 10px",
-                color: "white",
+                color: "black",
               }}
             >
               JAN
@@ -100,70 +124,37 @@ export const MonthlyComparisonViolation = () => {
             vs
             <span
               style={{
-                background: "#000",
+                background: colors[1],
                 padding: "5px 10px",
-                color: "white",
+                color: "black",
               }}
             >
               FEB
             </span>
             <Arrow dataJAN={dataJAN} dataFEB={dataFEB} />
           </Typography>
-          <Typography
-            variant="p"
-            component="h3"
-            style={{
-              fontSize: "60%",
-              fontWeight: "bolder",
-              display: "flex",
-              alignItems: "left",
-              justifyContent: "center",
-              gap: "5px",
-            }}
-          >
-            {dataJAN.map((entry, index) => (
-              <span
-                style={{
-                  background: colors[index % colors.length],
-                  padding: "5px 10px",
-                  color: "white",
-                }}
-                key={index}
-              >
-                {entry.type}
-              </span>
-            ))}
-          </Typography>
-          <ResponsiveContainer width="100%" height={250}>
-            <PieChart>
-              <Pie
-                data={dataJAN}
-                dataKey="count"
-                nameKey="type"
-                cx="20%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={100}
-              >
-                {dataJAN.map((entry, index) => (
-                  <Cell key={index} fill={colors[index % colors.length]} />
-                ))}
-              </Pie>
-              <Pie
-                data={dataFEB}
-                dataKey="count"
-                nameKey="type"
-                cx="80%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={100}
-              >
-                {dataFEB.map((entry, index) => (
-                  <Cell key={index} fill={colors[index % colors.length]} />
-                ))}
-              </Pie>
+          <ResponsiveContainer width="100%" height={275}>
+            <BarChart data={violationData} layout="vertical">
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis type="number" />
+              <YAxis
+                type="category"
+                dataKey="type"
+                width={100}
+                tick={{ fontSize: 13, fontFamily: "Poppins" }}
+              />
               <Tooltip />
-            </PieChart>
+              <Legend />
+              {violationData[0].violations.map((v, i) => (
+                <Bar
+                  key={i}
+                  dataKey={`violations[${i}].count`}
+                  name={v.month}
+                  fill={colors[i % colors.length]}
+                  barSize={10}
+                />
+              ))}
+            </BarChart>
           </ResponsiveContainer>
         </CardContent>
       </Card>

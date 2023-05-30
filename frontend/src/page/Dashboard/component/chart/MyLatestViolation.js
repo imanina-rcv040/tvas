@@ -37,7 +37,7 @@ const styles = {
   },
 };
 
-export const TodayLatestViolation = () => {
+export const MyLatestViolation = () => {
   let latestViolation = [
     {
       timestamp: "2023-04-18T17:28:47.204951+08:00",

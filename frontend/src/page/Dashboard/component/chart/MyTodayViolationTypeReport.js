@@ -24,7 +24,7 @@ const styles = {
   },
 };
 
-export const TodayViolationTypeReport = () => {
+export const MyTodayViolationTypeReport = () => {
   const data = [
     {
       name: "Speeding",
