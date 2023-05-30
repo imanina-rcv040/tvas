@@ -1,9 +1,11 @@
 import React from "react";
 import { Grid, Card, CardContent, Typography } from "@mui/material";
 import {
-  PieChart,
-  Pie,
-  Cell,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
   ResponsiveContainer,
   Tooltip,
   Legend,
@@ -65,7 +67,7 @@ const styles = {
     height: 400,
   },
 };
-export const MonthlyComparisonViolation = () => {
+export const MyMonthlyComparison = () => {
   const dataJAN = violationData[0].violations;
   console.log("dataJAN", dataJAN);
   const dataFEB = violationData[1].violations;
