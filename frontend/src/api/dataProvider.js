@@ -1,17 +1,15 @@
 import { fetchUtils } from "react-admin";
 import { stringify } from "query-string";
 
-const apiUrl = "http://localhost:5000";
+// set backend server
+const REACT_APP_BACKEND_TVAS_SERVER =
+  process.env.REACT_APP_BACKEND_TVAS_SERVER || "172.17.0.143:20001";
+console.log("REACT_APP_BACKEND_TVAS_SERVER:", REACT_APP_BACKEND_TVAS_SERVER);
+
+const API_URL = `http://${REACT_APP_BACKEND_TVAS_SERVER}`;
+console.log("API_URL", API_URL);
+
 const httpClient = fetchUtils.fetchJson;
-
-// set image file server
-const REACT_APP_BACKEND_FILE_SERVER =
-  process.env.REACT_APP_BACKEND_FILE_SERVER || "http://172.17.0.143:6060/";
-console.log("REACT_APP_BACKEND_FILE_SERVER", REACT_APP_BACKEND_FILE_SERVER);
-
-// set image path
-const licensePlateImgUrl = `${REACT_APP_BACKEND_FILE_SERVER}licenseplate/`;
-const vehicleImgUrl = `${REACT_APP_BACKEND_FILE_SERVER}screenshot/`;
 
 export const dataProvider = {
   getList: async (resource, params) => {
