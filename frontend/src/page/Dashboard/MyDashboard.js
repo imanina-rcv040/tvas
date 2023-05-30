@@ -1,11 +1,11 @@
 // import components
 import { MyDashboardTitle } from "./component/MyPageHeader";
-import { MyTodayViolationCount } from "./component/chart/MyViolationCount";
-import { TodayLatestViolation } from "./component/chart/MyLatestViolation";
-import { MonthlyComparisonViolation } from "./component/chart/MyMonthlyComparison";
-import { TodayTrafficViolationTrend } from "./component/chart/MyTrafficViolationTrend";
-import { TodayViolationTypeReport } from "./component/chart/TodayViolationTypeReport";
-import { MonthlyRegionViolation } from "./component/chart/MyMonthlyRegion";
+import { MyViolationCount } from "./component/chart/MyViolationCount";
+import { MyLatestViolation } from "./component/chart/MyLatestViolation";
+import { MyMonthlyComparison } from "./component/chart/MyMonthlyComparison";
+import { MyTrafficViolationTrend } from "./component/chart/MyTrafficViolationTrend";
+import { MyTodayViolationTypeReport } from "./component/chart/MyTodayViolationTypeReport";
+import { MyMonthlyRegion } from "./component/chart/MyMonthlyRegion";
 
 // import styling
 import "./MyDashboard.css";
@@ -26,41 +26,40 @@ const styles = {
 };
 
 export const MyDashboard = () => {
-
   return (
     <>
       <MyDashboardTitle />
       <div style={styles.flex}>
         <div style={styles.leftCol}>
           <div style={styles.singleCol}>
-            <MyTodayViolationCount />
+            <MyViolationCount />
           </div>
         </div>
         <div style={styles.rightCol}>
           <div style={styles.singleCol}>
-            <TodayLatestViolation />
+            <MyLatestViolation />
           </div>
         </div>
         <div style={styles.rightCol}>
           <div style={styles.singleCol}>
-            <MonthlyComparisonViolation />
+            <MyMonthlyComparison />
           </div>
         </div>
       </div>
       <div style={styles.flex}>
         <div style={styles.leftCol}>
           <div style={styles.singleCol}>
-            <TodayTrafficViolationTrend />
+            <MyTrafficViolationTrend />
           </div>
         </div>
         <div style={styles.rightCol}>
           <div style={styles.singleCol}>
-            <TodayViolationTypeReport />
+            <MyTodayViolationTypeReport />
           </div>
         </div>
         <div style={styles.rightCol}>
           <div style={styles.singleCol}>
-            <MonthlyRegionViolation />
+            <MyMonthlyRegion />
           </div>
         </div>
       </div>
