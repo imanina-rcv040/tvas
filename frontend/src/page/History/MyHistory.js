@@ -49,15 +49,19 @@ export const MyHistory = (props) => {
     <Box>
       <List {...props} filters={<HistoryFilters />}>
         <Datagrid>
-          <TextField source="id" />
-          <TextField source="time" />
-          <TextField source="plate_number" label="Plate Number" />
+          <TextField source="id" label="Event ID" />
+          <TextField source="event" label="Event Type" />
+          <TextField source="plate_number" label="License Plate Number" />
+          <TextField source="time" label="Engine TImestamp" />
+          <TextField source="image_id" label="Image ID" />
+          <TextField source="camera_id" label="Camera ID" />
+          <TextField source="snap_timestamp" label="Snapshot Timestamp" />
           <FunctionField
-            source="image_savename"
+            source="plate_number_link"
             label="Plate Number Image"
             render={(record) => (
               <a
-                href={licensePlateImgUrl + record.image_savename}
+                href={imgUrl + `${record.camera_id}/raw/${record.image_id}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -66,11 +70,11 @@ export const MyHistory = (props) => {
             )}
           />
           <FunctionField
-            source="image_savename"
+            source="vehicle_link"
             label="Vehicle Image"
             render={(record) => (
               <a
-                href={vehicleImgUrl + record.image_savename}
+                href={imgUrl + `${record.camera_id}/lp/${record.image_id}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -78,7 +82,6 @@ export const MyHistory = (props) => {
               </a>
             )}
           />
-          <TextField source="event" label="Violation Event" />
         </Datagrid>
       </List>
       <Drawer
