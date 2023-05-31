@@ -16,10 +16,6 @@ import "@fontsource/poppins"; // Defaults to weight 400.
 // import data provider
 import { dataProvider } from "./api/dataProvider";
 
-// set ffmpegIP
-const ffmpegIP = "172.17.11.7";
-console.log("ffmpegIP:", ffmpegIP, "connected");
-
 // set and connect MQTT
 const REACT_APP_MQTT_SERVER =
   process.env.REACT_APP_MQTT_SERVER || "ws://172.17.0.216:8080/";
