@@ -6,7 +6,7 @@ import mqtt from "mqtt/dist/mqtt";
 // import components
 import { MyLogin } from "./layout/component/MyLogin";
 import { MyDashboard } from "./page/Dashboard/MyDashboard";
-import { MyHistory } from "./page/History/MyHistory";
+import { HistoryList } from "./page/History/MyHistory";
 
 // import styling
 import { MyLayout } from "./layout/MyLayout";
@@ -48,7 +48,7 @@ export default function App() {
               layout={MyLayout}
               disableTelemetry
             >
-              <Resource name="history" list={MyHistory} />
+              <Resource name="history" list={HistoryList} />
             </Admin>
           }
         />

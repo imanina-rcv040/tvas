@@ -15,11 +15,12 @@ import { useState } from "react"; // Import the useState hook
 
 // set image file server
 const REACT_APP_BACKEND_FILE_SERVER =
-  process.env.REACT_APP_BACKEND_FILE_SERVER || "172.17.0.143:20004";
+  process.env.REACT_APP_BACKEND_FILE_SERVER || "http://172.17.0.143:6060/";
 console.log("REACT_APP_BACKEND_FILE_SERVER", REACT_APP_BACKEND_FILE_SERVER);
 
 // set image path
-const imgUrl = `http://${REACT_APP_BACKEND_FILE_SERVER}/evidence/`;
+const licensePlateImgUrl = `${REACT_APP_BACKEND_FILE_SERVER}licenseplate/`;
+const vehicleImgUrl = `${REACT_APP_BACKEND_FILE_SERVER}screenshot/`;
 
 const HistoryFilters = (props) => (
   <Filter {...props}>
@@ -39,7 +40,7 @@ const HistoryFilters = (props) => (
   </Filter>
 );
 
-export const MyHistory = (props) => {
+export const HistoryList = (props) => {
   const [open, setOpen] = useState(false); // Initialize open state as false
   const handleClose = () => {
     setOpen(false);
@@ -49,19 +50,15 @@ export const MyHistory = (props) => {
     <Box>
       <List {...props} filters={<HistoryFilters />}>
         <Datagrid>
-          <TextField source="id" label="Event ID" />
-          <TextField source="event" label="Event Type" />
-          <TextField source="plate_number" label="License Plate Number" />
-          <TextField source="time" label="Engine TImestamp" />
-          <TextField source="image_id" label="Image ID" />
-          <TextField source="camera_id" label="Camera ID" />
-          <TextField source="snap_timestamp" label="Snapshot Timestamp" />
+          <TextField source="id" />
+          <TextField source="time" />
+          <TextField source="plate_number" label="Plate Number" />
           <FunctionField
-            source="plate_number_link"
+            source="image_savename"
             label="Plate Number Image"
             render={(record) => (
               <a
-                href={imgUrl + `${record.camera_id}/raw/${record.image_id}`}
+                href={licensePlateImgUrl + record.image_savename}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -70,11 +67,11 @@ export const MyHistory = (props) => {
             )}
           />
           <FunctionField
-            source="vehicle_link"
+            source="image_savename"
             label="Vehicle Image"
             render={(record) => (
               <a
-                href={imgUrl + `${record.camera_id}/lp/${record.image_id}`}
+                href={vehicleImgUrl + record.image_savename}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -82,6 +79,7 @@ export const MyHistory = (props) => {
               </a>
             )}
           />
+          <TextField source="event" label="Violation Event" />
         </Datagrid>
       </List>
       <Drawer
