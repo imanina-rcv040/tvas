@@ -16,8 +16,7 @@ import { useState } from "react"; // Import the useState hook
 
 // set image file server
 const REACT_APP_BACKEND_FILE_SERVER =
-  process.env.REACT_APP_BACKEND_FILE_SERVER || "172.17.0.143:20004";
-console.log("REACT_APP_BACKEND_FILE_SERVER", REACT_APP_BACKEND_FILE_SERVER);
+  process.env.REACT_APP_BACKEND_FILE_SERVER || "http://172.17.0.143:20004";
 
 // set image path
 const imgUrl = `http://${REACT_APP_BACKEND_FILE_SERVER}/evidence/`;
