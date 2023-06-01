@@ -13,13 +13,26 @@ const httpClient = fetchUtils.fetchJson;
 
 export const dataProvider = {
   getList: async (resource, params) => {
+    console.log("getlist");
+    console.log("resource", resource);
+    console.log("params", params);
     const { page, perPage } = params.pagination;
     const { field, order } = params.sort;
     const query = {
       ...params.filter, // Include filter parameters in the query
+      "page": page,
+      "perPage": perPage,
+      "field": field,
+      "order": order,
     };
-    const apiURL = `${backendServerURL}/${resource}`;
-    console.log("URL", apiURL);
+    console.log("query", query);
+    let queryString = "";
+    // if (Object.keys(query).length) {
+    queryString = "?" + new URLSearchParams(query).toString();
+    // }
+    console.log("queryString", queryString);
+    const url = `${API_URL}/${resource}/${queryString}`;
+    console.log("URL", url);
 
     try {
       const { json } = await httpClient(apiURL);
