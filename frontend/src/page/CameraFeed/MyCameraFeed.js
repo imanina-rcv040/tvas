@@ -54,8 +54,8 @@ export const MyCameraFeed = () => {
   useEffect(() => {
     const fetchCameras = async () => {
       try {
-        const API_URL = `http://${REACT_APP_BACKEND_TVAS_SERVER}/camera`;
-        const response = await fetch(API_URL);
+        const apiURL = `${backendServerURL}/camera`;
+        const response = await fetch(apiURL);
         console.log("Response", response);
 
         try {
