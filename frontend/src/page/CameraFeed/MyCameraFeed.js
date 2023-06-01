@@ -90,8 +90,8 @@ export const MyCameraFeed = () => {
   const fetchLatestEvent = async () => {
     if (selectedCameraName) {
       try {
-        const API_URL = `http://${REACT_APP_BACKEND_TVAS_SERVER}/event/latest?cameraName=${selectedCameraName}`;
-        const response = await fetch(API_URL);
+        const apiURL = `${backendServerURL}/event/latest?cameraName=${selectedCameraName}`;
+        const response = await fetch(apiURL);
         const responseData = await response.json();
         setLatestEvent(responseData);
       } catch (error) {
