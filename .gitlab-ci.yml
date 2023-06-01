@@ -1,11 +1,35 @@
 stages:
-  - tag
-  - development
-  - deploy
+  - pre-deploy
+  - development_deploy
+  - deployment_deploy
 
-auto_tagging:
+.deploy_job:
+  variables:
+    PRIVATE_KEY: ""
+    IP_ADDRESS: ""
+  before_script:
+    - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+    - eval $(ssh-agent -s)
+    - echo "$PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan $IP_ADDRESS >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - echo "$CI_PROJECT_PATH"
+    - ssh $SSH_USER@$IP_ADDRESS 'hostname;
+      echo $(date);
+      echo DST=$HOME/'"'$CI_PROJECT_PATH'"';
+      cd $HOME/'"'$CI_PROJECT_PATH'"';
+      git fetch --all;
+      echo CI_COMMIT_BRANCH='"'$CI_COMMIT_BRANCH'"';
+      git checkout '"'$CI_COMMIT_BRANCH'"';
+      git pull;
+      ./.dev/auto-deploy.sh;'
+
+tagging:
   image: node:18.15.0
-  stage: tag
+  stage: pre-deploy
   before_script:
     - npm install -g semantic-release @semantic-release/gitlab @semantic-release/changelog @semantic-release/commit-analyzer @semantic-release/git
   script:
@@ -13,55 +37,29 @@ auto_tagging:
   only:
     - main
     - beta
+    - next
 
-
-development_setup:
+development:
   image: alpine:latest
-  stage: development
-  before_script:
-  - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
-  - eval $(ssh-agent -s)
-  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-  - mkdir -p ~/.ssh
-  - chmod 700 ~/.ssh
-  - ssh-keyscan $VM_IPADDRESS >> ~/.ssh/known_hosts
-  - chmod 644 ~/.ssh/known_hosts
-  script:
-  - echo "$CI_PROJECT_PATH"
-  - ssh $SSH_USER@$VM_IPADDRESS 'hostname;
-    echo $(date);
-    echo DST=$HOME/'"'$CI_PROJECT_PATH'"';
-    cd $HOME/'"'$CI_PROJECT_PATH'"';
-    git fetch --all;
-    echo CI_COMMIT_BRANCH='"'$CI_COMMIT_BRANCH'"';
-    git checkout '"'$CI_COMMIT_BRANCH'"';
-    git pull;
-    ./.dev/auto-deploy.sh;'
+  stage: development_deploy
+  extends: .deploy_job
+  variables:
+    PRIVATE_KEY: $SSH_PRIVATE_KEY
+    IP_ADDRESS: $VM_IPADDRESS
+  except:
+    - tags
 
-deployment_setup:
+deployment:
   image: alpine:latest
-  stage: deploy
+  stage: deployment_deploy
+  when: manual
+  allow_failure: false
+  extends: .deploy_job
+  variables:
+    PRIVATE_KEY: $DEPLOY_SSH_PRIVATE_KEY
+    IP_ADDRESS: $DEPLOY_IPADDRESS
+  except:
+    - tags
   only:
     - main
     - beta
-  when: manual
-  allow_failure: false
-  before_script:
-  - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
-  - eval $(ssh-agent -s)
-  - echo "$DEPLOY_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-  - mkdir -p ~/.ssh
-  - chmod 700 ~/.ssh
-  - ssh-keyscan $DEPLOY_IPADDRESS >> ~/.ssh/known_hosts
-  - chmod 644 ~/.ssh/known_hosts
-  script:
-  - echo "$CI_PROJECT_PATH"
-  - ssh $SSH_USER@$DEPLOY_IPADDRESS 'hostname;
-    echo $(date);
-    echo DST=$HOME/'"'$CI_PROJECT_PATH'"';
-    cd $HOME/'"'$CI_PROJECT_PATH'"';
-    git fetch --all;
-    echo CI_COMMIT_BRANCH='"'$CI_COMMIT_BRANCH'"';
-    git checkout '"'$CI_COMMIT_BRANCH'"';
-    git pull;
-    ./.dev/auto-deploy.sh;'
