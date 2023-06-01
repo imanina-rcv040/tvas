@@ -47,19 +47,7 @@ export const dataProvider = {
       throw new Error("Error fetching data");
     }
   },
-  getOne: async (resource, params) => {
-    const { id } = params;
-    const url = `${API_URL}/${resource}/${id}`;
-    const { json } = await httpClient(url);
-    const data = {
-      id: json.ctx.id,
-      event: json.ctx.event,
-      image_savename: json.ctx.image_savename,
-      plate_number: json.ctx.plate_number,
-      time: json.ctx.time,
-    };
-    return { data };
-  },
+
   getMany: async (resource, params) => {
     const { event } = params.filter; // Extract the selected event from the filter object
     const apiURL = `${backendServerURL}/${resource}?${stringify({
