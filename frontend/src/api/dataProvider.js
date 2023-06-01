@@ -6,7 +6,7 @@ import { stringify } from "query-string";
 const REACT_APP_BACKEND_TVAS_SERVER =
   process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
 
-let backendServerURL = REACT_APP_BACKEND_TVAS_SERVER;
+const backendServerURL = REACT_APP_BACKEND_TVAS_SERVER;
 console.log("API URL:", backendServerURL);
 
 const httpClient = fetchUtils.fetchJson;
