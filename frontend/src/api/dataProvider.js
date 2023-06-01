@@ -67,9 +67,22 @@ export const dataProvider = {
     })}`;
     const { json } = await httpClient(apiURL);
     const data = json.items.map((item) => ({
+      id: item.eventId,
+      event: item.typeEvent,
+      plate_number: item.licensePlateNo,
+      time: item.engineTimestamp,
+      image_id: item.imageId,
       image_savename: item.image_savename,
-      plate_number: item.plate_number,
-      time: item.time,
+      vehicle_xmin: item.vehBboxXmin,
+      vehicle_ymin: item.vehBboxYmin,
+      vehicle_xmax: item.vehBboxXmax,
+      vehicle_ymax: item.vehBboxYmax,
+      lp_xmin: item.lpBboxXmin,
+      lp_ymin: item.lpBboxYmin,
+      lp_xmax: item.lpBboxXmax,
+      lp_ymax: item.lpBboxYmax,
+      camera_id: item.cameraId,
+      snap_timestamp: item.snapTimestamp,
     }));
     return { data };
   },
