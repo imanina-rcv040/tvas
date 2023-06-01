@@ -4,11 +4,10 @@ import { stringify } from "query-string";
 
 // set backend server
 const REACT_APP_BACKEND_TVAS_SERVER =
-  process.env.REACT_APP_BACKEND_TVAS_SERVER || "172.17.0.143:20001";
-console.log("REACT_APP_BACKEND_TVAS_SERVER:", REACT_APP_BACKEND_TVAS_SERVER);
+  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
 
-const API_URL = `http://${REACT_APP_BACKEND_TVAS_SERVER}`;
-console.log("API_URL", API_URL);
+let backendServerURL = REACT_APP_BACKEND_TVAS_SERVER;
+console.log("API URL:", backendServerURL);
 
 const httpClient = fetchUtils.fetchJson;
 
@@ -19,11 +18,11 @@ export const dataProvider = {
     const query = {
       ...params.filter, // Include filter parameters in the query
     };
-    const url = `${API_URL}/${resource}`;
-    console.log("URL", url);
+    const apiURL = `${backendServerURL}/${resource}`;
+    console.log("URL", apiURL);
 
     try {
-      const { json } = await httpClient(url);
+      const { json } = await httpClient(apiURL);
       const data = json.items.map((item) => ({
         id: item.eventId,
         event: item.typeEvent,
@@ -63,13 +62,11 @@ export const dataProvider = {
   },
   getMany: async (resource, params) => {
     const { event } = params.filter; // Extract the selected event from the filter object
-    const url = `${API_URL}/${resource}?${stringify({
+    const apiURL = `${backendServerURL}/${resource}?${stringify({
       event, // Pass the selected event as a query parameter
     })}`;
-    const { json } = await httpClient(url);
-    const data = json.ctx.history.map((item) => ({
-      id: item.id,
-      event: item.event,
+    const { json } = await httpClient(apiURL);
+    const data = json.items.map((item) => ({
       image_savename: item.image_savename,
       plate_number: item.plate_number,
       time: item.time,
