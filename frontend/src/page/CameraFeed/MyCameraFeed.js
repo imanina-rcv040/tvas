@@ -22,6 +22,8 @@ import "./MyCameraFeed.css";
 const REACT_APP_BACKEND_TVAS_SERVER =
   process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
 
+let backendServerURL = REACT_APP_BACKEND_TVAS_SERVER;
+console.log("API URL:", backendServerURL);
 
 export const MyCameraFeed = () => {
   const [openDialog, setOpenDialog] = useState(false);
