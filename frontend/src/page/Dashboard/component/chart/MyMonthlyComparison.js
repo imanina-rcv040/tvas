@@ -17,7 +17,6 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 const Arrow = ({ dataJAN, dataFEB }) => {
   const totalJAN = dataJAN.reduce((acc, curr) => acc + curr.count, 0);
   const totalFEB = dataFEB.reduce((acc, curr) => acc + curr.count, 0);
-  console.log("totalJan", totalJAN);
 
   if (totalFEB > totalJAN) {
     return <ArrowUpwardIcon sx={styles.arrow} />;
@@ -87,13 +86,11 @@ export const MyMonthlyComparison = () => {
     type: data.type,
     count: data.violations.find((v) => v.month === "January").count,
   }));
-  console.log("dataJAN", dataJAN);
 
   const dataFEB = violationData.map((data) => ({
     type: data.type,
     count: data.violations.find((v) => v.month === "February").count,
   }));
-  console.log("dataFEB", dataFEB);
 
   return (
     <Grid item xs={6} md={3}>

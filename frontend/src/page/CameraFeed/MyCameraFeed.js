@@ -20,8 +20,10 @@ import "./MyCameraFeed.css";
 
 // set backend server
 const REACT_APP_BACKEND_TVAS_SERVER =
-  process.env.REACT_APP_BACKEND_TVAS_SERVER || "172.17.0.143:20001";
-console.log("REACT_APP_BACKEND_TVAS_SERVER:", REACT_APP_BACKEND_TVAS_SERVER);
+  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
+
+const backendServerURL = REACT_APP_BACKEND_TVAS_SERVER;
+console.log("API URL:", backendServerURL);
 
 export const MyCameraFeed = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -52,8 +54,8 @@ export const MyCameraFeed = () => {
   useEffect(() => {
     const fetchCameras = async () => {
       try {
-        const API_URL = `http://${REACT_APP_BACKEND_TVAS_SERVER}/camera`;
-        const response = await fetch(API_URL);
+        const apiURL = `${backendServerURL}/camera`;
+        const response = await fetch(apiURL);
         console.log("Response", response);
 
         try {
@@ -88,8 +90,8 @@ export const MyCameraFeed = () => {
   const fetchLatestEvent = async () => {
     if (selectedCameraName) {
       try {
-        const API_URL = `http://${REACT_APP_BACKEND_TVAS_SERVER}/event/latest?cameraName=${selectedCameraName}`;
-        const response = await fetch(API_URL);
+        const apiURL = `${backendServerURL}/event/latest?cameraName=${selectedCameraName}`;
+        const response = await fetch(apiURL);
         const responseData = await response.json();
         setLatestEvent(responseData);
       } catch (error) {
