@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   tvas:
-    image: recocloudapp/recocloud:tvas-latest
+    image: recocloud-app/traffic-violation-alert-system:latest
     networks:
       - net
     ports:
