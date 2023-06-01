@@ -19,7 +19,7 @@ const REACT_APP_BACKEND_FILE_SERVER =
   process.env.REACT_APP_BACKEND_FILE_SERVER || "http://172.17.0.143:20004";
 
 // set image path
-let imgURL = `${REACT_APP_BACKEND_FILE_SERVER}/evidence/`;
+const imgURL = `${REACT_APP_BACKEND_FILE_SERVER}/evidence/`;
 
 const HistoryFilters = (props) => (
   <Filter {...props}>
