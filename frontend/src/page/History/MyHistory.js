@@ -19,7 +19,7 @@ const REACT_APP_BACKEND_FILE_SERVER =
   process.env.REACT_APP_BACKEND_FILE_SERVER || "http://172.17.0.143:20004";
 
 // set image path
-const imgUrl = `http://${REACT_APP_BACKEND_FILE_SERVER}/evidence/`;
+let imgURL = `${REACT_APP_BACKEND_FILE_SERVER}/evidence/`;
 
 const HistoryFilters = (props) => (
   <Filter {...props}>
@@ -61,7 +61,7 @@ export const MyHistory = (props) => {
             label="Plate Number Image"
             render={(record) => (
               <a
-                href={imgUrl + `${record.camera_id}/raw/${record.image_id}`}
+                href={imgURL + `${record.camera_id}/raw/${record.image_id}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -74,7 +74,7 @@ export const MyHistory = (props) => {
             label="Vehicle Image"
             render={(record) => (
               <a
-                href={imgUrl + `${record.camera_id}/lp/${record.image_id}`}
+                href={imgURL + `${record.camera_id}/lp/${record.image_id}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
