@@ -7,7 +7,8 @@ echo "Stopping all the docker that runs the api-gateway server:"
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-echo "Stopping the application..."
-docker-compose -f "$SCRIPT_DIR"/../frontend/docker-compose.yml down
+echo "[1] --- Stopping server"
+docker-compose -f "$SCRIPT_DIR"/../docker-compose.yml down
 
 echo
+echo "Finished stopping all dockerized servers. Please check with: docker ps"
