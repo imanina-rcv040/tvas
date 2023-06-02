@@ -24,18 +24,27 @@ const imgURL = `${REACT_APP_BACKEND_FILE_SERVER}/evidence/`;
 const HistoryFilters = (props) => (
   <Filter {...props}>
     <SearchInput source="q" alwaysOn />
-    <ReferenceInput source="event" reference="history" allowEmpty>
+    <ReferenceInput source="typeEvent" reference="history" label="Event">
       <SelectInput
-        source="event"
+        source="typeEvent"
         label="Violation Event"
         choices={[
-          { id: "u-turn", name: "Illegal U-turn" },
-          { id: "parking", name: "Illegal Parking" },
-          { id: "speeding", name: "Speeding" },
+          { id: "illegal-uturn", name: "Illegal U-turn" },
+          { id: "illegal-parking", name: "Illegal Parking" },
         ]}
       />
     </ReferenceInput>
-    <DateInput source="time" label="Date" />
+    {/* <ReferenceInput source="cameraId" reference="history" label="Camera">
+      <SelectInput
+        source="cameraId"
+        label="Camera ID"
+        choices={[
+          { id: "1", name: "Camera 1" },
+          { id: "2", name: "Camera 2" },
+        ]}
+      />
+    </ReferenceInput> */}
+    <DateInput source="engineTimestamp" label="Date" />
   </Filter>
 );
 
