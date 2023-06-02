@@ -34,7 +34,16 @@ const HistoryFilters = (props) => (
         ]}
       />
     </ReferenceInput>
-    <DateInput source="time" label="Date" />
+    {/* <ReferenceInput source="cameraId" reference="history" label="Camera">
+      <SelectInput
+        source="cameraId"
+        label="Camera ID"
+        choices={[
+          { id: "1", name: "Camera 1" },
+          { id: "2", name: "Camera 2" },
+        ]}
+      />
+    </ReferenceInput> */}
   </Filter>
 );
 
