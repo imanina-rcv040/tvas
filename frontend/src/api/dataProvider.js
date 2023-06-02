@@ -70,6 +70,8 @@ export const dataProvider = {
     console.log("getMany");
     console.log("resource (getMany)", resource);
     console.log("params (getMany)", params);
+    const apiURL2 = `${backendServerURL}/${resource}`;
+
       console.log("try first at many");
       console.log("try finish at (getMany)");
 
