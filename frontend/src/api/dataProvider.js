@@ -31,8 +31,8 @@ export const dataProvider = {
     queryString = "?" + new URLSearchParams(query).toString();
     // }
     console.log("queryString", queryString);
-    const url = `${API_URL}/${resource}/${queryString}`;
-    console.log("URL", url);
+    const apiURL = `${backendServerURL}/${resource}/${queryString}`;
+    console.log("API URL:", apiURL);
 
     try {
       const { json } = await httpClient(apiURL);
