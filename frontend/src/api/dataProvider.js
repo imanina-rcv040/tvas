@@ -20,10 +20,10 @@ export const dataProvider = {
     const { field, order } = params.sort;
     const query = {
       ...params.filter, // Include filter parameters in the query
-      "page": page,
-      "perPage": perPage,
-      "field": field,
-      "order": order,
+      page: page,
+      perPage: perPage,
+      field: field,
+      order: order,
     };
     console.log("query", query);
     let queryString = "";
