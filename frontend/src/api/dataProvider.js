@@ -7,7 +7,7 @@ const REACT_APP_BACKEND_TVAS_SERVER =
   process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
 
 const backendServerURL = REACT_APP_BACKEND_TVAS_SERVER;
-console.log("API URL:", backendServerURL);
+console.log("backendServerURL:", backendServerURL);
 
 const httpClient = fetchUtils.fetchJson;
 
@@ -35,6 +35,7 @@ export const dataProvider = {
     console.log("API URL:", apiURL);
 
     try {
+      console.log("try first");
       const { json } = await httpClient(apiURL);
       const data = json.items.map((item) => ({
         id: item.eventId,
@@ -53,14 +54,26 @@ export const dataProvider = {
         cameraId: item.cameraId,
         snapTimestamp: item.snapTimestamp,
       }));
+      console.log("try finish");
+      console.log("raw json data:", json);
+      console.log("total data per page=", data.length);
+      console.log("total data:", json.total);
+
       return { data, total: data.length };
     } catch (error) {
-      console.error(error);
+      console.error("Error catched!", error);
       throw new Error("Error fetching data");
     }
   },
 
   getMany: async (resource, params) => {
+    console.log("getMany");
+    console.log("resource (getMany)", resource);
+    console.log("params (getMany)", params);
+      console.log("try first at many");
+      console.log("try finish at (getMany)");
+
+      console.error("Error catched at (getMany)!", error);
     const { event } = params.filter; // Extract the selected event from the filter object
     const apiURL = `${backendServerURL}/${resource}?${stringify({
       event, // Pass the selected event as a query parameter
