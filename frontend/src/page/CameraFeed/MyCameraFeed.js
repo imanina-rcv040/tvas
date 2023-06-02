@@ -22,8 +22,14 @@ import "./MyCameraFeed.css";
 const REACT_APP_BACKEND_TVAS_SERVER =
   process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
 
+// set image server
+const IMAGE_STORAGE_HOST_URL =
+  process.env.IMAGE_STORAGE_HOST_URL ||
+  "http://172.17.0.143:20004/snapshot/3/s.jpg";
+
 const backendServerURL = REACT_APP_BACKEND_TVAS_SERVER;
 console.log("API URL:", backendServerURL);
+console.log("IMAGE URL:", imgServerURL);
 
 export const MyCameraFeed = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -154,7 +160,12 @@ export const MyCameraFeed = () => {
             <Card>
               <CardContent title={"live updates"}>
                 <div className="canvas-container">
-                  <div id="cvsVideo" className="canvas-stream" />
+                  <img
+                    src={imgServerURL}
+                    alt="Snapshot"
+                    title={imgServerURL}
+                    className="canvas-stream"
+                  />
                 </div>
               </CardContent>
             </Card>
