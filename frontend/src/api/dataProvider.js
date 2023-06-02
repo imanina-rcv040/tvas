@@ -59,7 +59,7 @@ export const dataProvider = {
       console.log("total data per page=", data.length);
       console.log("total data:", json.total);
 
-      return { data, total: data.length };
+      return { data, total: json.total };
     } catch (error) {
       console.error("Error catched!", error);
       throw new Error("Error fetching data");
