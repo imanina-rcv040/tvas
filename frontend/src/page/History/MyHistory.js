@@ -44,6 +44,7 @@ const HistoryFilters = (props) => (
         ]}
       />
     </ReferenceInput> */}
+    <DateInput source="engineTimestamp" label="Date" />
   </Filter>
 );
 
