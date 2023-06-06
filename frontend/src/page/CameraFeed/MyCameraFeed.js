@@ -130,6 +130,29 @@ export const MyCameraFeed = () => {
     setOpenDialog(false);
   };
 
+  const imgRef = useRef(null);
+
+  //handle the image refreshing logic
+  useEffect(() => {
+    let timeoutId; //store the ID of the setTimeout function
+
+    // update the src attribute of the img element
+    const refreshImage = () => {
+      // checks existing element exists & modifies the src by appending a query parameter with the current timestamp
+      if (imgRef.current) {
+        imgRef.current.src =
+          imgRef.current.src.split("?")[0] + "?" + new Date().getTime();
+      }
+      timeoutId = setTimeout(refreshImage, 3000); // refresh every 3 seconds
+    };
+
+    refreshImage(); //initiate the refreshing process
+
+    return () => {
+      clearTimeout(timeoutId); // cleanup function to clear the timeout
+    };
+  }, []);
+
   return (
     <>
       <MyPageHeader />
