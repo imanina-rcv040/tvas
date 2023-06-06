@@ -28,6 +28,8 @@ const IMAGE_STORAGE_HOST_URL =
   "http://172.17.0.143:20004/snapshot/3/s.jpg";
 
 const backendServerURL = REACT_APP_BACKEND_TVAS_SERVER;
+const imgServerURL = IMAGE_STORAGE_HOST_URL;
+
 console.log("API URL:", backendServerURL);
 console.log("IMAGE URL:", imgServerURL);
 
