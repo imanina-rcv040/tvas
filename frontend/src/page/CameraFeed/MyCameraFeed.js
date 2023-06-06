@@ -190,6 +190,7 @@ export const MyCameraFeed = () => {
                     alt="Snapshot"
                     title={imgServerURL}
                     className="canvas-stream"
+                    ref={imgRef}
                   />
                 </div>
               </CardContent>
