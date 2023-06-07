@@ -62,6 +62,7 @@ export const MyCameraFeed = () => {
     if (cameras.length > 0) {
       const initialCamera = cameras[0];
       setCamInfo(initialCamera);
+      setSelectedCameraId(initialCamera.cameraId);
       setSelectedCameraName(initialCamera.cameraName);
     }
   }, [cameras]);
