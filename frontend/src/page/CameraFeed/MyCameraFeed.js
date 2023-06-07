@@ -257,6 +257,20 @@ export const MyCameraFeed = () => {
                                       alt="captured license plate"
                                     />
                                   </div>
+                                  <Typography
+                                    variant="h5"
+                                    component="h6"
+                                    className="alert-text"
+                                  >
+                                    Engine Timestamp
+                                  </Typography>
+                                </td>
+                                <td colSpan="1">
+                                  <input
+                                    type="text"
+                                    value={latestEvent.engineTimestamp}
+                                    readOnly
+                                  />
                                 </td>
                               </tr>
                             </tbody>
