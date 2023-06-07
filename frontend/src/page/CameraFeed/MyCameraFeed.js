@@ -68,6 +68,7 @@ export const MyCameraFeed = () => {
   }, [cameras]);
 
   // fetch TVAS latest event
+  useEffect(() => {
     const fetchLatestEvent = async () => {
       if (selectedCameraId) {
         try {
@@ -89,6 +90,8 @@ export const MyCameraFeed = () => {
         }
       }
     };
+    fetchLatestEvent();
+  }, [selectedCameraId]);
 
   // camera change handling
   const handleCameraChange = (e) => {
