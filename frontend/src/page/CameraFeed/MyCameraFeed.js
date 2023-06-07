@@ -36,14 +36,6 @@ export const MyCameraFeed = () => {
   const [selectedCameraName, setSelectedCameraName] = useState("");
   const [latestEvent, setLatestEvent] = useState(null);
 
-  const [violationInfo, setViolationInfo] = useState({
-    eventType: "Speeding",
-    licensePlate: "WYL9335",
-    licensePlateImage: "https://example.com/license_plate_image.jpg",
-    vehicleImage: "https://example.com/vehicle_image.jpg",
-    timestamp: "May 26, 2023 - 2:30 PM",
-  });
-
   // TVAS event
   useEffect(() => {
     if (violationInfo != null) {
