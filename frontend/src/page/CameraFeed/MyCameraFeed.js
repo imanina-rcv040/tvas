@@ -42,21 +42,15 @@ export const MyCameraFeed = () => {
       try {
         const apiURL = `${backendServerURL}/camera`;
         const response = await fetch(apiURL);
-        console.log("Response", response);
-
-        try {
-          const responseData = await response.json(); // Parse the response body as JSON
-          console.log("Response Data", responseData);
-
+        if (response.ok) {
+          const responseData = await response.json();
           const camerasData = responseData.items;
           setCameras(camerasData);
-
-          console.log("Success:", response.status);
-        } catch (error) {
-          console.log("Error:", response.status, error);
+        } else {
+          console.log("Error response:", response.status);
         }
       } catch (error) {
-        console.log("Error:", error); // Log the error message
+        console.log("Error fetch all available cameras:", error);
       }
     };
 
