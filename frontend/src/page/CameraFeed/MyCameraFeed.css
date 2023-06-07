@@ -87,7 +87,6 @@ a.menu-primary-text {
   font-family: "Nunito"; */
 }
 
-
 .canvas-container {
   margin-bottom: 10px;
 }
@@ -312,7 +311,3 @@ p.alert-box-content {
 td:nth-child(2) {
   width: 500px;
 }
-
-.violation-table td:nth-child(3) {
-  width: 1%;
-} */
