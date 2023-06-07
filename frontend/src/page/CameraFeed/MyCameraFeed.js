@@ -225,7 +225,7 @@ export const MyCameraFeed = () => {
                                 <td>
                                   <input
                                     type="text"
-                                    value={violationInfo.eventType}
+                                    value={latestEvent.typeEvent}
                                     readOnly
                                   />
                                 </td>
