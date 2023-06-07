@@ -87,15 +87,6 @@ a.menu-primary-text {
   font-family: "Nunito"; */
 }
 
-.canvas-stream4 {
-  width: 200px; /* Adjust the width according to your preference */
-  height: 50px; /* Use 'auto' to maintain the original aspect ratio */
-  max-height: 100px; /* Set a maximum height to limit the image size */
-  padding-bottom: 10px;
-  object-fit: contain; /* Use 'contain' to fit the image within the container */
-  border: 1px solid #ccc; /* Add a border for better visibility */
-  border-radius: 4px;
-}
 
 .canvas-container {
   margin-bottom: 10px;
@@ -164,7 +155,6 @@ a.menu-primary-text {
 
 h6.alert-text {
   font-family: "Ubuntu";
-  font-weight: 600;
   color: black;
   font-size: 1.25rem;
   line-height: 1;
@@ -309,7 +299,6 @@ p.alert-box-content {
 .img-captured-lp {
   width: 200px;
   height: 60px;
-  object-fit: cover;
   font-family: "Ubuntu";
 }
 
