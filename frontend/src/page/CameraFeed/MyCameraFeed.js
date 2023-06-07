@@ -28,7 +28,6 @@ console.log("API URL:", backendServerURL);
 console.log("IMAGE URL:", imgServerURL);
 
 export const MyCameraFeed = () => {
-  const [openDialog, setOpenDialog] = useState(false);
   const [alert, setAlert] = useState(false);
 
   const [camInfo, setCamInfo] = useState(null);
