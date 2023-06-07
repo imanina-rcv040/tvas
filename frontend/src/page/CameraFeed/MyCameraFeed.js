@@ -138,7 +138,7 @@ export const MyCameraFeed = () => {
         <div className="leftCol">
           <div className="singleCol">
             <Typography variant="h5" component="h3" className="title-sub">
-              TRAFFIC LIVE UPDATES
+              TRAFFIC UPDATES
             </Typography>
             <div className="dropdown-wrapper">
               <select
