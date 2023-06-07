@@ -1,16 +1,6 @@
 // import libraries
 import { useState, useEffect, useRef } from "react";
-import {
-  Alert,
-  Card,
-  CardContent,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Typography,
-} from "@mui/material";
+import { Alert, Card, CardContent, Typography } from "@mui/material";
 
 // import components
 import { MyPageHeader } from "./component/MyPageHeader";
