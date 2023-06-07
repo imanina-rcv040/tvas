@@ -164,9 +164,9 @@ export const MyCameraFeed = () => {
               <CardContent title={"live updates"}>
                 <div className="canvas-container">
                   <img
-                    src={imgServerURL}
-                    alt="Snapshot"
-                    title={imgServerURL}
+                    src={`${imgServerURL}/${selectedCameraId}/s.jpg`}
+                    alt={`Snapshot for camera: ${selectedCameraId}`}
+                    title={`${imgServerURL}/${selectedCameraId}/s.jpg`}
                     className="canvas-stream"
                     ref={imgRef}
                   />
