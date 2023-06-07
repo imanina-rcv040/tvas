@@ -1,16 +1,6 @@
 // import libraries
-import { useState, useEffect } from "react";
-import {
-  Alert,
-  Card,
-  CardContent,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Typography,
-} from "@mui/material";
+import { useState, useEffect, useRef } from "react";
+import { Alert, Card, CardContent, Typography } from "@mui/material";
 
 // import components
 import { MyPageHeader } from "./component/MyPageHeader";
@@ -22,33 +12,29 @@ import "./MyCameraFeed.css";
 const REACT_APP_BACKEND_TVAS_SERVER =
   process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
 
-const backendServerURL = REACT_APP_BACKEND_TVAS_SERVER;
+// set image server
+const IMAGE_STORAGE_HOST_URL =
+  process.env.IMAGE_STORAGE_HOST_URL || "http://172.17.0.143:20004";
+
+//set backend path
+const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}`;
+
+// set image path for snapshot
+const imgServerURL = `${IMAGE_STORAGE_HOST_URL}/snapshot`;
+// set image path for evidence
+const evidenceImgURL = `${IMAGE_STORAGE_HOST_URL}/evidence`;
+
 console.log("API URL:", backendServerURL);
+console.log("IMAGE URL:", imgServerURL);
 
 export const MyCameraFeed = () => {
-  const [openDialog, setOpenDialog] = useState(false);
   const [alert, setAlert] = useState(false);
 
   const [camInfo, setCamInfo] = useState(null);
   const [cameras, setCameras] = useState([]);
-  const [selectedCameraName, setSelectedCameraName] = useState(null);
-
+  const [selectedCameraId, setSelectedCameraId] = useState("");
+  const [selectedCameraName, setSelectedCameraName] = useState("");
   const [latestEvent, setLatestEvent] = useState(null);
-
-  const [violationInfo, setViolationInfo] = useState({
-    eventType: "Speeding",
-    licensePlate: "WYL9335",
-    licensePlateImage: "https://example.com/license_plate_image.jpg",
-    vehicleImage: "https://example.com/vehicle_image.jpg",
-    timestamp: "May 26, 2023 - 2:30 PM",
-  });
-
-  // TVAS event
-  useEffect(() => {
-    if (violationInfo != null) {
-      setAlert(true);
-    }
-  }, [violationInfo]);
 
   // fetch all available camera
   useEffect(() => {
@@ -56,21 +42,15 @@ export const MyCameraFeed = () => {
       try {
         const apiURL = `${backendServerURL}/camera`;
         const response = await fetch(apiURL);
-        console.log("Response", response);
-
-        try {
-          const responseData = await response.json(); // Parse the response body as JSON
-          console.log("Response Data", responseData);
-
+        if (response.ok) {
+          const responseData = await response.json();
           const camerasData = responseData.items;
           setCameras(camerasData);
-
-          console.log("Success:", response.status);
-        } catch (error) {
-          console.log("Error:", response.status, error);
+        } else {
+          console.log("Error response:", response.status);
         }
       } catch (error) {
-        console.log("Error:", error); // Log the error message
+        console.log("Error fetch all available cameras:", error);
       }
     };
 
@@ -82,45 +62,74 @@ export const MyCameraFeed = () => {
     if (cameras.length > 0) {
       const initialCamera = cameras[0];
       setCamInfo(initialCamera);
+      setSelectedCameraId(initialCamera.cameraId);
       setSelectedCameraName(initialCamera.cameraName);
     }
   }, [cameras]);
 
   // fetch TVAS latest event
-  const fetchLatestEvent = async () => {
-    if (selectedCameraName) {
-      try {
-        const apiURL = `${backendServerURL}/event/latest?cameraName=${selectedCameraName}`;
-        const response = await fetch(apiURL);
-        const responseData = await response.json();
-        setLatestEvent(responseData);
-      } catch (error) {
-        console.log("Error:", error);
+  useEffect(() => {
+    const fetchLatestEvent = async () => {
+      if (selectedCameraId) {
+        try {
+          const apiURL = `${backendServerURL}/camera/${selectedCameraId}/latest-event`;
+          console.log("API URL fetch latest event", apiURL);
+          const response = await fetch(apiURL);
+          if (response.ok) {
+            const responseData = await response.json();
+            console.log("Latest Event", responseData);
+            setLatestEvent(responseData);
+            setAlert(responseData !== null);
+          } else {
+            console.log("Error Response:", response.status);
+            setLatestEvent(null);
+            setAlert(false);
+          }
+        } catch (error) {
+          console.log("Error fetch TVAS latest event:", error);
+        }
       }
-    }
-  };
+    };
+    fetchLatestEvent();
+  }, [selectedCameraId]);
 
   // camera change handling
-  const handleCameraChange = (e) => {
-    const selectedCameraName = e.target.value;
+  const handleCameraChange = (event) => {
+    const cameraName = event.target.value;
     const selectedCamera = cameras.find(
-      (camera) => camera.cameraName === selectedCameraName
+      (camera) => camera.cameraName === cameraName
     );
+    console.log("Selected camera:", selectedCamera);
+
     if (selectedCamera) {
+      setSelectedCameraId(selectedCamera.cameraId);
+      setSelectedCameraName(selectedCamera.cameraName);
       setCamInfo(selectedCamera);
     }
-    setSelectedCameraName(selectedCameraName);
   };
 
-  // open dialogue handling
-  const handleOpenDialog = () => {
-    setOpenDialog(true);
-  };
+  const imgRef = useRef(null);
 
-  // close dialogue handling
-  const handleCloseDialog = () => {
-    setOpenDialog(false);
-  };
+  //handle the image refreshing logic
+  useEffect(() => {
+    let timeoutId; //store the ID of the setTimeout function
+
+    // update the src attribute of the img element
+    const refreshImage = () => {
+      // checks existing element exists & modifies the src by appending a query parameter with the current timestamp
+      if (imgRef.current) {
+        imgRef.current.src =
+          imgRef.current.src.split("?")[0] + "?" + new Date().getTime();
+      }
+      timeoutId = setTimeout(refreshImage, 3000); // refresh every 3 seconds
+    };
+
+    refreshImage(); //initiate the refreshing process
+
+    return () => {
+      clearTimeout(timeoutId); // cleanup function to clear the timeout
+    };
+  }, []);
 
   return (
     <>
@@ -129,7 +138,7 @@ export const MyCameraFeed = () => {
         <div className="leftCol">
           <div className="singleCol">
             <Typography variant="h5" component="h3" className="title-sub">
-              TRAFFIC LIVE UPDATES
+              TRAFFIC UPDATES
             </Typography>
             <div className="dropdown-wrapper">
               <select
@@ -154,7 +163,13 @@ export const MyCameraFeed = () => {
             <Card>
               <CardContent title={"live updates"}>
                 <div className="canvas-container">
-                  <div id="cvsVideo" className="canvas-stream" />
+                  <img
+                    src={`${imgServerURL}/${selectedCameraId}/s.jpg`}
+                    alt={`Snapshot for camera: ${selectedCameraId}`}
+                    title={`${imgServerURL}/${selectedCameraId}/s.jpg`}
+                    className="canvas-stream"
+                    ref={imgRef}
+                  />
                 </div>
               </CardContent>
             </Card>
@@ -166,7 +181,7 @@ export const MyCameraFeed = () => {
             <div className="section-wrapper">
               <div className="section">
                 <Typography variant="h5" component="h3" className="title-sub">
-                  TRAFFIC VIOLATION LIVE UPDATES
+                  TRAFFIC VIOLATION UPDATES
                 </Typography>
 
                 {alert && (
@@ -174,8 +189,14 @@ export const MyCameraFeed = () => {
                     <Card>
                       <CardContent title={"violation updates"}>
                         <div className="canvas-container">
-                          <div id="cvsVideo" className="canvas-stream2" />
-                          <div id="cvsVideo" className="canvas-stream3" />
+                          <div className="canvas-stream2">
+                            <img
+                              src={`${evidenceImgURL}/${selectedCameraId}/raw/${latestEvent.imageId}`}
+                              title={`${imgServerURL}/${selectedCameraId}/s.jpg`}
+                              alt={`${evidenceImgURL}/${selectedCameraId}/raw/${latestEvent.imageId}`}
+                              className="canvas-stream"
+                            />
+                          </div>
                         </div>
                       </CardContent>
                     </Card>
@@ -198,23 +219,15 @@ export const MyCameraFeed = () => {
                                     component="h6"
                                     className="alert-text"
                                   >
-                                    Event Type:
+                                    Event Type
                                   </Typography>
                                 </td>
                                 <td>
                                   <input
                                     type="text"
-                                    value={violationInfo.eventType}
+                                    value={latestEvent.typeEvent}
                                     readOnly
                                   />
-                                </td>
-                                <td>
-                                  <button
-                                    onClick={handleOpenDialog}
-                                    className="button-view-desc"
-                                  >
-                                    View Description
-                                  </button>
                                 </td>
                               </tr>
                               <tr>
@@ -224,100 +237,49 @@ export const MyCameraFeed = () => {
                                     component="h6"
                                     className="alert-text"
                                   >
-                                    License Plate:
+                                    License Plate
                                   </Typography>
                                 </td>
                                 <td>
                                   <input
                                     type="text"
-                                    value={violationInfo.licensePlate}
+                                    value={latestEvent.licensePlateNo}
                                     readOnly
                                   />
                                 </td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td colSpan="2">
+                                  <img
+                                    src={`${evidenceImgURL}/${selectedCameraId}/lp/${latestEvent.imageId}`}
+                                    alt={`${evidenceImgURL}/${selectedCameraId}/lp/${latestEvent.imageId}`}
+                                    title={`${evidenceImgURL}/${selectedCameraId}/lp/${latestEvent.imageId}`}
+                                    className="img-fluid img-captured-lp"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
                                 <td>
-                                  <div
-                                    id="cvsVideo2"
-                                    className="canvas-stream4"
+                                  <Typography
+                                    variant="h5"
+                                    component="h6"
+                                    className="alert-text"
                                   >
-                                    <img
-                                      className="img-fluid img-captured-lp"
-                                      alt="captured license plate"
-                                    />
-                                  </div>
+                                    Engine Timestamp
+                                  </Typography>
+                                </td>
+                                <td colSpan="1">
+                                  <input
+                                    type="text"
+                                    value={latestEvent.engineTimestamp}
+                                    readOnly
+                                  />
                                 </td>
                               </tr>
                             </tbody>
                           </table>
                         </div>
-                      </CardContent>
-
-                      <CardContent>
-                        <Dialog open={openDialog} onClose={handleCloseDialog}>
-                          <DialogTitle className="alert-box-heading">
-                            Description of Traffic Violation
-                          </DialogTitle>
-                          <DialogContent>
-                            <DialogContentText className="alert-box-content">
-                              <Typography
-                                variant="body1"
-                                gutterBottom
-                                className="alert-box-content"
-                              >
-                                Violation Type: {violationInfo.eventType}
-                              </Typography>
-                              <Typography
-                                variant="body1"
-                                gutterBottom
-                                className="alert-box-content"
-                              >
-                                License Plate: {violationInfo.licensePlate}
-                              </Typography>
-                              <Typography
-                                variant="body1"
-                                gutterBottom
-                                className="alert-box-content"
-                              >
-                                License Plate Image:&nbsp;
-                                <a
-                                  href={violationInfo.licensePlateImage}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
-                                  click to view
-                                </a>
-                              </Typography>
-                              <Typography
-                                variant="body1"
-                                gutterBottom
-                                className="alert-box-content"
-                              >
-                                Vehicle Image:&nbsp;
-                                <a
-                                  href={violationInfo.vehicleImage}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
-                                  click to view
-                                </a>
-                              </Typography>
-                              <Typography
-                                variant="body1"
-                                gutterBottom
-                                className="alert-box-content"
-                              >
-                                Timestamp: {violationInfo.timestamp}
-                              </Typography>
-                            </DialogContentText>
-                          </DialogContent>
-                          <DialogActions>
-                            <button
-                              onClick={handleCloseDialog}
-                              className="button-close-desc"
-                            >
-                              Close
-                            </button>
-                          </DialogActions>
-                        </Dialog>
                       </CardContent>
                     </Card>
                   </div>
@@ -405,8 +367,8 @@ export const MyCameraFeed = () => {
                           {camInfo.detectorType}
                         </p>
                         <p>
-                          <strong>IP Source: </strong> 192.168.0.100
-                          {camInfo.ipSource}
+                          <strong>IP Source: </strong>
+                          {camInfo.sourceIp}
                         </p>
                         <p>
                           <strong>Connection Status: </strong>
@@ -414,7 +376,7 @@ export const MyCameraFeed = () => {
                         </p>
                         <p>
                           <strong>Last Update: </strong>
-                          {/* {camInfo.lastUpdate} */}
+                          {camInfo.snapTimestamp}
                         </p>
                       </div>
                     </CardContent>
