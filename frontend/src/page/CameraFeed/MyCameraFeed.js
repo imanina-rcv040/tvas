@@ -94,16 +94,18 @@ export const MyCameraFeed = () => {
   }, [selectedCameraId]);
 
   // camera change handling
-  const handleCameraChange = (e) => {
-    const selectedCameraName = e.target.value;
+  const handleCameraChange = (event) => {
+    const cameraName = event.target.value;
     const selectedCamera = cameras.find(
-      (camera) => camera.cameraName === selectedCameraName
+      (camera) => camera.cameraName === cameraName
     );
+    console.log("Selected camera:", selectedCamera);
+
     if (selectedCamera) {
+      setSelectedCameraId(selectedCamera.cameraId);
+      setSelectedCameraName(selectedCamera.cameraName);
       setCamInfo(selectedCamera);
     }
-    setSelectedCameraName(selectedCameraName);
-  };
   };
 
   const imgRef = useRef(null);
