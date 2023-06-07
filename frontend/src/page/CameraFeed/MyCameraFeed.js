@@ -21,6 +21,9 @@ const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}`;
 
 // set image path for snapshot
 const imgServerURL = `${IMAGE_STORAGE_HOST_URL}/snapshot`;
+// set image path for evidence
+const evidenceImgURL = `${IMAGE_STORAGE_HOST_URL}/evidence`;
+
 console.log("API URL:", backendServerURL);
 console.log("IMAGE URL:", imgServerURL);
 
