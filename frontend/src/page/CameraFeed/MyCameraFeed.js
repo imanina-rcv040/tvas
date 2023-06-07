@@ -112,15 +112,6 @@ export const MyCameraFeed = () => {
     }
     setSelectedCameraName(selectedCameraName);
   };
-
-  // open dialogue handling
-  const handleOpenDialog = () => {
-    setOpenDialog(true);
-  };
-
-  // close dialogue handling
-  const handleCloseDialog = () => {
-    setOpenDialog(false);
   };
 
   const imgRef = useRef(null);
