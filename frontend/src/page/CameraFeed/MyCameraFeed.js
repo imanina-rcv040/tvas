@@ -16,8 +16,8 @@ const REACT_APP_BACKEND_TVAS_SERVER =
 const IMAGE_STORAGE_HOST_URL =
   process.env.IMAGE_STORAGE_HOST_URL || "http://172.17.0.143:20004";
 
-const backendServerURL = REACT_APP_BACKEND_TVAS_SERVER;
-const imgServerURL = IMAGE_STORAGE_HOST_URL;
+//set backend path
+const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}`;
 
 console.log("API URL:", backendServerURL);
 console.log("IMAGE URL:", imgServerURL);
