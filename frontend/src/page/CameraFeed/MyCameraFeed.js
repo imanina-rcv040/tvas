@@ -36,13 +36,6 @@ export const MyCameraFeed = () => {
   const [selectedCameraName, setSelectedCameraName] = useState("");
   const [latestEvent, setLatestEvent] = useState(null);
 
-  // TVAS event
-  useEffect(() => {
-    if (violationInfo != null) {
-      setAlert(true);
-    }
-  }, [violationInfo]);
-
   // fetch all available camera
   useEffect(() => {
     const fetchCameras = async () => {
