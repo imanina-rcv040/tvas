@@ -68,18 +68,27 @@ export const MyCameraFeed = () => {
   }, [cameras]);
 
   // fetch TVAS latest event
-  const fetchLatestEvent = async () => {
-    if (selectedCameraName) {
-      try {
-        const apiURL = `${backendServerURL}/event/latest?cameraName=${selectedCameraName}`;
-        const response = await fetch(apiURL);
-        const responseData = await response.json();
-        setLatestEvent(responseData);
-      } catch (error) {
-        console.log("Error:", error);
+    const fetchLatestEvent = async () => {
+      if (selectedCameraId) {
+        try {
+          const apiURL = `${backendServerURL}/camera/${selectedCameraId}/latest-event`;
+          console.log("API URL fetch latest event", apiURL);
+          const response = await fetch(apiURL);
+          if (response.ok) {
+            const responseData = await response.json();
+            console.log("Latest Event", responseData);
+            setLatestEvent(responseData);
+            setAlert(responseData !== null);
+          } else {
+            console.log("Error Response:", response.status);
+            setLatestEvent(null);
+            setAlert(false);
+          }
+        } catch (error) {
+          console.log("Error fetch TVAS latest event:", error);
+        }
       }
-    }
-  };
+    };
 
   // camera change handling
   const handleCameraChange = (e) => {
