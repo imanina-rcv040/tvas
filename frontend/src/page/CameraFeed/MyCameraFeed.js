@@ -229,14 +229,6 @@ export const MyCameraFeed = () => {
                                     readOnly
                                   />
                                 </td>
-                                <td>
-                                  <button
-                                    onClick={handleOpenDialog}
-                                    className="button-view-desc"
-                                  >
-                                    View Description
-                                  </button>
-                                </td>
                               </tr>
                               <tr>
                                 <td>
@@ -270,75 +262,6 @@ export const MyCameraFeed = () => {
                             </tbody>
                           </table>
                         </div>
-                      </CardContent>
-
-                      <CardContent>
-                        <Dialog open={openDialog} onClose={handleCloseDialog}>
-                          <DialogTitle className="alert-box-heading">
-                            Description of Traffic Violation
-                          </DialogTitle>
-                          <DialogContent>
-                            <DialogContentText className="alert-box-content">
-                              <Typography
-                                variant="body1"
-                                gutterBottom
-                                className="alert-box-content"
-                              >
-                                Violation Type: {violationInfo.eventType}
-                              </Typography>
-                              <Typography
-                                variant="body1"
-                                gutterBottom
-                                className="alert-box-content"
-                              >
-                                License Plate: {violationInfo.licensePlate}
-                              </Typography>
-                              <Typography
-                                variant="body1"
-                                gutterBottom
-                                className="alert-box-content"
-                              >
-                                License Plate Image:&nbsp;
-                                <a
-                                  href={violationInfo.licensePlateImage}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
-                                  click to view
-                                </a>
-                              </Typography>
-                              <Typography
-                                variant="body1"
-                                gutterBottom
-                                className="alert-box-content"
-                              >
-                                Vehicle Image:&nbsp;
-                                <a
-                                  href={violationInfo.vehicleImage}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
-                                  click to view
-                                </a>
-                              </Typography>
-                              <Typography
-                                variant="body1"
-                                gutterBottom
-                                className="alert-box-content"
-                              >
-                                Timestamp: {violationInfo.timestamp}
-                              </Typography>
-                            </DialogContentText>
-                          </DialogContent>
-                          <DialogActions>
-                            <button
-                              onClick={handleCloseDialog}
-                              className="button-close-desc"
-                            >
-                              Close
-                            </button>
-                          </DialogActions>
-                        </Dialog>
                       </CardContent>
                     </Card>
                   </div>
