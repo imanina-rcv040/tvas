@@ -219,7 +219,7 @@ export const MyCameraFeed = () => {
                                     component="h6"
                                     className="alert-text"
                                   >
-                                    Event Type:
+                                    Event Type
                                   </Typography>
                                 </td>
                                 <td>
@@ -237,7 +237,7 @@ export const MyCameraFeed = () => {
                                     component="h6"
                                     className="alert-text"
                                   >
-                                    License Plate:
+                                    License Plate
                                   </Typography>
                                 </td>
                                 <td>
