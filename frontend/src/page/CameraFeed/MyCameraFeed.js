@@ -32,8 +32,7 @@ export const MyCameraFeed = () => {
 
   const [camInfo, setCamInfo] = useState(null);
   const [cameras, setCameras] = useState([]);
-  const [selectedCameraName, setSelectedCameraName] = useState(null);
-
+  const [selectedCameraName, setSelectedCameraName] = useState("");
   const [latestEvent, setLatestEvent] = useState(null);
 
   const [violationInfo, setViolationInfo] = useState({
