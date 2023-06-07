@@ -302,8 +302,10 @@ p.alert-box-content {
   font-family: "Ubuntu";
 }
 
-/* .violation-table td:nth-child(1) {
-  width: 70%;
+.violation-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .violation-table td:nth-child(2) {
