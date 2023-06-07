@@ -247,16 +247,20 @@ export const MyCameraFeed = () => {
                                     readOnly
                                   />
                                 </td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td colSpan="2">
+                                  <img
+                                    src={`${evidenceImgURL}/${selectedCameraId}/lp/${latestEvent.imageId}`}
+                                    alt={`${evidenceImgURL}/${selectedCameraId}/lp/${latestEvent.imageId}`}
+                                    title={`${evidenceImgURL}/${selectedCameraId}/lp/${latestEvent.imageId}`}
+                                    className="img-fluid img-captured-lp"
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
                                 <td>
-                                  <div
-                                    id="cvsVideo2"
-                                    className="canvas-stream4"
-                                  >
-                                    <img
-                                      className="img-fluid img-captured-lp"
-                                      alt="captured license plate"
-                                    />
-                                  </div>
                                   <Typography
                                     variant="h5"
                                     component="h6"
