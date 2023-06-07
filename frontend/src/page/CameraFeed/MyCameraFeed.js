@@ -367,8 +367,8 @@ export const MyCameraFeed = () => {
                           {camInfo.detectorType}
                         </p>
                         <p>
-                          <strong>IP Source: </strong> 192.168.0.100
-                          {camInfo.ipSource}
+                          <strong>IP Source: </strong>
+                          {camInfo.sourceIp}
                         </p>
                         <p>
                           <strong>Connection Status: </strong>
@@ -376,7 +376,7 @@ export const MyCameraFeed = () => {
                         </p>
                         <p>
                           <strong>Last Update: </strong>
-                          {/* {camInfo.lastUpdate} */}
+                          {camInfo.snapTimestamp}
                         </p>
                       </div>
                     </CardContent>
