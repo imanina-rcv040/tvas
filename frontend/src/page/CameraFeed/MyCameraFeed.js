@@ -181,7 +181,7 @@ export const MyCameraFeed = () => {
             <div className="section-wrapper">
               <div className="section">
                 <Typography variant="h5" component="h3" className="title-sub">
-                  TRAFFIC VIOLATION LIVE UPDATES
+                  TRAFFIC VIOLATION UPDATES
                 </Typography>
 
                 {alert && (
