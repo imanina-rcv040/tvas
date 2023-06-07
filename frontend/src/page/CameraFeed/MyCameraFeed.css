@@ -308,8 +308,9 @@ p.alert-box-content {
   table-layout: fixed;
 }
 
-.violation-table td:nth-child(2) {
-  width: 20%;
+.violation-table :nth-child(2),
+td:nth-child(2) {
+  width: 500px;
 }
 
 .violation-table td:nth-child(3) {
