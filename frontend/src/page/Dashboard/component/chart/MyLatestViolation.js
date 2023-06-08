@@ -75,10 +75,10 @@ export const MyLatestViolation = () => {
   }, []);
 
   latestViolation = latestViolation.map((violation) => {
-    const date = new Date(violation.timestamp);
+    const date = new Date(violation.engineTimestamp);
     return {
       ...violation,
-      timestamp: date.toLocaleString(),
+      engineTimestamp: date.toLocaleString(),
     };
   });
 
