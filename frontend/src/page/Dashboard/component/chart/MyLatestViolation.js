@@ -167,6 +167,22 @@ export const MyLatestViolation = () => {
             ))}
           </TableBody>
         </Table>
+        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <Tooltip title="View more details in History" arrow>
+            <span
+              style={{
+                textDecoration: "underline",
+                color: "#3b76a6",
+                cursor: "pointer",
+                padding: "4px 8px",
+                transition: "background-color 0.3s ease",
+              }}
+              onClick={handleCameraFeedClick}
+            >
+              View more...
+            </span>
+          </Tooltip>
+        </Box>
       </TableContainer>
     </Card>
   );
