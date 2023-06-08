@@ -89,9 +89,38 @@ export const MyLatestViolation = () => {
 
   return (
     <Card sx={styles.card}>
-      <Typography variant="h5" component="h3" className="dashboard-title-2">
-        Latest Violation
+      <Typography
+        variant="h5"
+        component="h3"
+        className="dashboard-title-2"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          paddingBottom: "5px",
+        }}
+      >
+        <span
+          style={{
+            border: "1px solid #3b76a6",
+            padding: "5px 10px",
+            color: "#3b76a6",
+          }}
+        >
+          Highlights
+        </span>
+        <span
+          style={{
+            background: "#3b76a6",
+            border: "1px solid #3b76a6 ",
+            padding: "5px 10px",
+            color: "white",
+          }}
+        >
+          Recent Violation Cases
+        </span>
       </Typography>
+
       <TableContainer sx={styles.table}>
         <Table>
           <TableHead>
