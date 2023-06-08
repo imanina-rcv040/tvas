@@ -14,34 +14,6 @@ import {
   Tooltip,
 } from "@mui/material";
 
-const styles = {
-  card: {
-    backgroundColor: "#f7f7f7",
-    borderRadius: "12px",
-    padding: "24px",
-    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.15)",
-    textAlign: "center",
-    height: 400,
-  },
-  table: {
-    height: "100%",
-    marginTop: "10px",
-    maxHeight: "20em",
-    overflowY: "auto",
-  },
-  tableHeader: {
-    fontWeight: "bold",
-    textAlign: "center",
-    backgroundColor: "#e8eaf6",
-    color: "#000000",
-  },
-
-  tableCell: {
-    fontSize: "13px",
-    textAlign: "center",
-  },
-};
-
 // set backend server
 const REACT_APP_BACKEND_TVAS_SERVER =
   process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
@@ -89,99 +61,40 @@ export const MyLatestViolation = () => {
   };
 
   return (
-    <Card sx={styles.card}>
-      <Typography
-        variant="h5"
-        component="h3"
-        className="dashboard-title-2"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          paddingBottom: "5px",
-        }}
-      >
-        <span
-          style={{
-            border: "1px solid #3b76a6",
-            padding: "5px 10px",
-            color: "#3b76a6",
-          }}
-        >
-          Highlights
-        </span>
-        <span
-          style={{
-            background: "#3b76a6",
-            border: "1px solid #3b76a6 ",
-            padding: "5px 10px",
-            color: "white",
-          }}
-        >
-          Recent Violation Cases
-        </span>
+    <Card className="card">
+      <Typography variant="h5" component="h3" className="text-chart-title">
+        <span className="highlight-title">Highlights</span>
+        <span className="recent-title">Recent Violation Cases</span>
       </Typography>
 
-      <TableContainer sx={styles.table}>
+      <TableContainer className="table">
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell className="dashboard-report" sx={styles.tableHeader}>
-                Timestamp
-              </TableCell>
-              <TableCell className="dashboard-report" sx={styles.tableHeader}>
-                Plate Number
-              </TableCell>
-              <TableCell className="dashboard-report" sx={styles.tableHeader}>
-                Violation Type
-              </TableCell>
+              <TableCell className="tableHeader">Timestamp</TableCell>
+              <TableCell className="tableHeader">Plate Number</TableCell>
+              <TableCell className="tableHeader">Violation Type</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {latestViolation.map((violation, index) => (
               <TableRow key={index}>
-                <TableCell
-                  className="dashboard-report"
-                  sx={{ ...styles.tableCell, backgroundColor: "#f5f5f5" }}
-                >
+                <TableCell className="dashboard-report tableCell engineTimestamp">
                   {violation.engineTimestamp}
                 </TableCell>
-                <TableCell
-                  className="dashboard-report"
-                  sx={{
-                    ...styles.tableCell,
-                    backgroundColor: "rgba(0, 136, 254, 0.5)",
-                  }}
-                >
+                <TableCell className="dashboard-report tableCell licensePlateNo">
                   {violation.licensePlateNo}
                 </TableCell>
-                <TableCell
-                  className="dashboard-report"
-                  sx={{
-                    ...styles.tableCell,
-                    backgroundColor: "rgba(255, 187, 40, 0.5)",
-                  }}
-                >
+                <TableCell className="dashboard-report tableCell typeEvent">
                   {violation.typeEvent}
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Box className="box-tooltip">
           <Tooltip title="View more details in History" arrow>
-            <span
-              style={{
-                textDecoration: "underline",
-                color: "#3b76a6",
-                cursor: "pointer",
-                padding: "4px 8px",
-                transition: "background-color 0.3s ease",
-              }}
-              onClick={handleCameraFeedClick}
-            >
-              View more...
-            </span>
+            <span onClick={handleCameraFeedClick}>View more...</span>
           </Tooltip>
         </Box>
       </TableContainer>
