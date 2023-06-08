@@ -31,7 +31,25 @@ span {
   line-height: 1.5;
 }
 
+.flex {
+  display: flex;
+}
 
+.leftCol {
+  flex: 1;
+  margin-right: 0.5em;
+}
+
+.rightCol {
+  flex: 1;
+  margin-left: 0.5em;
+  height: 10em;
+}
+
+.singleCol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
 
 .card {
   background-color: #f7f7f7;
