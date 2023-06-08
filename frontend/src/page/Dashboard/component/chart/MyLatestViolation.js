@@ -51,33 +51,8 @@ const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/top-5-latest-violatio
 console.log("backendServerURL", backendServerURL);
 
 export const MyLatestViolation = () => {
-  let latestViolation = [
-    {
-      timestamp: "2023-04-18T17:28:47.204951+08:00",
-      plateNumber: "ABC 123",
-      violationType: "Speeding",
-    },
-    {
-      timestamp: "2023-04-18T17:35:57.210939+08:00",
-      plateNumber: "DEF 456",
-      violationType: "Red Light Running",
-    },
-    {
-      timestamp: "2023-04-18T17:37:17.531941+08:00",
-      plateNumber: "GHI 789",
-      violationType: "Illegal Parking",
-    },
-    {
-      timestamp: "2023-04-18T17:37:17.531941+08:00",
-      plateNumber: "JKL 012",
-      violationType: "Illegal U-turn",
-    },
-    {
-      timestamp: "2023-04-18T17:37:17.531941+08:00",
-      plateNumber: "MNO 345",
-      violationType: "Improper Lane Usage",
-    },
-  ];
+  let [latestViolation, setLatestViolation] = useState([]);
+
 
   latestViolation = latestViolation.map((violation) => {
     const date = new Date(violation.timestamp);
