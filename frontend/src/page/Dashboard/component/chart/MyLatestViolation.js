@@ -143,7 +143,7 @@ export const MyLatestViolation = () => {
                   className="dashboard-report"
                   sx={{ ...styles.tableCell, backgroundColor: "#f5f5f5" }}
                 >
-                  {violation.timestamp}
+                  {violation.engineTimestamp}
                 </TableCell>
                 <TableCell
                   className="dashboard-report"
@@ -152,7 +152,7 @@ export const MyLatestViolation = () => {
                     backgroundColor: "rgba(0, 136, 254, 0.5)",
                   }}
                 >
-                  {violation.plateNumber}
+                  {violation.licensePlateNo}
                 </TableCell>
                 <TableCell
                   className="dashboard-report"
@@ -161,7 +161,7 @@ export const MyLatestViolation = () => {
                     backgroundColor: "rgba(255, 187, 40, 0.5)",
                   }}
                 >
-                  {violation.violationType}
+                  {violation.typeEvent}
                 </TableCell>
               </TableRow>
             ))}
