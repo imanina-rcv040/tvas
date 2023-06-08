@@ -82,6 +82,11 @@ export const MyLatestViolation = () => {
     };
   });
 
+  const handleCameraFeedClick = () => {
+    navigate("/history"); // Navigate to history
+    console.log("Navigate to history");
+  };
+
   return (
     <Card sx={styles.card}>
       <Typography variant="h5" component="h3" className="dashboard-title-2">
