@@ -42,6 +42,14 @@ const styles = {
   },
 };
 
+// set backend server
+const REACT_APP_BACKEND_TVAS_SERVER =
+  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
+
+// set backend path
+const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/top-5-latest-violation`;
+console.log("backendServerURL", backendServerURL);
+
 export const MyLatestViolation = () => {
   let latestViolation = [
     {
