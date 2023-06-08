@@ -51,6 +51,7 @@ const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/top-5-latest-violatio
 console.log("backendServerURL", backendServerURL);
 
 export const MyLatestViolation = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
   let [latestViolation, setLatestViolation] = useState([]);
 
   // fetch latest five TVAS
