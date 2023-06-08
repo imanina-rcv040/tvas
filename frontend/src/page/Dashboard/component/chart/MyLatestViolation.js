@@ -53,6 +53,26 @@ console.log("backendServerURL", backendServerURL);
 export const MyLatestViolation = () => {
   let [latestViolation, setLatestViolation] = useState([]);
 
+  // fetch latest five TVAS
+  useEffect(() => {
+    const fetchLatestViolation = async () => {
+      try {
+        const apiURL = `${backendServerURL}`;
+        const response = await fetch(apiURL);
+        if (response.ok) {
+          const responseData = await response.json();
+          console.log("5 latest violation: data", responseData);
+          setLatestViolation(responseData);
+        } else {
+          console.log("Error response:", response.status);
+        }
+      } catch (error) {
+        console.log("Error fetch 5 latest violations:", error);
+      }
+    };
+
+    fetchLatestViolation();
+  }, []);
 
   latestViolation = latestViolation.map((violation) => {
     const date = new Date(violation.timestamp);
