@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MyLogin } from "./layout/component/MyLogin";
 import { MyDashboard } from "./page/Dashboard/MyDashboard";
 import { MyHistory } from "./page/History/MyHistory";
-import GrafanaDashboard from './page/grafana/GrafanaDashboard';
+import GrafanaDashboard from './page/Grafana/GrafanaDashboard';
 
 
 // import styling
