@@ -92,21 +92,95 @@ td.typeEvent {
   background-color: rgba(255, 187, 40, 0.5);
 }
 
-.text-chart-title {
+.text-chart-title-1 {
   display: flex;
   justify-content: center;
   padding-bottom: 5px;
 }
 
-.text-chart-title span.highlight-title {
+.text-chart-title-1 span.color-title {
   border: 1px solid #3b76a6;
   padding: 5px 10px;
-  color: #3b76a6;
+  /* color: #3b76a6; */
 }
 
-.text-chart-title span.recent-title {
+.text-chart-title-1 span.bg-color-title {
   background: #3b76a6;
   border: 1px solid #3b76a6;
+  padding: 5px 10px;
+  color: white;
+}
+
+.text-chart-title-3 {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+
+.text-chart-title-3 span.color-title {
+  border: 1px solid #009977;
+  padding: 5px 10px;
+  /* color: #009977; */
+}
+
+.text-chart-title-3 span.bg-color-title {
+  background: #009977;
+  border: 1px solid #009977;
+  padding: 5px 10px;
+  color: white;
+}
+
+.text-chart-title-4 {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+
+.text-chart-title-4 span.color-title {
+  border: 1px solid #bb7a7a;
+  padding: 5px 10px;
+  /* color: #bb7a7a; */
+}
+
+.text-chart-title-4 span.bg-color-title {
+  background: #bb7a7a;
+  border: 1px solid #bb7a7a;
+  padding: 5px 10px;
+  color: white;
+}
+
+.text-chart-title-5 {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+
+.text-chart-title-5 span.color-title {
+  border: 1px solid #c0981d;
+  padding: 5px 10px;
+}
+
+.text-chart-title-5 span.bg-color-title {
+  background: #c0981d;
+  border: 1px solid #c0981d;
+  padding: 5px 10px;
+  color: white;
+}
+
+.text-chart-title-6 {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+
+.text-chart-title-6 span.color-title {
+  border: 1px solid #706abf;
+  padding: 5px 10px;
+}
+
+.text-chart-title-6 span.bg-color-title {
+  background: #706abf;
+  border: 1px solid #706abf;
   padding: 5px 10px;
   color: white;
 }
