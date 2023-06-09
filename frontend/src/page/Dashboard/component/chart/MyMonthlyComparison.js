@@ -157,7 +157,7 @@ export const MyMonthlyComparison = () => {
         </Typography>
         <CardContent>
           <ResponsiveContainer width="100%" height={275}>
-            <BarChart data={violationData} layout="vertical">
+            <BarChart data={monthlyViolation} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis type="number" />
               <YAxis
