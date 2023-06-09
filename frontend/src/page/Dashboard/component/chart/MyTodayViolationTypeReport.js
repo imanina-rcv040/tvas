@@ -92,35 +92,11 @@ export const MyTodayViolationTypeReport = () => {
       </g>
     );
   };
+
   return (
     <Grid>
-      <Card sx={styles.card}>
-        <CardContent>
-          <Typography
-            variant="h5"
-            component="h3"
-            className="dashboard-title-2"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "10px",
-              paddingBottom: "5px",
-            }}
-          >
-            Violation Daily Report
-            <span
-              style={{
-                background: "#000",
-                padding: "5px 10px",
-                color: "white",
-              }}
-            >
-              TYPE
-            </span>
-          </Typography>
-        </CardContent>
-        <ResponsiveContainer width="100%" height={200}>
+      <Card className="card">
+        <Typography variant="h5" component="h3" className="text-chart-title-5">
           <PieChart>
             <Pie
               data={data}
