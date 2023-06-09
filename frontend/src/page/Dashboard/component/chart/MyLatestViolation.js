@@ -62,9 +62,9 @@ export const MyLatestViolation = () => {
 
   return (
     <Card className="card">
-      <Typography variant="h5" component="h3" className="text-chart-title">
-        <span className="highlight-title">Highlights</span>
-        <span className="recent-title">Recent Violation Cases</span>
+      <Typography variant="h5" component="h3" className="text-chart-title-1">
+        <span className="color-title">Recent</span>
+        <span className="bg-color-title">Violation Incidents</span>
       </Typography>
 
       <TableContainer className="table">
