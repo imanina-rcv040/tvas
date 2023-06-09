@@ -59,6 +59,39 @@ export const MyTodayViolationTypeReport = () => {
     name: violation.type,
     value: violation.count,
   }));
+
+  const renderCustomLabel = ({
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    value,
+    index,
+  }) => {
+    const RADIAN = Math.PI / 180;
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    return (
+      <g>
+        <circle cx={x} cy={y} r={15} fill={colors[index % colors.length]} />
+        <text
+          x={x}
+          y={y}
+          fill="white"
+          textAnchor="middle"
+          dominantBaseline="central"
+          fontSize={20}
+          fontWeight="bold"
+          fontFamily="Poppins"
+        >
+          {value}
+        </text>
+      </g>
+    );
+  };
   return (
     <Grid>
       <Card sx={styles.card}>
