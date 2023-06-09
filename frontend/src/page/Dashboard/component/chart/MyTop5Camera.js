@@ -11,3 +11,10 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+
+const REACT_APP_BACKEND_TVAS_SERVER =
+  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.10.83:20001";
+
+const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/top-5-camera`;
+console.log("backendServerURL", backendServerURL);
+
