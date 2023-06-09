@@ -18,3 +18,5 @@ const REACT_APP_BACKEND_TVAS_SERVER =
 const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/top-5-camera`;
 console.log("backendServerURL", backendServerURL);
 
+const colors = ["#00C49F", "#FFBB28", "#0088FE", "#8884d8", "#ff8042"];
+
