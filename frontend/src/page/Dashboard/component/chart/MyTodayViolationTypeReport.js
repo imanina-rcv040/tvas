@@ -31,30 +31,7 @@ const styles = {
     height: 400,
   },
 };
-
 export const MyTodayViolationTypeReport = () => {
-  const data = [
-    {
-      name: "Speeding",
-      value: 70,
-    },
-    {
-      name: "Red Light Running",
-      value: 90,
-    },
-    {
-      name: "Illegal Parking",
-      value: 110,
-    },
-    {
-      name: "Illegal U-turn",
-      value: 20,
-    },
-    {
-      name: "Improper Lane Usage",
-      value: 40,
-    },
-  ];
   const [reportViolation, setReportViolation] = useState([]);
 
 
