@@ -122,7 +122,32 @@ const violationData = [
 ];
 
 export const MyMonthlyComparison = () => {
+  const [monthlyViolation, setMonthlyViolation] = useState([]);
+  // fetch TVAS based on monthly violation
+  useEffect(() => {
+    const fetchMonthlyViolation = async () => {
+      try {
+        const apiURL = `${backendServerURL}`;
+        const response = await fetch(apiURL);
+        if (response.ok) {
+          const responseData = await response.json();
+          console.log("Monthly violation: data", responseData);
+          const filteredData = responseData.filter(
+            (item) => item.violations.length > 0
+          );
+          console.log("filteredData", filteredData);
+          console.log("filteredData", typeof filteredData);
+          setMonthlyViolation(filteredData);
+        } else {
+          console.log("Error response monthly:", response.status);
+        }
+      } catch (error) {
+        console.log("Error fetch monthly violations", error);
+      }
+    };
 
+    fetchMonthlyViolation();
+  }, []);
 
   return (
     <Grid item xs={6} md={3}>
