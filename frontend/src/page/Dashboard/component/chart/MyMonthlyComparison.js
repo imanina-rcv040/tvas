@@ -119,7 +119,10 @@ export const MyMonthlyComparison = () => {
 
   return (
     <Grid item xs={6} md={3}>
-      <Card sx={styles.card}>
+        <Typography variant="h5" component="h3" className="text-chart-title-3">
+          <span className="color-title">Monthly Basis</span>
+          <span className="bg-color-title">Violation Incidents</span>
+        </Typography>
         <CardContent>
           <ResponsiveContainer width="100%" height={275}>
             <BarChart data={violationData} layout="vertical">
