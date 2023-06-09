@@ -1,4 +1,14 @@
+// import libraries
+import { useState, useEffect } from "react";
 import { Card, Typography } from "@mui/material";
+
+// set backend server
+const REACT_APP_BACKEND_TVAS_SERVER =
+  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
+
+// set backend path
+const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/total-violation`;
+console.log("backendServerURL", backendServerURL);
 
 const styles = {
   card: {
@@ -26,7 +36,30 @@ const styles = {
 };
 
 export const MyViolationCount = () => {
+  const [totalViolation, setTotalViolation] = useState([]);
   let violationCount = 10;
+
+  // fetch TVAS based on trend violation
+  useEffect(() => {
+    const fetchTotalViolation = async () => {
+      try {
+        const apiURL = `${backendServerURL}`;
+        const response = await fetch(apiURL);
+        if (response.ok) {
+          const responseData = await response.json();
+          console.log("Data for violation total:", responseData);
+          setTotalViolation(responseData);
+        } else {
+          console.log("Error response total:", response.status);
+        }
+      } catch (error) {
+        console.log("Error fetch total violations", error);
+      }
+    };
+
+    fetchTotalViolation();
+  }, []);
+
   return (
     <Card sx={styles.card}>
       <Typography
@@ -52,7 +85,7 @@ export const MyViolationCount = () => {
         className="dashboard-report"
         flexDirection="row"
       >
-        {violationCount}
+        {totalViolation.violationCount}
       </Typography>
     </Card>
   );

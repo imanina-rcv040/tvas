@@ -5,61 +5,46 @@ import { MyLatestViolation } from "./component/chart/MyLatestViolation";
 import { MyMonthlyComparison } from "./component/chart/MyMonthlyComparison";
 import { MyTrafficViolationTrend } from "./component/chart/MyTrafficViolationTrend";
 import { MyTodayViolationTypeReport } from "./component/chart/MyTodayViolationTypeReport";
-import { MyMonthlyRegion } from "./component/chart/MyMonthlyRegion";
+import { MyTop5Camera } from "./component/chart/MyTop5Camera";
 
 // import styling
 import "./MyDashboard.css";
-
-const styles = {
-  flex: { display: "flex" },
-  flexColumn: { display: "flex", flexDirection: "column" },
-  leftCol: {
-    flex: 1,
-    marginRight: "0.5em",
-  },
-  rightCol: {
-    flex: 1,
-    marginLeft: "0.5em",
-    height: "10em",
-  },
-  singleCol: { marginTop: "1em", marginBottom: "1em" },
-};
 
 export const MyDashboard = () => {
   return (
     <>
       <MyDashboardTitle />
-      <div style={styles.flex}>
-        <div style={styles.leftCol}>
-          <div style={styles.singleCol}>
+      <div className="flex">
+        <div className="leftCol">
+          <div className="singleCol">
             <MyViolationCount />
           </div>
         </div>
-        <div style={styles.rightCol}>
-          <div style={styles.singleCol}>
+        <div className="rightCol">
+          <div className="singleCol">
             <MyLatestViolation />
           </div>
         </div>
-        <div style={styles.rightCol}>
-          <div style={styles.singleCol}>
+        <div className="rightCol">
+          <div className="singleCol">
             <MyMonthlyComparison />
           </div>
         </div>
       </div>
-      <div style={styles.flex}>
-        <div style={styles.leftCol}>
-          <div style={styles.singleCol}>
+      <div className="flex">
+        <div className="leftCol">
+          <div className="singleCol">
             <MyTrafficViolationTrend />
           </div>
         </div>
-        <div style={styles.rightCol}>
-          <div style={styles.singleCol}>
+        <div className="rightCol">
+          <div className="singleCol">
             <MyTodayViolationTypeReport />
           </div>
         </div>
-        <div style={styles.rightCol}>
-          <div style={styles.singleCol}>
-            <MyMonthlyRegion />
+        <div className="rightCol">
+          <div className="singleCol">
+          <MyTop5Camera />
           </div>
         </div>
       </div>
