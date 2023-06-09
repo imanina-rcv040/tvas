@@ -100,6 +100,8 @@ export const MyTodayViolationTypeReport = () => {
           <span className="color-title">Today</span>
           <span className="bg-color-title">Violation Report</span>
         </Typography>
+        <CardContent>
+          <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
                 data={data}
@@ -125,6 +127,8 @@ export const MyTodayViolationTypeReport = () => {
                 }}
               />
             </PieChart>
+          </ResponsiveContainer>
+        </CardContent>
       </Card>
     </Grid>
   );
