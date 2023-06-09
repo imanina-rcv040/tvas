@@ -20,6 +20,7 @@ console.log("backendServerURL", backendServerURL);
 
 const colors = ["#00C49F", "#FFBB28", "#0088FE", "#8884d8", "#ff8042"];
 
+export const MyTop5Camera = () => {
   const [topCamViolation, setTopCamViolation] = useState([]);
 
   // Fetch cams with most violations
@@ -43,3 +44,41 @@ const colors = ["#00C49F", "#FFBB28", "#0088FE", "#8884d8", "#ff8042"];
     fetchTopCamViolation();
     console.log("topCamViolation", topCamViolation);
   }, []);
+
+  return (
+    <Grid>
+      <Card className="card">
+        <Typography variant="h7" component="h3" className="text-chart-title-6">
+          <span className="color-title">Past Month</span>
+          <span className="bg-color-title">
+            Top 5 Cameras:
+            <br />
+            Most Violations Captured
+          </span>
+        </Typography>
+        <CardContent>
+          <ResponsiveContainer height={275} width="100%">
+            <BarChart data={topCamViolation}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="camera" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              {topCamViolation.length > 0 &&
+                topCamViolation[0].violations.map((v, i) => (
+                  <Bar
+                    key={i}
+                    dataKey={`violations[${i}].count`}
+                    name={v.type}
+                    stackId="violationStack"
+                    fill={colors[i % colors.length]}
+                    barSize={10}
+                  />
+                ))}
+            </BarChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
+    </Grid>
+  );
+};
