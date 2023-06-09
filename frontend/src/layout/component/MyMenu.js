@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import { DashboardMenuItem, useSidebarState, MenuItemLink } from "react-admin";
 import HistoryIcon from "@mui/icons-material/History";
 import LiveIcon from "@mui/icons-material/LiveTv";
+import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 
 export const MyMenu = () => {
   const [open] = useSidebarState();
@@ -18,6 +19,12 @@ export const MyMenu = () => {
       <DashboardMenuItem
         primaryText="Dashboard"
         className="menu-primary-text"
+      />
+      <MenuItemLink
+        to="/dashboard"
+        primaryText="Dashboard"
+        className="menu-primary-text"
+        leftIcon={<DashboardCustomizeIcon />}
       />
       <MenuItemLink
         to="/camera-feed"
