@@ -47,7 +47,6 @@ const trafficViolationData = [
   { hour: "23:00", count: 19 },
 ];
 
-
 export const MyTrafficViolationTrend = () => {
   const [trendViolation, setTrendViolation] = useState([]);
 
@@ -80,36 +79,6 @@ export const MyTrafficViolationTrend = () => {
           <span className="bg-color-title">Violation Trend</span>
         </Typography>
         <CardContent>
-          <Typography
-            variant="h5"
-            component="h3"
-            className="dashboard-title-2"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              paddingBottom: "5px",
-            }}
-          >
-            <span
-              style={{
-                background: "#bb7a7a",
-                border: "1px solid #bb7a7a ",
-                padding: "5px 10px",
-                color: "white",
-              }}
-            >
-              Traffic Violation
-            </span>
-            <span
-              style={{
-                border: "1px solid #bb7a7a",
-                padding: "5px 10px",
-              }}
-            >
-              24 Hours
-            </span>
-          </Typography>
           <ResponsiveContainer width="100%" height={300}>
             <ComposedChart width={730} data={trendViolation}>
               <XAxis dataKey="hour" />
@@ -125,27 +94,6 @@ export const MyTrafficViolationTrend = () => {
               <Tooltip cursor={{ strokeDasharray: "5 5" }} />
             </ComposedChart>
           </ResponsiveContainer>
-          <Typography
-            variant="p"
-            component="h3"
-            style={{
-              fontSize: "60%",
-              fontWeight: "bolder",
-              display: "flex",
-              alignItems: "left",
-              justifyContent: "center",
-              gap: "5px",
-            }}
-          >
-            <span
-              style={{
-                padding: "5px 10px",
-                color: "white",
-              }}
-            >
-              hi{" "}
-            </span>
-          </Typography>
         </CardContent>
       </Card>
     </Grid>
