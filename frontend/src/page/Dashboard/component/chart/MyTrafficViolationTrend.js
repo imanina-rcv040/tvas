@@ -83,6 +83,7 @@ export const MyTrafficViolationTrend = () => {
 
   return (
     <Grid>
+      <Card className="card">
         <Typography variant="h5" component="h3" className="text-chart-title-4">
           <span className="color-title">Last 24 Hours</span>
           <span className="bg-color-title">Violation Trend</span>
