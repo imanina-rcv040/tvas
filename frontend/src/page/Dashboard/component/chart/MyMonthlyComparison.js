@@ -130,7 +130,7 @@ export const MyMonthlyComparison = () => {
               <XAxis type="number" />
               <YAxis
                 type="category"
-                dataKey="type"
+                dataKey="month"
                 width={100}
                 tick={{ fontSize: 13, fontFamily: "Poppins" }}
               />
