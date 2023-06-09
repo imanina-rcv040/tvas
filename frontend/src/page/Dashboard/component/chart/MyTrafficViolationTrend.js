@@ -47,15 +47,6 @@ const trafficViolationData = [
   { hour: "23:00", count: 19 },
 ];
 
-const styles = {
-  card: {
-    backgroundColor: "#f7f7f7",
-    borderRadius: "12px",
-    padding: "24px",
-    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.15)",
-    height: 400,
-  },
-};
 
 export const MyTrafficViolationTrend = () => {
   const [trendViolation, setTrendViolation] = useState([]);
