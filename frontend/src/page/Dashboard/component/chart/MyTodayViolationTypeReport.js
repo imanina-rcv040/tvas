@@ -55,6 +55,10 @@ export const MyTodayViolationTypeReport = () => {
     fetchReportViolation();
   }, []);
 
+  const data = reportViolation.map((violation, index) => ({
+    name: violation.type,
+    value: violation.count,
+  }));
   return (
     <Grid>
       <Card sx={styles.card}>
