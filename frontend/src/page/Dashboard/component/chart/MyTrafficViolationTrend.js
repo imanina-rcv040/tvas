@@ -12,6 +12,14 @@ import {
   Line,
 } from "recharts";
 
+// set backend server
+const REACT_APP_BACKEND_TVAS_SERVER =
+  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.10.83:20001";
+
+// set backend path
+const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/last-24-hour`;
+console.log("backendServerURL", backendServerURL);
+
 const trafficViolationData = [
   { hour: "00:00", count: 7 },
   { hour: "01:00", count: 5 },
