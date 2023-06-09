@@ -100,33 +100,31 @@ export const MyTodayViolationTypeReport = () => {
           <span className="color-title">Today</span>
           <span className="bg-color-title">Violation Report</span>
         </Typography>
-          <PieChart>
-            <Pie
-              data={data}
-              caption="name"
-              dataKey="value"
-              nameKey="name"
-              cx="50%"
-              cy="70%"
-              outerRadius={100}
-              paddingAngle={5}
-            >
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={colors[index % colors.length]}
-                />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend
-              iconSize={12}
-              wrapperStyle={{
-                bottom: "-60px",
-              }}
-            />
-          </PieChart>
-        </ResponsiveContainer>
+            <PieChart>
+              <Pie
+                data={data}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="40%"
+                outerRadius={100}
+                label={renderCustomLabel}
+              >
+                {reportViolation.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={colors[index % colors.length]}
+                  />
+                ))}
+              </Pie>
+              <Tooltip />
+              <Legend
+                iconSize={12}
+                wrapperStyle={{
+                  bottom: "40px",
+                }}
+              />
+            </PieChart>
       </Card>
     </Grid>
   );
