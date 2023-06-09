@@ -17,38 +17,99 @@ const colors = ["#00C49F", "#FFBB28", "#0088FE", "#8884d8", "#ff8042"];
 
 const violationData = [
   {
-    type: "Speeding",
+    month: "January",
     violations: [
-      { month: "January", count: 100 },
-      { month: "February", count: 150 },
+      { type: "Speeding", count: 100 },
+      { type: "Red Light Running", count: 150 },
+      { type: "Illegal U-turn", count: 90 },
     ],
   },
   {
-    type: "Red Light Running",
+    month: "February",
     violations: [
-      { month: "January", count: 150 },
-      { month: "February", count: 130 },
+      { type: "Speeding", count: 150 },
+      { type: "Red Light Running", count: 130 },
+      { type: "Illegal U-turn", count: 160 },
     ],
   },
   {
-    type: "Illegal Parking",
+    month: "March",
     violations: [
-      { month: "January", count: 300 },
-      { month: "February", count: 120 },
+      { type: "Speeding", count: 160 },
+      { type: "Red Light Running", count: 120 },
+      { type: "Illegal U-turn", count: 110 },
     ],
   },
   {
-    type: "Improper Lane Usage",
+    month: "April",
     violations: [
-      { month: "January", count: 200 },
-      { month: "February", count: 110 },
+      { type: "Speeding", count: 90 },
+      { type: "Red Light Running", count: 160 },
+      { type: "Illegal U-turn", count: 170 },
     ],
   },
   {
-    type: "Illegal U-turn",
+    month: "May",
     violations: [
-      { month: "January", count: 100 },
-      { month: "February", count: 140 },
+      { type: "Speeding", count: 170 },
+      { type: "Red Light Running", count: 110 },
+      { type: "Illegal U-turn", count: 160 },
+    ],
+  },
+  {
+    month: "June",
+    violations: [
+      { type: "Speeding", count: 100 },
+      { type: "Red Light Running", count: 150 },
+      { type: "Illegal U-turn", count: 90 },
+    ],
+  },
+  {
+    month: "July",
+    violations: [
+      { type: "Speeding", count: 150 },
+      { type: "Red Light Running", count: 130 },
+      { type: "Illegal U-turn", count: 160 },
+    ],
+  },
+  {
+    month: "August",
+    violations: [
+      { type: "Speeding", count: 160 },
+      { type: "Red Light Running", count: 120 },
+      { type: "Illegal U-turn", count: 110 },
+    ],
+  },
+  {
+    month: "September",
+    violations: [
+      { type: "Speeding", count: 90 },
+      { type: "Red Light Running", count: 160 },
+      { type: "Illegal U-turn", count: 170 },
+    ],
+  },
+  {
+    month: "October",
+    violations: [
+      { type: "Speeding", count: 170 },
+      { type: "Red Light Running", count: 110 },
+      { type: "Illegal U-turn", count: 160 },
+    ],
+  },
+  {
+    month: "November",
+    violations: [
+      { type: "Speeding", count: 90 },
+      { type: "Red Light Running", count: 160 },
+      { type: "Illegal U-turn", count: 170 },
+    ],
+  },
+  {
+    month: "December",
+    violations: [
+      { type: "Speeding", count: 170 },
+      { type: "Red Light Running", count: 110 },
+      { type: "Illegal U-turn", count: 160 },
     ],
   },
 ];
