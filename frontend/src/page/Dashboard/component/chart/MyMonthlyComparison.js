@@ -116,10 +116,6 @@ const violationData = [
 
 export const MyMonthlyComparison = () => {
 
-  const dataFEB = violationData.map((data) => ({
-    type: data.type,
-    count: data.violations.find((v) => v.month === "February").count,
-  }));
 
   return (
     <Grid item xs={6} md={3}>
