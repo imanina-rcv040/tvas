@@ -58,6 +58,29 @@ const styles = {
 };
 
 export const MyTrafficViolationTrend = () => {
+  const [trendViolation, setTrendViolation] = useState([]);
+
+  // fetch TVAS based on trend violation
+  useEffect(() => {
+    const fetchTrendViolation = async () => {
+      try {
+        const apiURL = `${backendServerURL}`;
+        const response = await fetch(apiURL);
+        if (response.ok) {
+          const responseData = await response.json();
+          console.log("Data for violation trend:", responseData);
+          setTrendViolation(responseData);
+        } else {
+          console.log("Error response monthly:", response.status);
+        }
+      } catch (error) {
+        console.log("Error fetch monthly violations", error);
+      }
+    };
+
+    fetchTrendViolation();
+  }, []);
+
   return (
     <Grid>
       <Card sx={styles.card}>
