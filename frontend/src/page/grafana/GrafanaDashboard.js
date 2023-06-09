@@ -9,6 +9,7 @@ import { Title } from 'react-admin';
 
 const GrafanaDashboard = () => {
     const iframeRef = useRef(null);
+    const REACT_APP_GRAFANA_URL = process.env.REACT_APP_GRAFANA_URL || "http://172.17.0.143:13000/d/tvas-dev-rev01/dev-dashboard?orgId=1&refresh=30s&from=now-30d&to=now";
 
     useEffect(() => {
         const handleResize = () => {
@@ -27,10 +28,27 @@ const GrafanaDashboard = () => {
     }, []);
 
     function getGrafanaPageUrl() {
-        return "http://172.17.0.143:13000/d/f16a01ef-8abb-42f5-90bb-cc05fb937a7e/tvas-demo-dashboard?orgId=1&refresh=30s&from=now-30d&to=now"
+        // const configServerUrl = "http://172.17.0.143:20005";
+        // const configFileEndpoint = "/config/frontend_config.json"
+
+        // try {
+        //     const apiURL = `${configServerUrl}${configFileEndpoint}`;
+        //     const response = await fetch(apiURL);
+        //     if (response.ok) {
+        //         const responseData = await response.json();
+        //         console.log("Received data from %s with %s", apiURL, response)
+        //     } else {
+        //         console.log("Error response:", response.status);
+        //     }
+        // } catch (error) {
+        //     console.log("Error fetch all available cameras:", error);
+        // }
+
+        return REACT_APP_GRAFANA_URL
     }
 
     const grafanaUrl = getGrafanaPageUrl()
+    // console.log("grafanaUrl", grafanaUrl)
 
     return (
         <Card>
