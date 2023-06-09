@@ -28,27 +28,10 @@ const GrafanaDashboard = () => {
     }, []);
 
     function getGrafanaPageUrl() {
-        // const configServerUrl = "http://172.17.0.143:20005";
-        // const configFileEndpoint = "/config/frontend_config.json"
-
-        // try {
-        //     const apiURL = `${configServerUrl}${configFileEndpoint}`;
-        //     const response = await fetch(apiURL);
-        //     if (response.ok) {
-        //         const responseData = await response.json();
-        //         console.log("Received data from %s with %s", apiURL, response)
-        //     } else {
-        //         console.log("Error response:", response.status);
-        //     }
-        // } catch (error) {
-        //     console.log("Error fetch all available cameras:", error);
-        // }
-
         return REACT_APP_GRAFANA_URL
     }
 
     const grafanaUrl = getGrafanaPageUrl()
-    // console.log("grafanaUrl", grafanaUrl)
 
     return (
         <Card>
