@@ -7,7 +7,6 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-  Legend,
   CartesianGrid,
   Bar,
   Line,
