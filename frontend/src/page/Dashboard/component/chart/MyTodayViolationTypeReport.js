@@ -34,6 +34,26 @@ const styles = {
 export const MyTodayViolationTypeReport = () => {
   const [reportViolation, setReportViolation] = useState([]);
 
+  // Fetch TVAS for violation report
+  useEffect(() => {
+    const fetchReportViolation = async () => {
+      try {
+        const apiURL = `${backendServerURL}`;
+        const response = await fetch(apiURL);
+        if (response.ok) {
+          const responseData = await response.json();
+          console.log("Data for violation report:", responseData);
+          setReportViolation(responseData);
+        } else {
+          console.log("Error response report:", response.status);
+        }
+      } catch (error) {
+        console.log("Error fetch report violations", error);
+      }
+    };
+
+    fetchReportViolation();
+  }, []);
 
   return (
     <Grid>
