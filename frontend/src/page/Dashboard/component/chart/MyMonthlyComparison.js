@@ -168,16 +168,17 @@ export const MyMonthlyComparison = () => {
               />
               <Tooltip />
               <Legend />
-              {violationData[0].violations.map((v, i) => (
-                <Bar
-                  key={i}
-                  dataKey={`violations[${i}].count`}
-                  name={v.type}
-                  stackId="violationStack" // Add stackId prop
-                  fill={colors[i % colors.length]}
-                  barSize={10}
-                />
-              ))}
+              {monthlyViolation.length > 0 &&
+                monthlyViolation[0].violations.map((v, i) => (
+                  <Bar
+                    key={i}
+                    dataKey={`violations[${i}].count`}
+                    name={v.type}
+                    stackId="violationStack"
+                    fill={colors[i % colors.length]}
+                    barSize={10}
+                  />
+                ))}
             </BarChart>
           </ResponsiveContainer>
         </CardContent>
