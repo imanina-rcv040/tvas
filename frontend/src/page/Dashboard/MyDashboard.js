@@ -5,7 +5,7 @@ import { MyLatestViolation } from "./component/chart/MyLatestViolation";
 import { MyMonthlyComparison } from "./component/chart/MyMonthlyComparison";
 import { MyTrafficViolationTrend } from "./component/chart/MyTrafficViolationTrend";
 import { MyTodayViolationTypeReport } from "./component/chart/MyTodayViolationTypeReport";
-import { MyMonthlyRegion } from "./component/chart/MyMonthlyRegion";
+import { MyTop5Camera } from "./component/chart/MyTop5Camera";
 
 // import styling
 import "./MyDashboard.css";
@@ -44,7 +44,7 @@ export const MyDashboard = () => {
         </div>
         <div className="rightCol">
           <div className="singleCol">
-            <MyMonthlyRegion />
+          <MyTop5Camera />
           </div>
         </div>
       </div>
