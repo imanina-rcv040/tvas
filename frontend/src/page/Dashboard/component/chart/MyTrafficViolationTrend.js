@@ -20,33 +20,6 @@ const REACT_APP_BACKEND_TVAS_SERVER =
 const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/last-24-hour`;
 console.log("backendServerURL", backendServerURL);
 
-const trafficViolationData = [
-  { hour: "00:00", count: 7 },
-  { hour: "01:00", count: 5 },
-  { hour: "02:00", count: 3 },
-  { hour: "03:00", count: 2 },
-  { hour: "04:00", count: 0 },
-  { hour: "05:00", count: 1 },
-  { hour: "06:00", count: 6 },
-  { hour: "07:00", count: 8 },
-  { hour: "08:00", count: 19 },
-  { hour: "09:00", count: 12 },
-  { hour: "10:00", count: 9 },
-  { hour: "11:00", count: 11 },
-  { hour: "12:00", count: 15 },
-  { hour: "13:00", count: 23 },
-  { hour: "14:00", count: 18 },
-  { hour: "15:00", count: 17 },
-  { hour: "16:00", count: 26 },
-  { hour: "17:00", count: 30 },
-  { hour: "18:00", count: 22 },
-  { hour: "19:00", count: 15 },
-  { hour: "20:00", count: 18 },
-  { hour: "21:00", count: 20 },
-  { hour: "22:00", count: 24 },
-  { hour: "23:00", count: 19 },
-];
-
 export const MyTrafficViolationTrend = () => {
   const [trendViolation, setTrendViolation] = useState([]);
 
