@@ -12,7 +12,13 @@ import {
   Legend,
 } from "recharts";
 
+// set backend server
+const REACT_APP_BACKEND_TVAS_SERVER =
+  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.10.83:20001";
 
+// set backend path
+const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/monthly-comparison`;
+console.log("backendServerURL", backendServerURL);
 
 const colors = ["#00C49F", "#FFBB28", "#0088FE", "#8884d8", "#ff8042"];
 
