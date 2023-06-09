@@ -11,7 +11,7 @@ import {
 } from "recharts";
 
 const REACT_APP_BACKEND_TVAS_SERVER =
-  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.10.83:20001";
+  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
 
 const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/daily-report-violation`;
 console.log("backendServerURL", backendServerURL);
