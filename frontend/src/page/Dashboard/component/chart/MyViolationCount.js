@@ -85,7 +85,7 @@ export const MyViolationCount = () => {
         className="dashboard-report"
         flexDirection="row"
       >
-        {violationCount}
+        {totalViolation.violationCount}
       </Typography>
     </Card>
   );
