@@ -55,6 +55,8 @@ export const MyTodayViolationTypeReport = () => {
       value: 40,
     },
   ];
+  const [reportViolation, setReportViolation] = useState([]);
+
 
   return (
     <Grid>
