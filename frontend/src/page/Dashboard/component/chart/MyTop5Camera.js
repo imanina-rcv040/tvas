@@ -20,3 +20,5 @@ console.log("backendServerURL", backendServerURL);
 
 const colors = ["#00C49F", "#FFBB28", "#0088FE", "#8884d8", "#ff8042"];
 
+  const [topCamViolation, setTopCamViolation] = useState([]);
+
