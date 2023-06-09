@@ -111,7 +111,7 @@ export const MyTrafficViolationTrend = () => {
             </span>
           </Typography>
           <ResponsiveContainer width="100%" height={300}>
-            <ComposedChart width={730} data={trafficViolationData}>
+            <ComposedChart width={730} data={trendViolation}>
               <XAxis dataKey="hour" />
               <YAxis />
               <CartesianGrid strokeDasharray="5 5" />
