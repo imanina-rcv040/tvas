@@ -11,21 +11,7 @@ import {
   Legend,
 } from "recharts";
 
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
-const Arrow = ({ dataJAN, dataFEB }) => {
-  const totalJAN = dataJAN.reduce((acc, curr) => acc + curr.count, 0);
-  const totalFEB = dataFEB.reduce((acc, curr) => acc + curr.count, 0);
-
-  if (totalFEB > totalJAN) {
-    return <ArrowUpwardIcon sx={styles.arrow} />;
-  } else if (totalFEB < totalJAN) {
-    return <ArrowDownwardIcon sx={styles.arrow} />;
-  } else {
-    return null;
-  }
-};
 
 const colors = ["#00C49F", "#FFBB28", "#0088FE", "#8884d8", "#ff8042"];
 
