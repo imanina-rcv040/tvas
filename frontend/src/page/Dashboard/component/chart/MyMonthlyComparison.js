@@ -115,10 +115,6 @@ const violationData = [
 ];
 
 export const MyMonthlyComparison = () => {
-  const dataJAN = violationData.map((data) => ({
-    type: data.type,
-    count: data.violations.find((v) => v.month === "January").count,
-  }));
 
   const dataFEB = violationData.map((data) => ({
     type: data.type,
