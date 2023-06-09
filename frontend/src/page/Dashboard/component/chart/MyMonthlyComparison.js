@@ -121,40 +121,6 @@ export const MyMonthlyComparison = () => {
     <Grid item xs={6} md={3}>
       <Card sx={styles.card}>
         <CardContent>
-          <Typography
-            variant="h5"
-            component="h3"
-            className="dashboard-title-2"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "10px",
-              paddingBottom: "5px",
-            }}
-          >
-            Monthly Comparison
-            <span
-              style={{
-                background: colors[0],
-                padding: "5px 10px",
-                color: "black",
-              }}
-            >
-              JAN
-            </span>
-            vs
-            <span
-              style={{
-                background: colors[1],
-                padding: "5px 10px",
-                color: "black",
-              }}
-            >
-              FEB
-            </span>
-            <Arrow dataJAN={dataJAN} dataFEB={dataFEB} />
-          </Typography>
           <ResponsiveContainer width="100%" height={275}>
             <BarChart data={violationData} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" />
