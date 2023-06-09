@@ -114,20 +114,6 @@ const violationData = [
   },
 ];
 
-const styles = {
-  arrow: {
-    fontSize: 50,
-    verticalAlign: "middle",
-  },
-
-  card: {
-    backgroundColor: "#f7f7f7",
-    borderRadius: "12px",
-    padding: "24px",
-    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.15)",
-    height: 400,
-  },
-};
 export const MyMonthlyComparison = () => {
   const dataJAN = violationData.map((data) => ({
     type: data.type,
