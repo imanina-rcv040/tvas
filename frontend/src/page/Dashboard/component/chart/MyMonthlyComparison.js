@@ -140,6 +140,7 @@ export const MyMonthlyComparison = () => {
                 <Bar
                   key={i}
                   dataKey={`violations[${i}].count`}
+                  name={v.type}
                   stackId="violationStack" // Add stackId prop
                   fill={colors[i % colors.length]}
                   barSize={10}
