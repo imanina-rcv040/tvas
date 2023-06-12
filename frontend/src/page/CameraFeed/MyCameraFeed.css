@@ -239,7 +239,7 @@ p.alert-box-content {
 
 .device-info-card {
   flex: 0 0 calc(100% - 0px);
-  max-width: 15%;
+  max-width: 30%;
 }
 
 .device-info {

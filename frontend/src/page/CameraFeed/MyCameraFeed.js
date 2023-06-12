@@ -174,6 +174,82 @@ export const MyCameraFeed = () => {
               </CardContent>
             </Card>
           </div>
+
+          <Typography variant="h5" component="h3" className="title-sub">
+            CAMERA INFORMATION
+          </Typography>
+          {camInfo && (
+            <div className="device-info-cards">
+              <div className="device-info-card">
+                <Card sx={{ flex: 1 }}>
+                  <CardContent title={"device info"}>
+                    <div className="device-info">
+                      <p>
+                        <strong>Camera Name: </strong>
+                        {camInfo.cameraName}
+                      </p>
+                      <p>
+                        <strong>Camera Type: </strong>
+                        {camInfo.deviceType}
+                      </p>
+                      <p>
+                        <strong>Resolution: </strong>
+                        {camInfo.resolution}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+              <div className="device-info-card">
+                <Card sx={{ flex: 1 }}>
+                  <CardContent>
+                    <div className="device-info">
+                      <p>
+                        <strong>Frame Rate: </strong>
+                        {camInfo.fps}
+                      </p>
+                      <p>
+                        <strong>Latitude: </strong>
+                        {camInfo.geoLatitude}
+                      </p>
+                      <p>
+                        <strong>Longitude: </strong>
+                        {camInfo.geoLongitude}
+                      </p>
+                      <p>
+                        <strong>Province: </strong>
+                        {camInfo.province}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+              <div className="device-info-card">
+                <Card sx={{ flex: 0.5 }}>
+                  <CardContent>
+                    <div className="device-info">
+                      <p>
+                        <strong>Detector Type: </strong>
+                        {camInfo.detectorType}
+                      </p>
+                      <p>
+                        <strong>IP Source: </strong>
+                        {camInfo.sourceIp}
+                      </p>
+                      <p>
+                        <strong>Connection Status: </strong>
+                        {camInfo.connectStatus}
+                      </p>
+                      <p>
+                        <strong>Last Update: </strong>
+                        {camInfo.snapTimestamp}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="rightCol">
@@ -310,88 +386,6 @@ export const MyCameraFeed = () => {
                 )}
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex">
-        <div className="leftCol">
-          <div className="singleCol">
-            <Typography variant="h5" component="h3" className="title-sub">
-              CAMERA INFORMATION
-            </Typography>
-            {camInfo && (
-              <div className="device-info-cards">
-                <div className="device-info-card">
-                  <Card sx={{ flex: 1 }}>
-                    <CardContent title={"device info"}>
-                      <div className="device-info">
-                        <p>
-                          <strong>Camera Name: </strong>
-                          {camInfo.cameraName}
-                        </p>
-                        <p>
-                          <strong>Camera Type: </strong>
-                          {camInfo.deviceType}
-                        </p>
-                        <p>
-                          <strong>Resolution: </strong>
-                          {camInfo.resolution}
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-                <div className="device-info-card">
-                  <Card sx={{ flex: 1 }}>
-                    <CardContent>
-                      <div className="device-info">
-                        <p>
-                          <strong>Frame Rate: </strong>
-                          {camInfo.fps}
-                        </p>
-                        <p>
-                          <strong>Latitude: </strong>
-                          {camInfo.geoLatitude}
-                        </p>
-                        <p>
-                          <strong>Longitude: </strong>
-                          {camInfo.geoLongitude}
-                        </p>
-                        <p>
-                          <strong>Province: </strong>
-                          {camInfo.province}
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-                <div className="device-info-card">
-                  <Card sx={{ flex: 0.5 }}>
-                    <CardContent>
-                      <div className="device-info">
-                        <p>
-                          <strong>Detector Type: </strong>
-                          {camInfo.detectorType}
-                        </p>
-                        <p>
-                          <strong>IP Source: </strong>
-                          {camInfo.sourceIp}
-                        </p>
-                        <p>
-                          <strong>Connection Status: </strong>
-                          {camInfo.connectStatus}
-                        </p>
-                        <p>
-                          <strong>Last Update: </strong>
-                          {camInfo.snapTimestamp}
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>
