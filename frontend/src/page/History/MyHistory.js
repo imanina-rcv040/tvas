@@ -27,16 +27,9 @@ const HistoryFilters = (props) => (
     <ReferenceInput source="typeEvent" reference="history" label="Event">
       <SelectInput optionText="typeEvent" />
     </ReferenceInput>
-    {/* <ReferenceInput source="cameraId" reference="history" label="Camera">
-      <SelectInput
-        source="cameraId"
-        label="Camera ID"
-        choices={[
-          { id: "1", name: "Camera 1" },
-          { id: "2", name: "Camera 2" },
-        ]}
-      />
-    </ReferenceInput> */}
+    <ReferenceInput source="cameraId" label="Camera" reference="history">
+      <SelectInput optionText="cameraId" />
+    </ReferenceInput>
     <DateInput source="engineTimestamp" label="Date" />
   </Filter>
 );
