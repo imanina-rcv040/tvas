@@ -25,14 +25,7 @@ const HistoryFilters = (props) => (
   <Filter {...props}>
     <SearchInput source="q" alwaysOn />
     <ReferenceInput source="typeEvent" reference="history" label="Event">
-      <SelectInput
-        source="typeEvent"
-        label="Violation Event"
-        choices={[
-          { id: "illegal-uturn", name: "Illegal U-turn" },
-          { id: "illegal-parking", name: "Illegal Parking" },
-        ]}
-      />
+      <SelectInput optionText="typeEvent" />
     </ReferenceInput>
     {/* <ReferenceInput source="cameraId" reference="history" label="Camera">
       <SelectInput
