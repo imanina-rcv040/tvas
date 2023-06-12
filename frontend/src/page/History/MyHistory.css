@@ -1,0 +1,4 @@
+.table-event :nth-child(2),
+td:nth-child(2) {
+  width: 10%;
+}

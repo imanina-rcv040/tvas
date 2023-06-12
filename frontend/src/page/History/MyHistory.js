@@ -13,6 +13,7 @@ import {
 } from "react-admin";
 import { Box, Drawer } from "@mui/material";
 import { useState } from "react"; // Import the useState hook
+import "./MyHistory.css";
 
 // set image file server
 const REACT_APP_BACKEND_FILE_SERVER =
@@ -57,7 +58,7 @@ export const MyHistory = (props) => {
   return (
     <Box>
       <List {...props} filters={<HistoryFilters />}>
-        <Datagrid>
+        <Datagrid className="table-event">
           <TextField source="id" label="Event ID" />
           <TextField source="typeEvent" label="Event Type" />
           <TextField source="licensePlateNo" label="License Plate Number" />
