@@ -90,6 +90,19 @@ export const MyHistory = (props) => {
               </a>
             )}
           />
+          <FunctionField
+            source="vehicle_link"
+            label="Evidence 2"
+            render={(record) => (
+              <a
+                href={imgURL + `${record.cameraId}/raw2/${record.imageId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                click to view
+              </a>
+            )}
+          />
         </Datagrid>
       </List>
       <Drawer
