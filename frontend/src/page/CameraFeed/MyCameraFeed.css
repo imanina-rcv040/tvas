@@ -90,6 +90,8 @@ a.menu-primary-text {
 
 .canvas-container {
   margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .canvas-container2 {
