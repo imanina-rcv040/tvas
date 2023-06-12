@@ -69,7 +69,7 @@ export const MyHistory = (props) => {
             label="Plate Number Image"
             render={(record) => (
               <a
-                href={imgURL + `${record.cameraId}/raw/${record.imageId}`}
+                href={imgURL + `${record.cameraId}/lp/${record.imageId}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
