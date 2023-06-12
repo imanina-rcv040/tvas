@@ -192,7 +192,7 @@ export const MyCameraFeed = () => {
                           <div className="canvas-stream2">
                             <img
                               src={`${evidenceImgURL}/${selectedCameraId}/raw/${latestEvent.imageId}`}
-                              title={`${imgServerURL}/${selectedCameraId}/s.jpg`}
+                              title={`${evidenceImgURL}/${selectedCameraId}/raw/${latestEvent.imageId}`}
                               alt={`${evidenceImgURL}/${selectedCameraId}/raw/${latestEvent.imageId}`}
                               className="canvas-stream"
                             />
