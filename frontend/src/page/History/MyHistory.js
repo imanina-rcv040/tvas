@@ -30,7 +30,8 @@ const HistoryFilters = (props) => (
     <ReferenceInput source="cameraId" label="Camera" reference="history">
       <SelectInput optionText="cameraId" />
     </ReferenceInput>
-    <DateInput source="engineTimestamp" label="Date" />
+    <DateInput source="snapTimestamp_start" label="Start Date" />
+    <DateInput source="snapTimestamp_end" label="End Date" />
   </Filter>
 );
 
