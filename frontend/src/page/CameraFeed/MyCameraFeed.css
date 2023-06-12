@@ -72,6 +72,7 @@ a.menu-primary-text {
   /* height: 360px;
   width: calc(360px * (16 / 9)); */
   overflow: hidden;
+  margin: 0 5px; /* Add space between the images */
 }
 
 .canvas-stream3 {
