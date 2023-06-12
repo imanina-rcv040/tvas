@@ -61,8 +61,6 @@ export const MyHistory = (props) => {
           <TextField source="id" label="Event ID" />
           <TextField source="typeEvent" label="Event Type" />
           <TextField source="licensePlateNo" label="License Plate Number" />
-          <TextField source="engineTimestamp" label="Engine TImestamp" />
-          <TextField source="imageId" label="Image ID" />
           <TextField source="cameraId" label="Camera ID" />
           <TextField source="snapTimestamp" label="Snapshot Timestamp" />
           <FunctionField
