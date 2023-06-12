@@ -49,7 +49,11 @@ export const MyHistory = (props) => {
           <TextField source="typeEvent" label="Event Type" />
           <TextField source="licensePlateNo" label="License Plate Number" />
           <TextField source="cameraId" label="Camera ID" />
-          <TextField source="snapTimestamp" label="Snapshot Timestamp" />
+          <DateField
+            source="snapTimestamp"
+            label="Snapshot Timestamp"
+            showTime={true}
+          />
           <FunctionField
             source="plate_number_link"
             label="Plate Number Image"
