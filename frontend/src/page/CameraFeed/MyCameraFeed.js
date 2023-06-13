@@ -176,17 +176,6 @@ export const MyCameraFeed = () => {
             TRAFFIC VIOLATION UPDATES
           </Typography>
         </Grid>
-        <Grid item xs={3} >
-          <Typography variant="h5" component="h3" className="title-sub">
-            ENTRY PHOTO
-          </Typography>
-        </Grid>
-
-        <Grid item xs={3} >
-          <Typography variant="h5" component="h3" className="title-sub">
-            EXIT PHOTO
-          </Typography>
-        </Grid>
 
         {/* row3 */}
         <Grid item xs={6}>
