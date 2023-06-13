@@ -179,7 +179,7 @@ export const MyCameraFeed = () => {
 
         {/* row3 */}
         <Grid item xs={6}>
-          <Card>
+          <Card sx={{ height: 430 }}>
             <CardContent title={"live updates"}>
               <div className="canvas-container">
                 <img
