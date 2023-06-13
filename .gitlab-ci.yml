@@ -52,7 +52,7 @@ development:
 deployment:
   image: alpine:latest
   stage: deployment_deploy
-  when: manual
+  # when: manual
   allow_failure: false
   extends: .deploy_job
   variables:

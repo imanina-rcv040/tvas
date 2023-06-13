@@ -13,7 +13,9 @@ import {
   SelectInput,
 } from "react-admin";
 import { Box, Drawer } from "@mui/material";
-import { useState } from "react";
+import { useState } from "react"; // Import the useState hook
+import "./MyHistory.css";
+
 // set image file server
 const REACT_APP_BACKEND_FILE_SERVER =
   process.env.REACT_APP_BACKEND_FILE_SERVER || "http://172.17.0.143:20004";
@@ -44,7 +46,7 @@ export const MyHistory = (props) => {
   return (
     <Box>
       <List {...props} filters={<HistoryFilters />}>
-        <Datagrid>
+        <Datagrid className="table-event">
           <TextField source="id" label="Event ID" />
           <TextField source="typeEvent" label="Event Type" />
           <TextField source="licensePlateNo" label="License Plate Number" />
@@ -59,6 +61,19 @@ export const MyHistory = (props) => {
             label="Plate Number Image"
             render={(record) => (
               <a
+                href={imgURL + `${record.cameraId}/lp/${record.imageId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                click to view
+              </a>
+            )}
+          />
+          <FunctionField
+            source="vehicle_link"
+            label="Evidence 1"
+            render={(record) => (
+              <a
                 href={imgURL + `${record.cameraId}/raw/${record.imageId}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -69,10 +84,10 @@ export const MyHistory = (props) => {
           />
           <FunctionField
             source="vehicle_link"
-            label="Vehicle Image"
+            label="Evidence 2"
             render={(record) => (
               <a
-                href={imgURL + `${record.cameraId}/lp/${record.imageId}`}
+                href={imgURL + `${record.cameraId}/raw2/${record.imageId}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
