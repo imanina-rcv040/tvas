@@ -1,8 +1,6 @@
 // import libraries
 import { useState, useEffect, useRef } from "react";
-import { Alert, Card, CardContent, Typography } from "@mui/material";
-import { Grid } from '@mui/material';
-
+import { Alert, Card, CardContent, Grid, Typography } from "@mui/material";
 // import components
 import { MyPageHeader } from "./component/MyPageHeader";
 
