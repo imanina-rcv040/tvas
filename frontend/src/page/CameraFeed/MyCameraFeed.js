@@ -269,14 +269,14 @@ export const MyCameraFeed = () => {
         </Grid>
 
         {/* row4 */}
-        <Grid item xs={6}>
+        <Grid item xs={6} sx={{ marginTop: 3 }}>
           {/* top left */}
           <Typography variant="h5" component="h3" className="title-sub">
-            DEVICE INFO
+            DEVICE INFORMATION
           </Typography>
         </Grid>
 
-        <Grid item xs={6} >
+        <Grid item xs={6} sx={{ marginTop: 3 }}>
           <Typography variant="h5" component="h3" className="title-sub">
             TRAFFIC VIOLATION DETAILS
           </Typography>
@@ -286,7 +286,7 @@ export const MyCameraFeed = () => {
         <Grid item xs={2}>
           {camInfo && (
             <div>
-              <Card sx={{ flex: 1 }}>
+              <Card sx={{ flex: 1, height: 150 }}>
                 <CardContent title={"device info"}>
                   <div className="device-info">
                     <p>
@@ -311,7 +311,7 @@ export const MyCameraFeed = () => {
         <Grid item xs={2}>
           {camInfo && (
             <div>
-              <Card sx={{ flex: 1 }}>
+              <Card sx={{ flex: 1, height: 150 }}>
                 <CardContent>
                   <div className="device-info">
                     <p>
@@ -340,7 +340,7 @@ export const MyCameraFeed = () => {
         <Grid item xs={2}>
           {camInfo && (
             <div>
-              <Card sx={{ flex: 0.5 }}>
+              <Card sx={{ flex: 1, height: 150 }}>
                 <CardContent>
                   <div className="device-info">
                     <p>
@@ -364,7 +364,6 @@ export const MyCameraFeed = () => {
               </Card>
             </div>
           )}
-
         </Grid>
 
         <Grid item xs={6}>
