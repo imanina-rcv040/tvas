@@ -1,7 +1,6 @@
 // import libraries
 import { useState, useEffect, useRef } from "react";
-import { Alert, Card, CardContent, Typography } from "@mui/material";
-
+import { Alert, Card, CardContent, Grid, Typography } from "@mui/material";
 // import components
 import { MyPageHeader } from "./component/MyPageHeader";
 
@@ -133,268 +132,334 @@ export const MyCameraFeed = () => {
 
   return (
     <>
-      <MyPageHeader />
-      <div className="flex">
-        <div className="leftCol">
-          <div className="singleCol">
-            <Typography variant="h5" component="h3" className="title-sub">
-              TRAFFIC UPDATES
-            </Typography>
-            <div className="dropdown-wrapper">
-              <select
-                className="stream-dropdown"
-                id="cameraName"
-                value={selectedCameraName || ""}
-                onChange={handleCameraChange}
-              >
-                {cameras.map((camera) => (
-                  <option key={camera.cameraId} value={camera.cameraName}>
-                    {camera.cameraName}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <button
-              className="button-update-stream"
-              // onClick={reinitStream}
+      <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        {/* row1 */}
+        <Grid item xs={12}>
+          <MyPageHeader />
+        </Grid>
+
+        {/* row2 */}
+        <Grid item xs={6}>
+          {/* top left */}
+          <Typography variant="h5" component="h3" className="title-sub">
+            TRAFFIC UPDATES
+          </Typography>
+          <div className="dropdown-wrapper">
+            <select
+              className="stream-dropdown"
+              id="cameraName"
+              value={selectedCameraName || ""}
+              onChange={handleCameraChange}
             >
-              Update Stream
-            </button>
-            <Card>
-              <CardContent title={"live updates"}>
-                <div className="canvas-container">
-                  <img
-                    src={`${imgServerURL}/${selectedCameraId}/s.jpg`}
-                    alt={`Snapshot for camera: ${selectedCameraId}`}
-                    title={`${imgServerURL}/${selectedCameraId}/s.jpg`}
-                    className="canvas-stream"
-                    ref={imgRef}
-                  />
-                </div>
+              {cameras.map((camera) => (
+                <option key={camera.cameraId} value={camera.cameraName}>
+                  {camera.cameraName}
+                </option>
+              ))}
+            </select>
+          </div>
+          <button
+            className="button-update-stream"
+            // onClick={reinitStream}
+          >
+            Update Stream
+          </button>
+        </Grid>
+
+        <Grid item xs={6}>
+          {/* top right */}
+          <Typography variant="h5" component="h3" className="title-sub">
+            TRAFFIC VIOLATION UPDATES
+          </Typography>
+        </Grid>
+
+        {/* row3 */}
+        <Grid item xs={6}>
+          <Card sx={{ height: 430 }}>
+            <CardContent title={"live updates"}>
+              <div className="canvas-container">
+                <img
+                  src={`${imgServerURL}/${selectedCameraId}/s.jpg`}
+                  alt={`Snapshot for camera: ${selectedCameraId}`}
+                  title={`${imgServerURL}/${selectedCameraId}/s.jpg`}
+                  className="canvas-stream"
+                  ref={imgRef}
+                />
+              </div>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={3} sx>
+          {alert && (
+            <div>
+              <Card sx={{ height: 430 }}>
+                <CardContent title={"violation updates"}>
+                  <Typography variant="h6" component="h3" className="title-sub">
+                    ENTRANCE
+                  </Typography>
+                  <div className="canvas-container">
+                    <img
+                      src={`${evidenceImgURL}/${selectedCameraId}/raw/${latestEvent.imageId}`}
+                      title={`${evidenceImgURL}/${selectedCameraId}/raw/${latestEvent.imageId}`}
+                      alt={`${evidenceImgURL}/${selectedCameraId}/raw/${latestEvent.imageId}`}
+                      className="canvas-stream2"
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          )}
+          {!alert && (
+            <Card variant="outlined" className="card">
+              <CardContent>
+                <Alert severity="info">
+                  <Typography
+                    variant="h5"
+                    component="h6"
+                    className="alert-text2"
+                  >
+                    No traffic violation for entrance detected.
+                  </Typography>
+                </Alert>
               </CardContent>
             </Card>
-          </div>
-        </div>
+          )}
+        </Grid>
 
-        <div className="rightCol">
-          <div className="singleCol">
-            <div className="section-wrapper">
-              <div className="section">
-                <Typography variant="h5" component="h3" className="title-sub">
-                  TRAFFIC VIOLATION UPDATES
-                </Typography>
-
-                {alert && (
-                  <div>
-                    <Card>
-                      <CardContent title={"violation updates"}>
-                        <div className="canvas-container">
-                          <div className="canvas-stream2">
-                            <img
-                              src={`${evidenceImgURL}/${selectedCameraId}/raw/${latestEvent.imageId}`}
-                              title={`${evidenceImgURL}/${selectedCameraId}/raw/${latestEvent.imageId}`}
-                              alt={`${evidenceImgURL}/${selectedCameraId}/raw/${latestEvent.imageId}`}
-                              className="canvas-stream"
-                            />
-                          </div>
-                          <div className="canvas-stream2">
-                            <img
-                              src={`${evidenceImgURL}/${selectedCameraId}/raw2/${latestEvent.imageId}`}
-                              title={`${evidenceImgURL}/${selectedCameraId}/raw2/${latestEvent.imageId}`}
-                              alt={`${evidenceImgURL}/${selectedCameraId}/raw2/${latestEvent.imageId}`}
-                              className="canvas-stream"
-                            />
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                    <Typography
-                      variant="h5"
-                      component="h3"
-                      className="title-traffic-details"
-                    >
-                      TRAFFIC VIOLATION DETAILS
-                    </Typography>
-                    <Card>
-                      <CardContent title="violation details">
-                        <div className="canvas-container2">
-                          <table className="violation-table">
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <Typography
-                                    variant="h5"
-                                    component="h6"
-                                    className="alert-text"
-                                  >
-                                    Event Type
-                                  </Typography>
-                                </td>
-                                <td>
-                                  <input
-                                    type="text"
-                                    value={latestEvent.typeEvent}
-                                    readOnly
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <Typography
-                                    variant="h5"
-                                    component="h6"
-                                    className="alert-text"
-                                  >
-                                    License Plate
-                                  </Typography>
-                                </td>
-                                <td>
-                                  <input
-                                    type="text"
-                                    value={latestEvent.licensePlateNo}
-                                    readOnly
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td></td>
-                                <td colSpan="2">
-                                  <img
-                                    src={`${evidenceImgURL}/${selectedCameraId}/lp/${latestEvent.imageId}`}
-                                    alt={`${evidenceImgURL}/${selectedCameraId}/lp/${latestEvent.imageId}`}
-                                    title={`${evidenceImgURL}/${selectedCameraId}/lp/${latestEvent.imageId}`}
-                                    className="img-fluid img-captured-lp"
-                                  />
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <Typography
-                                    variant="h5"
-                                    component="h6"
-                                    className="alert-text"
-                                  >
-                                    Engine Timestamp
-                                  </Typography>
-                                </td>
-                                <td colSpan="1">
-                                  <input
-                                    type="text"
-                                    value={latestEvent.engineTimestamp}
-                                    readOnly
-                                  />
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </CardContent>
-                    </Card>
+        <Grid item xs={3}>
+          {alert && (
+            <div>
+              <Card sx={{ height: 430 }}>
+                <CardContent title={"violation updates"}>
+                  <Typography variant="h6" component="h3" className="title-sub">
+                    EXIT
+                  </Typography>
+                  <div className="canvas-container">
+                    <img
+                      src={`${evidenceImgURL}/${selectedCameraId}/raw2/${latestEvent.imageId}`}
+                      title={`${evidenceImgURL}/${selectedCameraId}/raw2/${latestEvent.imageId}`}
+                      alt={`${evidenceImgURL}/${selectedCameraId}/raw2/${latestEvent.imageId}`}
+                      className="canvas-stream2"
+                    />
                   </div>
-                )}
-
-                {!alert && (
-                  <Card variant="outlined" className="card">
-                    <CardContent>
-                      <Alert severity="info">
-                        <Typography
-                          variant="h5"
-                          component="h6"
-                          className="alert-text2"
-                        >
-                          No traffic violation detected.
-                        </Typography>
-                      </Alert>
-                    </CardContent>
-                  </Card>
-                )}
-              </div>
+                </CardContent>
+              </Card>
             </div>
-          </div>
-        </div>
-      </div>
+          )}
+          {!alert && (
+            <Card variant="outlined">
+              <CardContent>
+                <Alert severity="info">
+                  <Typography
+                    variant="h5"
+                    component="h6"
+                    className="alert-text2"
+                  >
+                    No traffic violation for exit detected.
+                  </Typography>
+                </Alert>
+              </CardContent>
+            </Card>
+          )}
+        </Grid>
 
-      <div className="flex">
-        <div className="leftCol">
-          <div className="singleCol">
-            <Typography variant="h5" component="h3" className="title-sub">
-              CAMERA INFORMATION
-            </Typography>
-            {camInfo && (
-              <div className="device-info-cards">
-                <div className="device-info-card">
-                  <Card sx={{ flex: 1 }}>
-                    <CardContent title={"device info"}>
-                      <div className="device-info">
-                        <p>
-                          <strong>Camera Name: </strong>
-                          {camInfo.cameraName}
-                        </p>
-                        <p>
-                          <strong>Camera Type: </strong>
-                          {camInfo.deviceType}
-                        </p>
-                        <p>
-                          <strong>Resolution: </strong>
-                          {camInfo.resolution}
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-                <div className="device-info-card">
-                  <Card sx={{ flex: 1 }}>
-                    <CardContent>
-                      <div className="device-info">
-                        <p>
-                          <strong>Frame Rate: </strong>
-                          {camInfo.fps}
-                        </p>
-                        <p>
-                          <strong>Latitude: </strong>
-                          {camInfo.geoLatitude}
-                        </p>
-                        <p>
-                          <strong>Longitude: </strong>
-                          {camInfo.geoLongitude}
-                        </p>
-                        <p>
-                          <strong>Province: </strong>
-                          {camInfo.province}
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-                <div className="device-info-card">
-                  <Card sx={{ flex: 0.5 }}>
-                    <CardContent>
-                      <div className="device-info">
-                        <p>
-                          <strong>Detector Type: </strong>
-                          {camInfo.detectorType}
-                        </p>
-                        <p>
-                          <strong>IP Source: </strong>
-                          {camInfo.sourceIp}
-                        </p>
-                        <p>
-                          <strong>Connection Status: </strong>
-                          {camInfo.connectStatus}
-                        </p>
-                        <p>
-                          <strong>Last Update: </strong>
-                          {camInfo.snapTimestamp}
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
+        {/* row4 */}
+        <Grid item xs={6} sx={{ marginTop: 3 }}>
+          {/* top left */}
+          <Typography variant="h5" component="h3" className="title-sub">
+            DEVICE INFORMATION
+          </Typography>
+        </Grid>
+
+        <Grid item xs={6} sx={{ marginTop: 3 }}>
+          <Typography variant="h5" component="h3" className="title-sub">
+            TRAFFIC VIOLATION DETAILS
+          </Typography>
+        </Grid>
+
+        {/* row5 */}
+        <Grid item xs={2}>
+          {camInfo && (
+            <div>
+              <Card sx={{ flex: 1, height: 150 }}>
+                <CardContent title={"device info"}>
+                  <div className="device-info">
+                    <p>
+                      <strong>Camera Name: </strong>
+                      {camInfo.cameraName}
+                    </p>
+                    <p>
+                      <strong>Camera Type: </strong>
+                      {camInfo.deviceType}
+                    </p>
+                    <p>
+                      <strong>Resolution: </strong>
+                      {camInfo.resolution}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          )}
+        </Grid>
+
+        <Grid item xs={2}>
+          {camInfo && (
+            <div>
+              <Card sx={{ flex: 1, height: 150 }}>
+                <CardContent>
+                  <div className="device-info">
+                    <p>
+                      <strong>Frame Rate: </strong>
+                      {camInfo.fps}
+                    </p>
+                    <p>
+                      <strong>Latitude: </strong>
+                      {camInfo.geoLatitude}
+                    </p>
+                    <p>
+                      <strong>Longitude: </strong>
+                      {camInfo.geoLongitude}
+                    </p>
+                    <p>
+                      <strong>Province: </strong>
+                      {camInfo.province}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          )}
+        </Grid>
+
+        <Grid item xs={2}>
+          {camInfo && (
+            <div>
+              <Card sx={{ flex: 1, height: 150 }}>
+                <CardContent>
+                  <div className="device-info">
+                    <p>
+                      <strong>Detector Type: </strong>
+                      {camInfo.detectorType}
+                    </p>
+                    <p>
+                      <strong>IP Source: </strong>
+                      {camInfo.sourceIp}
+                    </p>
+                    <p>
+                      <strong>Connection Status: </strong>
+                      {camInfo.connectStatus}
+                    </p>
+                    <p>
+                      <strong>Last Update: </strong>
+                      {camInfo.snapTimestamp}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          )}
+        </Grid>
+
+        <Grid item xs={6}>
+          {alert && (
+            <div>
+              <Card>
+                <CardContent title="violation details">
+                  <div className="canvas-container2">
+                    <table className="violation-table">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <Typography
+                              variant="h5"
+                              component="h6"
+                              className="alert-text"
+                            >
+                              <strong>Event Type </strong>
+                            </Typography>
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              value={latestEvent.typeEvent}
+                              readOnly
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <Typography
+                              variant="h5"
+                              component="h6"
+                              className="alert-text"
+                            >
+                              <strong> License Plate </strong>
+                            </Typography>
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              value={latestEvent.licensePlateNo}
+                              readOnly
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td colSpan="2">
+                            <img
+                              src={`${evidenceImgURL}/${selectedCameraId}/lp/${latestEvent.imageId}`}
+                              alt={`${evidenceImgURL}/${selectedCameraId}/lp/${latestEvent.imageId}`}
+                              title={`${evidenceImgURL}/${selectedCameraId}/lp/${latestEvent.imageId}`}
+                              className="img-fluid img-captured-lp"
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <Typography
+                              variant="h5"
+                              component="h6"
+                              className="alert-text"
+                            >
+                              <strong> Snapshot Timestamp </strong>
+                            </Typography>
+                          </td>
+                          <td colSpan="1">
+                            <input
+                              type="text"
+                              value={latestEvent.snapTimestamp}
+                              readOnly
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          )}
+
+          {!alert && (
+            <Card variant="outlined">
+              <CardContent>
+                <Alert severity="info">
+                  <Typography
+                    variant="h5"
+                    component="h6"
+                    className="alert-text2"
+                  >
+                    No traffic violation detected.
+                  </Typography>
+                </Alert>
+              </CardContent>
+            </Card>
+          )}
+        </Grid>
+      </Grid>
     </>
   );
 };

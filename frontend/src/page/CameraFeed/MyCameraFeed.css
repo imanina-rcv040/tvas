@@ -42,8 +42,6 @@ h3.title-sub {
   display: inline-block;
   font-family: "Poppins";
   font-weight: bolder;
-  line-height: 1.5;
-  margin-bottom: 1%;
 }
 
 h3.title-traffic-details {
@@ -60,19 +58,16 @@ a.menu-primary-text {
 
 .canvas-stream {
   border-radius: 15px;
-  height: 360px;
-  width: calc(360px * (16 / 9));
+  height: 400px;
+  width: calc(400px * (16 / 9));
   overflow: hidden;
 }
 
 .canvas-stream2 {
   border-radius: 15px;
-  height: 300px;
-  width: calc(300px * (4 / 3));
-  /* height: 360px;
-  width: calc(360px * (16 / 9)); */
+  height: 360px;
+  width: calc(360px * (16 / 9));
   overflow: hidden;
-  margin: 0 5px; /* Add space between the images */
 }
 
 .canvas-stream3 {
@@ -89,13 +84,9 @@ a.menu-primary-text {
 }
 
 .canvas-container {
-  margin-bottom: 10px;
   display: flex;
   justify-content: center;
-}
-
-.canvas-container2 {
-  margin-bottom: 10px;
+  font-family: "Ubuntu";
 }
 
 .button-update-stream {
@@ -159,10 +150,10 @@ h6.alert-text {
   font-family: "Ubuntu";
   color: black;
   font-size: 1.25rem;
-  line-height: 1;
+  /* line-height: 1; */
   letter-spacing: 0.01em;
-  padding-bottom: 1%;
-  margin-bottom: 1%;
+  /* padding-bottom: 1%; */
+  /* margin-bottom: 1%; */
 }
 
 h6.alert-text2 {
@@ -170,21 +161,9 @@ h6.alert-text2 {
   font-family: "Ubuntu";
   font-weight: 500;
   font-size: 1.25rem;
-  line-height: 1;
 }
 
-h2.alert-box-heading {
-  padding-bottom: 1%;
-  color: maroon;
-  font-family: "Ubuntu";
-  font-weight: bold;
-  background-color: lightcoral;
-}
 
-p.alert-box-content {
-  font-family: "Ubuntu";
-  padding: 2%;
-}
 
 .img-captured-vehicle {
   border-radius: 15px;
@@ -202,9 +181,7 @@ p.alert-box-content {
 
 .dropdown-wrapper {
   display: inline-block;
-  vertical-align: middle;
   margin-left: 10px;
-  margin-bottom: 3px;
 }
 
 .stream-dropdown {
@@ -215,7 +192,6 @@ p.alert-box-content {
   background-color: #fff;
   color: #555;
   cursor: pointer;
-  padding-bottom: 8px; /* Adjust padding-bottom to match button padding-bottom */
 }
 
 .stream-dropdown:hover {
@@ -239,7 +215,7 @@ p.alert-box-content {
 
 .device-info-card {
   flex: 0 0 calc(100% - 0px);
-  max-width: 15%;
+  max-width: 30%;
 }
 
 .device-info {
