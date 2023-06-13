@@ -381,7 +381,7 @@ export const MyCameraFeed = () => {
                               component="h6"
                               className="alert-text"
                             >
-                              Event Type
+                              <strong>Event Type </strong>
                             </Typography>
                           </td>
                           <td>
@@ -399,7 +399,7 @@ export const MyCameraFeed = () => {
                               component="h6"
                               className="alert-text"
                             >
-                              License Plate
+                              <strong> License Plate </strong>
                             </Typography>
                           </td>
                           <td>
@@ -428,13 +428,13 @@ export const MyCameraFeed = () => {
                               component="h6"
                               className="alert-text"
                             >
-                              Engine Timestamp
+                              <strong> Snapshot Timestamp </strong>
                             </Typography>
                           </td>
                           <td colSpan="1">
                             <input
                               type="text"
-                              value={latestEvent.engineTimestamp}
+                              value={latestEvent.snapTimestamp}
                               readOnly
                             />
                           </td>
