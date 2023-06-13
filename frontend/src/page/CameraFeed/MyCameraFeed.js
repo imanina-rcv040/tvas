@@ -132,11 +132,7 @@ export const MyCameraFeed = () => {
 
   return (
     <>
-      <Grid
-        container
-        rowSpacing={2}
-        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-      >
+      <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {/* row1 */}
         <Grid item xs={12}>
           <MyPageHeader />
@@ -164,7 +160,7 @@ export const MyCameraFeed = () => {
           </div>
           <button
             className="button-update-stream"
-          // onClick={reinitStream}
+            // onClick={reinitStream}
           >
             Update Stream
           </button>
@@ -463,9 +459,7 @@ export const MyCameraFeed = () => {
             </Card>
           )}
         </Grid>
-
-      </Grid >
-
+      </Grid>
     </>
   );
 };
