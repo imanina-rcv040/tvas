@@ -233,15 +233,18 @@ export const MyCameraFeed = () => {
 
         <Grid item xs={3}>
           {alert && (
-            <div >
-              <Card>
+            <div>
+              <Card sx={{ height: 430 }}>
                 <CardContent title={"violation updates"}>
+                  <Typography variant="h6" component="h3" className="title-sub">
+                    EXIT
+                  </Typography>
                   <div className="canvas-container">
                     <img
                       src={`${evidenceImgURL}/${selectedCameraId}/raw2/${latestEvent.imageId}`}
                       title={`${evidenceImgURL}/${selectedCameraId}/raw2/${latestEvent.imageId}`}
                       alt={`${evidenceImgURL}/${selectedCameraId}/raw2/${latestEvent.imageId}`}
-                      className="canvas-stream"
+                      className="canvas-stream2"
                     />
                   </div>
                 </CardContent>
@@ -249,7 +252,7 @@ export const MyCameraFeed = () => {
             </div>
           )}
           {!alert && (
-            <Card variant="outlined" className="card">
+            <Card variant="outlined">
               <CardContent>
                 <Alert severity="info">
                   <Typography
@@ -257,7 +260,7 @@ export const MyCameraFeed = () => {
                     component="h6"
                     className="alert-text2"
                   >
-                    No traffic violation detected.
+                    No traffic violation for exit detected.
                   </Typography>
                 </Alert>
               </CardContent>
