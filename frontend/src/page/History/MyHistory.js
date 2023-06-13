@@ -3,6 +3,7 @@ import * as React from "react";
 import {
   List,
   Datagrid,
+  DateField,
   TextField,
   FunctionField,
   Filter,
@@ -26,26 +27,13 @@ const HistoryFilters = (props) => (
   <Filter {...props}>
     <SearchInput source="q" alwaysOn />
     <ReferenceInput source="typeEvent" reference="history" label="Event">
-      <SelectInput
-        source="typeEvent"
-        label="Violation Event"
-        choices={[
-          { id: "illegal-uturn", name: "Illegal U-turn" },
-          { id: "illegal-parking", name: "Illegal Parking" },
-        ]}
-      />
+      <SelectInput optionText="typeEvent" />
     </ReferenceInput>
-    {/* <ReferenceInput source="cameraId" reference="history" label="Camera">
-      <SelectInput
-        source="cameraId"
-        label="Camera ID"
-        choices={[
-          { id: "1", name: "Camera 1" },
-          { id: "2", name: "Camera 2" },
-        ]}
-      />
-    </ReferenceInput> */}
-    <DateInput source="engineTimestamp" label="Date" />
+    <ReferenceInput source="cameraId" label="Camera" reference="history">
+      <SelectInput optionText="cameraId" />
+    </ReferenceInput>
+    <DateInput source="snapTimestamp_start" label="Start Date" />
+    <DateInput source="snapTimestamp_end" label="End Date" />
   </Filter>
 );
 
@@ -63,7 +51,11 @@ export const MyHistory = (props) => {
           <TextField source="typeEvent" label="Event Type" />
           <TextField source="licensePlateNo" label="License Plate Number" />
           <TextField source="cameraId" label="Camera ID" />
-          <TextField source="snapTimestamp" label="Snapshot Timestamp" />
+          <DateField
+            source="snapTimestamp"
+            label="Snapshot Timestamp"
+            showTime={true}
+          />
           <FunctionField
             source="plate_number_link"
             label="Plate Number Image"
