@@ -16,6 +16,7 @@ import "@fontsource/poppins"; // Defaults to weight 400.
 
 // import data provider
 import { dataProvider } from "./api/dataProvider";
+import authProvider from './authProvider';
 
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
           element={
             <Admin
               title="Traffic Offence"
+              authProvider={authProvider}
               dataProvider={dataProvider}
               dashboard={() => (
                 <MyDashboard
