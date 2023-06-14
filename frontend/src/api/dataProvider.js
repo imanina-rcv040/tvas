@@ -3,20 +3,21 @@ import { fetchUtils } from "react-admin"; // to handle HTTP requests in react-ad
 
 // set backend server
 const REACT_APP_BACKEND_TVAS_SERVER =
-  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
+  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001"; // use environment variable or use default URL for backend server
 
-const backendServerURL = REACT_APP_BACKEND_TVAS_SERVER;
+const backendServerURL = REACT_APP_BACKEND_TVAS_SERVER; // a tool for assigning or debugging purpose
 console.log("backendServerURL:", backendServerURL);
 
-const httpClient = fetchUtils.fetchJson;
+const httpClient = fetchUtils.fetchJson; // fetchJson function is used to make HTTP requests and returns a promise that resolves to the JSON response
 
+// define and export dataProvider object for data retrieval
 export const dataProvider = {
+  //implement getList method: fetch data from backend server
   getList: async (resource, params) => {
-    console.log("getlist");
-    console.log("resource", resource);
-    console.log("params", params);
-    const { page, perPage } = params.pagination;
-    const { field, order } = params.sort;
+    const { page, perPage } = params.pagination; // extract pagination
+    const { field, order } = params.sort; // extract sorting
+
+    //construct query obj
     const query = {
       ...params.filter, // Include filter parameters in the query
       page: page,
