@@ -28,13 +28,12 @@ export const dataProvider = {
       field: field,
       order: order,
     };
-    console.log("query", query);
-    let queryString = "";
-    // if (Object.keys(query).length) {
-    queryString = "?" + new URLSearchParams(query).toString();
-    // }
-    console.log("queryString", queryString);
-    const apiURL = `${backendServerURL}/${resource}/${queryString}`;
+    console.log("(getList) query", query);
+    //construct query string
+    let queryString = ""; // initialize empty string
+    queryString = "?" + new URLSearchParams(query).toString(); // appends query string
+    console.log("queryString", queryString); // using URLSearchParams example - "name=John&age=30&city=New%20York"
+    const apiURL = `${backendServerURL}/${resource}/${queryString}`; // complete URL for API from concatenation
     console.log("API URL:", apiURL);
 
     try {
