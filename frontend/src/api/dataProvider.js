@@ -14,6 +14,9 @@ const httpClient = fetchUtils.fetchJson; // fetchJson function is used to make H
 export const dataProvider = {
   //implement getList method: fetch data from backend server
   getList: async (resource, params) => {
+    console.log("This is getList method");
+    console.log("(getList) resource:", resource); // representing resource name. e.g; history
+    console.log("(getList) params:", params); // containing pagination, sorting, & filtering info
     const { page, perPage } = params.pagination; // extract pagination
     const { field, order } = params.sort; // extract sorting
 
