@@ -78,8 +78,15 @@ export const dataProvider = {
 
     try {
       console.log("getMany: trying..");
-      console.log("try first at many");
+      const { ids } = params;
+      console.log("ids", ids);
+      const apiURL2 = `${backendServerURL}/${resource}?type-event=${ids.join(
+        ","
+      )}`; // API request
+      console.log("apiurl2", apiURL2);
       const { json } = await httpClient(apiURL2);
+      console.log("json2", json);
+
       const data = json.items.map((item) => ({
         id: item.eventId,
         typeEvent: item.typeEvent,
@@ -97,12 +104,12 @@ export const dataProvider = {
         cameraId: item.cameraId,
         snapTimestamp: item.snapTimestamp,
       }));
-      console.log("try finish at (getMany)");
+      console.log("getMany: trying executed");
 
       return { data };
     } catch (error) {
-      console.error("Error catched at (getMany)!", error);
-      throw new Error("Error fetching data at MANY");
+      console.error("getMany: error catched", error);
+      throw new Error("getMany: Error fetching data");
     }
   },
 };
