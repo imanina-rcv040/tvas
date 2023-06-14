@@ -14,6 +14,8 @@ import {
 } from "react-admin";
 import { Box, Drawer } from "@mui/material";
 import { useState } from "react"; // Import the useState hook
+
+// import styling
 import "./MyHistory.css";
 
 // set image file server
@@ -27,10 +29,24 @@ const HistoryFilters = (props) => (
   <Filter {...props}>
     <SearchInput source="q" alwaysOn />
     <ReferenceInput source="typeEvent" reference="history" label="Event">
-      <SelectInput optionText="typeEvent" />
+      <SelectInput
+        source="typeEvent"
+        label="Event Type"
+        choices={[
+          { id: "illegal-uturn", name: "illegal-uturn" },
+          { id: "illegal-parking", name: "illegal-parking" },
+        ]}
+      />
     </ReferenceInput>
     <ReferenceInput source="cameraId" label="Camera" reference="history">
-      <SelectInput optionText="cameraId" />
+      <SelectInput
+        source="cameraId"
+        label="Camera ID"
+        choices={[
+          { id: 1, name: "1" },
+          { id: 2, name: "2" },
+        ]}
+      />
     </ReferenceInput>
     <DateInput source="snapTimestamp_start" label="Start Date" />
     <DateInput source="snapTimestamp_end" label="End Date" />
