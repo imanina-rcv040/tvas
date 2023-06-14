@@ -17,6 +17,10 @@ import { Box, Drawer } from "@mui/material";
 // import styling
 import "./MyHistory.css";
 
+// set backend server
+const REACT_APP_BACKEND_TVAS_SERVER =
+  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
+
 // set image file server
 const REACT_APP_BACKEND_FILE_SERVER =
   process.env.REACT_APP_BACKEND_FILE_SERVER || "http://172.17.0.143:20004";
