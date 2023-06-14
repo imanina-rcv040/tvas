@@ -158,12 +158,6 @@ export const MyCameraFeed = () => {
               ))}
             </select>
           </div>
-          <button
-            className="button-update-stream"
-            // onClick={reinitStream}
-          >
-            Update Stream
-          </button>
         </Grid>
 
         <Grid item xs={6}>
