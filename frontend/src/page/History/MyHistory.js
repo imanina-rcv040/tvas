@@ -25,6 +25,9 @@ const REACT_APP_BACKEND_TVAS_SERVER =
 const REACT_APP_BACKEND_FILE_SERVER =
   process.env.REACT_APP_BACKEND_FILE_SERVER || "http://172.17.0.143:20004";
 
+//set backend path
+const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}`;
+
 // set image path
 const imgURL = `${REACT_APP_BACKEND_FILE_SERVER}/evidence/`;
 
