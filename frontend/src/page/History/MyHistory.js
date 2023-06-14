@@ -1,5 +1,5 @@
 // import libraries
-import * as React from "react";
+import { useState, useEffect } from "react";
 import {
   List,
   Datagrid,
@@ -13,7 +13,6 @@ import {
   SelectInput,
 } from "react-admin";
 import { Box, Drawer } from "@mui/material";
-import { useState } from "react"; // Import the useState hook
 
 // import styling
 import "./MyHistory.css";
