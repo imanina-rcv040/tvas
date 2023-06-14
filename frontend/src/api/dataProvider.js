@@ -1,6 +1,5 @@
 // import libraries
-import { fetchUtils } from "react-admin";
-import { stringify } from "query-string";
+import { fetchUtils } from "react-admin"; // to handle HTTP requests in react-admin
 
 // set backend server
 const REACT_APP_BACKEND_TVAS_SERVER =
