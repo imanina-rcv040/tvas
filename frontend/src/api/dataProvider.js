@@ -37,8 +37,10 @@ export const dataProvider = {
     console.log("API URL:", apiURL);
 
     try {
-      console.log("try first");
-      const { json } = await httpClient(apiURL);
+      console.log("getList: trying..");
+      const { json } = await httpClient(apiURL); // sends HTTP GET request to API URL using httpClient func & awaits the response // response data = { json }
+
+      // mapping and extracting relevant data properties
       const data = json.items.map((item) => ({
         id: item.eventId,
         typeEvent: item.typeEvent,
@@ -56,25 +58,26 @@ export const dataProvider = {
         cameraId: item.cameraId,
         snapTimestamp: item.snapTimestamp,
       }));
-      console.log("try finish");
-      console.log("raw json data:", json);
-      console.log("total data per page=", data.length);
-      console.log("total data:", json.total);
-
+      console.log("getList: trying executed");
+      console.log("Fetched raw json object:", json);
+      console.log("Data (items from JSON object):", data);
+      console.log("Total data per page:", data.length);
+      console.log("Total data:", json.total);
       return { data, total: json.total };
     } catch (error) {
-      console.error("Error catched!", error);
-      throw new Error("Error fetching data");
+      console.error("getList: error catched", error);
+      throw new Error("getList: Error fetching data");
     }
   },
 
+  //implement getMany method: fetch data from backend server
   getMany: async (resource, params) => {
-    console.log("getMany");
-    console.log("resource (getMany)", resource);
-    console.log("params (getMany)", params);
-    const apiURL2 = `${backendServerURL}/${resource}`;
+    console.log("This is getMany method");
+    console.log("(getMany) resource:", resource);
+    console.log("(getMany) params:", params);
 
     try {
+      console.log("getMany: trying..");
       console.log("try first at many");
       const { json } = await httpClient(apiURL2);
       const data = json.items.map((item) => ({
