@@ -87,7 +87,7 @@ export const MyHistory = (props) => {
           />
           <FunctionField
             source="vehicle_link"
-            label="Evidence 1"
+            label="Entrance Evidence"
             render={(record) => (
               <a
                 href={imgURL + `${record.cameraId}/raw/${record.imageId}`}
@@ -100,7 +100,7 @@ export const MyHistory = (props) => {
           />
           <FunctionField
             source="vehicle_link"
-            label="Evidence 2"
+            label="Exit Evidence"
             render={(record) => (
               <a
                 href={imgURL + `${record.cameraId}/raw2/${record.imageId}`}

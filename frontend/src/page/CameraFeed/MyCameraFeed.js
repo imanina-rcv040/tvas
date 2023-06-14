@@ -196,7 +196,7 @@ export const MyCameraFeed = () => {
               <Card sx={{ height: 430 }}>
                 <CardContent title={"violation updates"}>
                   <Typography variant="h6" component="h3" className="title-sub">
-                    ENTRANCE
+                    ENTRANCE EVIDENCE
                   </Typography>
                   <div className="canvas-container">
                     <img
@@ -233,7 +233,7 @@ export const MyCameraFeed = () => {
               <Card sx={{ height: 430 }}>
                 <CardContent title={"violation updates"}>
                   <Typography variant="h6" component="h3" className="title-sub">
-                    EXIT
+                    EXIT EVIDENCE
                   </Typography>
                   <div className="canvas-container">
                     <img
