@@ -19,8 +19,13 @@ stages:
     - echo "$CI_PROJECT_PATH"
     - ssh $SSH_USER@$IP_ADDRESS 'hostname;
       echo $(date);
-      echo DST=$HOME/'"'$CI_PROJECT_PATH'"';
-      cd $HOME/'"'$CI_PROJECT_PATH'"';
+      export DST=$HOME/'"'$CI_PROJECT_PATH'"';
+      echo DST=$DST;
+      export GIT_REPO_URL=git@172.17.0.129:'"'$CI_PROJECT_PATH'"'.git;
+      echo GIT_REPO_URL=$GIT_REPO_URL;
+      git clone $GIT_REPO_URL $DST;
+      cd $DST;
+      ./.dev/stop-server.sh;
       git fetch --all;
       echo CI_COMMIT_BRANCH='"'$CI_COMMIT_BRANCH'"';
       git checkout '"'$CI_COMMIT_BRANCH'"';
