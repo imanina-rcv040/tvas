@@ -53,7 +53,7 @@ export const MyMonthlyComparison = () => {
   return (
     <Grid item xs={6} md={3}>
       <Card className="card">
-        <Typography variant="h5" component="h3" className="text-chart-title-3">
+        <Typography variant="h5" component="h3" className="text-chart-title">
           <span className="color-title">Monthly Basis</span>
           <span className="bg-color-title">Violation Incidents</span>
         </Typography>

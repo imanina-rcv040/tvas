@@ -96,7 +96,7 @@ export const MyTodayViolationTypeReport = () => {
   return (
     <Grid>
       <Card className="card">
-        <Typography variant="h5" component="h3" className="text-chart-title-5">
+        <Typography variant="h5" component="h3" className="text-chart-title">
           <span className="color-title">Today</span>
           <span className="bg-color-title">Violation Report</span>
         </Typography>
