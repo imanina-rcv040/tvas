@@ -48,12 +48,10 @@ export const MyTop5Camera = () => {
   return (
     <Grid>
       <Card className="card">
-        <Typography variant="h5" component="h3" className="text-chart-title">
+        <Typography variant="h7" component="h3" className="text-chart-title">
           <span className="color-title">Past Month</span>
           <span className="bg-color-title">
-            Top 5 Cameras:
-            <br />
-            Most Violations Captured
+            Most Violations Captured on Cameras
           </span>
         </Typography>
         <CardContent>
