@@ -2,30 +2,18 @@
 
 set -e
 
-echo "WARNING: FOR DEVELOPMENT PURPOSE ONLY! DO NOT USE OR COPY THIS SCRIPT TO PRODUCTION!"
-
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
-## Stop all running docker containers
-echo "==============================================="
-echo "Stopping all running docker containers"
-echo "==============================================="
-"$SCRIPT_DIR"/stop-server.sh
+echo "Stopping container..."
+"$SCRIPT_DIR"/stop-server.sh || true # ignore error for active network issue
 
-echo "==============================================="
-echo "Update to latest Git changes"
-echo "==============================================="
+echo "Pulling latest library..."
 git pull
-echo "Done git pulling"
 
-echo "==============================================="
-echo "Docker build the new images"
-echo "==============================================="
+echo "Building latest image..."
 "$SCRIPT_DIR"/build-docker.sh
 
-echo "==============================================="
-echo "Docker up all the containers"
-echo "==============================================="
+echo "Starting the server..."
 "$SCRIPT_DIR"/run-server.sh
 
-echo "[+] --- Finished deploying the dockers"
+echo "Jobs done!"

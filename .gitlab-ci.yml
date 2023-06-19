@@ -19,13 +19,37 @@ stages:
     - echo "$CI_PROJECT_PATH"
     - ssh $SSH_USER@$IP_ADDRESS 'hostname;
       echo $(date);
-      echo DST=$HOME/'"'$CI_PROJECT_PATH'"';
-      cd $HOME/'"'$CI_PROJECT_PATH'"';
+      export DST=$HOME/'"'$CI_PROJECT_PATH'"';
+      echo DST=$DST;
+      export GIT_REPO_URL=git@172.17.0.129:'"'$CI_PROJECT_PATH'"'.git;
+      echo GIT_REPO_URL=$GIT_REPO_URL;
+      git clone $GIT_REPO_URL $DST;
+      cd $DST;
+      ./.dev/stop-server.sh;
       git fetch --all;
       echo CI_COMMIT_BRANCH='"'$CI_COMMIT_BRANCH'"';
       git checkout '"'$CI_COMMIT_BRANCH'"';
       git pull;
       ./.dev/auto-deploy.sh;'
+
+.deploy_test_job:
+  variables:
+    PRIVATE_KEY: ""
+    IP_ADDRESS: ""
+  before_script:
+  - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+  - eval $(ssh-agent -s)
+  - echo "$PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan $IP_ADDRESS >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+  script:
+  - ssh $SSH_USER@$IP_ADDRESS 'echo $(date);
+    export DST=$HOME/'"'$CI_PROJECT_PATH'"';
+    echo DST=$DST;
+    cd $DST;
+    ./.dev/check-container-status.sh;'
 
 tagging:
   image: node:18.15.0
@@ -49,12 +73,39 @@ development:
   except:
     - tags
 
+development_container_test:
+  image: alpine:latest
+  stage: development_deploy
+  extends: .deploy_test_job
+  needs:
+    - development
+  variables:
+    PRIVATE_KEY: $SSH_PRIVATE_KEY
+    IP_ADDRESS: $VM_IPADDRESS
+  except:
+    - tags
+
 deployment:
   image: alpine:latest
   stage: deployment_deploy
   # when: manual
   allow_failure: false
   extends: .deploy_job
+  variables:
+    PRIVATE_KEY: $DEPLOY_SSH_PRIVATE_KEY
+    IP_ADDRESS: $DEPLOY_IPADDRESS
+  except:
+    - tags
+  only:
+    - main
+    - beta
+
+deployment_container_test:
+  image: alpine:latest
+  stage: deployment_deploy
+  extends: .deploy_test_job
+  needs:
+    - deployment
   variables:
     PRIVATE_KEY: $DEPLOY_SSH_PRIVATE_KEY
     IP_ADDRESS: $DEPLOY_IPADDRESS

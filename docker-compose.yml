@@ -1,8 +1,8 @@
 version: "3.8"
 
 services:
-  tvas:
-    image: recocloud-app/traffic-violation-alert-system:latest
+  frontend:
+    image: "${COMPOSE_PROJECT_NAME}/${project_dirname}:latest"
     networks:
       - net
     ports:
