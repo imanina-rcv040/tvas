@@ -57,7 +57,7 @@ export const MyTrafficViolationTrend = () => {
               <XAxis dataKey="hour" />
               <YAxis />
               <CartesianGrid strokeDasharray="5 5" />
-              <Bar dataKey="count" barSize={10} fill="#bb7a7a"></Bar>
+              <Bar dataKey="count" barSize={10} fill="#DC143C"></Bar>
               <Line
                 type="monotone"
                 dataKey="count"
