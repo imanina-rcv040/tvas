@@ -85,28 +85,28 @@ td.engineTimestamp {
 }
 
 td.licensePlateNo {
-  background-color: rgba(0, 136, 254, 0.5);
+  background-color: #fad1da;
 }
 
 td.typeEvent {
-  background-color: rgba(255, 187, 40, 0.5);
+  background-color: #e3879c;
 }
 
-.text-chart-title-1 {
+.text-chart-title {
   display: flex;
   justify-content: center;
   padding-bottom: 5px;
 }
 
-.text-chart-title-1 span.color-title {
-  border: 1px solid #3b76a6;
+.text-chart-title span.color-title {
+  border: 1px solid #8b0000;
   padding: 5px 10px;
   /* color: #3b76a6; */
 }
 
-.text-chart-title-1 span.bg-color-title {
-  background: #3b76a6;
-  border: 1px solid #3b76a6;
+.text-chart-title span.bg-color-title {
+  background: #8b0000;
+  border: 1px solid #8b0000;
   padding: 5px 10px;
   color: white;
 }

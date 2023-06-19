@@ -47,7 +47,7 @@ export const MyTrafficViolationTrend = () => {
   return (
     <Grid>
       <Card className="card">
-        <Typography variant="h5" component="h3" className="text-chart-title-4">
+        <Typography variant="h5" component="h3" className="text-chart-title">
           <span className="color-title">Last 24 Hours</span>
           <span className="bg-color-title">Violation Trend</span>
         </Typography>
@@ -57,7 +57,7 @@ export const MyTrafficViolationTrend = () => {
               <XAxis dataKey="hour" />
               <YAxis />
               <CartesianGrid strokeDasharray="5 5" />
-              <Bar dataKey="count" barSize={10} fill="#bb7a7a"></Bar>
+              <Bar dataKey="count" barSize={10} fill="#DC143C"></Bar>
               <Line
                 type="monotone"
                 dataKey="count"

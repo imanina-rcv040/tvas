@@ -16,7 +16,7 @@ const REACT_APP_BACKEND_TVAS_SERVER =
 const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/daily-report-violation`;
 console.log("backendServerURL", backendServerURL);
 
-const colors = ["#00C49F", "#FFBB28", "#0088FE", "#8884d8", "#ff8042"];
+const colors = ["#DC143C", "#800020", "#CD581E", "#FFB020", "#FF7518"];
 
 const styles = {
   arrow: {
@@ -96,7 +96,7 @@ export const MyTodayViolationTypeReport = () => {
   return (
     <Grid>
       <Card className="card">
-        <Typography variant="h5" component="h3" className="text-chart-title-5">
+        <Typography variant="h5" component="h3" className="text-chart-title">
           <span className="color-title">Today</span>
           <span className="bg-color-title">Violation Report</span>
         </Typography>

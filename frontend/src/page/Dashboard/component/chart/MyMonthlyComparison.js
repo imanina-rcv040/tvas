@@ -20,7 +20,7 @@ const REACT_APP_BACKEND_TVAS_SERVER =
 const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/monthly-comparison`;
 console.log("backendServerURL", backendServerURL);
 
-const colors = ["#00C49F", "#FFBB28", "#0088FE", "#8884d8", "#ff8042"];
+const colors = ["#DC143C", "#800020", "#CD581E", "#FFB020", "#FF7518"];
 
 export const MyMonthlyComparison = () => {
   const [monthlyViolation, setMonthlyViolation] = useState([]);
@@ -53,7 +53,7 @@ export const MyMonthlyComparison = () => {
   return (
     <Grid item xs={6} md={3}>
       <Card className="card">
-        <Typography variant="h5" component="h3" className="text-chart-title-3">
+        <Typography variant="h5" component="h3" className="text-chart-title">
           <span className="color-title">Monthly Basis</span>
           <span className="bg-color-title">Violation Incidents</span>
         </Typography>
