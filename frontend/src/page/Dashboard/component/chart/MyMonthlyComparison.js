@@ -28,7 +28,13 @@ console.log("backendServerURL", backendServerURL);
 const username = localStorage.getItem("username");
 const configServerURL = `${REACT_APP_BACKEND_CONFIG_SERVER}/user/${username}`;
 
-export const MyMonthlyComparison = () => {
+export const MyMonthlyComparison = (props) => {
+  const backEndPath = props.backEndPath;
+  const configPath = props.configPath;
+
+  // set specific backend path
+  const backEndURL = `${backEndPath}/monthly-comparison`;
+
   const [monthlyViolation, setMonthlyViolation] = useState([]);
   const [colors, setColors] = useState([]);
 
@@ -36,7 +42,7 @@ export const MyMonthlyComparison = () => {
   useEffect(() => {
     const fetchMonthlyViolation = async () => {
       try {
-        const apiURL = `${backendServerURL}`;
+        const apiURL = `${backEndURL}`;
         const response = await fetch(apiURL);
         if (response.ok) {
           const responseData = await response.json();
@@ -57,7 +63,7 @@ export const MyMonthlyComparison = () => {
 
     const fetchColors = async () => {
       try {
-        const response = await fetch(`${configServerURL}`);
+        const response = await fetch(`${configPath}`);
         if (response.ok) {
           const responseData = await response.json();
           console.log("Colors data:", responseData);
