@@ -44,7 +44,10 @@ export const MyDashboard = () => {
         </div>
         <div className="rightCol">
           <div className="singleCol">
-            <MyMonthlyComparison />
+            <MyMonthlyComparison
+              backEndPath={backendServerURL}
+              configPath={configServerURL}
+            />
           </div>
         </div>
       </div>
