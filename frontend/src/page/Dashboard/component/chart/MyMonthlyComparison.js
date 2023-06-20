@@ -26,9 +26,7 @@ console.log("backendServerURL", backendServerURL);
 
 // set config path
 const username = localStorage.getItem("username");
-console.log("username123", username);
 const configServerURL = `${REACT_APP_BACKEND_CONFIG_SERVER}/user/${username}`;
-console.log("configServerURL", configServerURL);
 
 export const MyMonthlyComparison = () => {
   const [monthlyViolation, setMonthlyViolation] = useState([]);

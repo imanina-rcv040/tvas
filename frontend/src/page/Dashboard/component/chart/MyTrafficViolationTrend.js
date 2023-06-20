@@ -16,12 +16,21 @@ import {
 const REACT_APP_BACKEND_TVAS_SERVER =
   process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
 
+// set backend config server
+const REACT_APP_BACKEND_CONFIG_SERVER =
+  process.env.REACT_APP_BACKEND_CONFIG_SERVER || "http://172.17.0.143:20005";
+
 // set backend path
 const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/last-24-hour`;
 console.log("backendServerURL", backendServerURL);
 
+// set config path
+const username = localStorage.getItem("username");
+const configServerURL = `${REACT_APP_BACKEND_CONFIG_SERVER}/user/${username}`;
+
 export const MyTrafficViolationTrend = () => {
   const [trendViolation, setTrendViolation] = useState([]);
+  const [colors, setColors] = useState([]);
 
   // fetch TVAS based on trend violation
   useEffect(() => {
@@ -41,6 +50,24 @@ export const MyTrafficViolationTrend = () => {
       }
     };
 
+    const fetchColors = async () => {
+      try {
+        const response = await fetch(`${configServerURL}`);
+        if (response.ok) {
+          const responseData = await response.json();
+          console.log("Colors data:", responseData);
+          if (responseData.item && responseData.item.colors) {
+            setColors(responseData.item.colors);
+          }
+        } else {
+          console.log("Error response colors:", response.status);
+        }
+      } catch (error) {
+        console.log("Error fetching colors", error);
+      }
+    };
+
+    fetchColors();
     fetchTrendViolation();
   }, []);
 
@@ -57,7 +84,7 @@ export const MyTrafficViolationTrend = () => {
               <XAxis dataKey="hour" />
               <YAxis />
               <CartesianGrid strokeDasharray="5 5" />
-              <Bar dataKey="count" barSize={10} fill="#DC143C"></Bar>
+              <Bar dataKey="count" barSize={10} fill={colors[0]}></Bar>
               <Line
                 type="monotone"
                 dataKey="count"

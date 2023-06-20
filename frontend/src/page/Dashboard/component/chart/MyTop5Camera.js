@@ -12,16 +12,25 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+// set backend server
 const REACT_APP_BACKEND_TVAS_SERVER =
   process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
 
+// set backend config server
+const REACT_APP_BACKEND_CONFIG_SERVER =
+  process.env.REACT_APP_BACKEND_CONFIG_SERVER || "http://172.17.0.143:20005";
+
+// set backend path
 const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/top-5-camera`;
 console.log("backendServerURL", backendServerURL);
 
-const colors = ["#DC143C", "#800020", "#CD581E", "#FFB020", "#FF7518"];
+// set config path
+const username = localStorage.getItem("username");
+const configServerURL = `${REACT_APP_BACKEND_CONFIG_SERVER}/user/${username}`;
 
 export const MyTop5Camera = () => {
   const [topCamViolation, setTopCamViolation] = useState([]);
+  const [colors, setColors] = useState([]);
 
   // Fetch cams with most violations
   useEffect(() => {
@@ -41,7 +50,25 @@ export const MyTop5Camera = () => {
       }
     };
 
+    const fetchColors = async () => {
+      try {
+        const response = await fetch(`${configServerURL}`);
+        if (response.ok) {
+          const responseData = await response.json();
+          console.log("Colors data:", responseData);
+          if (responseData.item && responseData.item.colors) {
+            setColors(responseData.item.colors);
+          }
+        } else {
+          console.log("Error response colors:", response.status);
+        }
+      } catch (error) {
+        console.log("Error fetching colors", error);
+      }
+    };
+
     fetchTopCamViolation();
+    fetchColors();
     console.log("topCamViolation", topCamViolation);
   }, []);
 
