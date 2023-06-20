@@ -26,8 +26,7 @@ export const MyMonthlyComparison = (props) => {
   useEffect(() => {
     const fetchMonthlyViolation = async () => {
       try {
-        const apiURL = `${backEndURL}`;
-        const response = await fetch(apiURL);
+        const response = await fetch(backEndURL);
         if (response.ok) {
           const responseData = await response.json();
           console.log("Monthly violation: data", responseData);
