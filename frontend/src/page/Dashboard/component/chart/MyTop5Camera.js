@@ -12,22 +12,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-// set backend server
-const REACT_APP_BACKEND_TVAS_SERVER =
-  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
-
-// set backend config server
-const REACT_APP_BACKEND_CONFIG_SERVER =
-  process.env.REACT_APP_BACKEND_CONFIG_SERVER || "http://172.17.0.143:20005";
-
-// set backend path
-const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/top-5-camera`;
-console.log("backendServerURL", backendServerURL);
-
-// set config path
-const username = localStorage.getItem("username");
-const configServerURL = `${REACT_APP_BACKEND_CONFIG_SERVER}/user/${username}`;
-
 export const MyTop5Camera = (props) => {
   const backEndPath = props.backEndPath;
   const configPath = props.configPath;

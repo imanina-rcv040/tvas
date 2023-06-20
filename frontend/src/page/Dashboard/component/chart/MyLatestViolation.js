@@ -14,14 +14,6 @@ import {
   Tooltip,
 } from "@mui/material";
 
-// set backend server
-const REACT_APP_BACKEND_TVAS_SERVER =
-  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
-
-// set backend path
-const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/5-latest-violation`;
-console.log("backendServerURL", backendServerURL);
-
 export const MyLatestViolation = (props) => {
   const navigate = useNavigate(); // Initialize useNavigate
   const backEndPath = props.backEndPath;
