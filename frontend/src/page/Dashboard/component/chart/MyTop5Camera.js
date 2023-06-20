@@ -28,7 +28,13 @@ console.log("backendServerURL", backendServerURL);
 const username = localStorage.getItem("username");
 const configServerURL = `${REACT_APP_BACKEND_CONFIG_SERVER}/user/${username}`;
 
-export const MyTop5Camera = () => {
+export const MyTop5Camera = (props) => {
+  const backEndPath = props.backEndPath;
+  const configPath = props.configPath;
+
+  // set specific backend path
+  const backEndURL = `${backEndPath}/top-5-camera`;
+
   const [topCamViolation, setTopCamViolation] = useState([]);
   const [colors, setColors] = useState([]);
 
@@ -36,8 +42,7 @@ export const MyTop5Camera = () => {
   useEffect(() => {
     const fetchTopCamViolation = async () => {
       try {
-        const apiURL = `${backendServerURL}`;
-        const response = await fetch(apiURL);
+        const response = await fetch(backEndURL);
         if (response.ok) {
           const responseData = await response.json();
           console.log("Data for camera violation report:", responseData);
@@ -52,7 +57,7 @@ export const MyTop5Camera = () => {
 
     const fetchColors = async () => {
       try {
-        const response = await fetch(`${configServerURL}`);
+        const response = await fetch(configPath);
         if (response.ok) {
           const responseData = await response.json();
           console.log("Colors data:", responseData);

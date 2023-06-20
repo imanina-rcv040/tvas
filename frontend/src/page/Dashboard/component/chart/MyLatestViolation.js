@@ -22,16 +22,20 @@ const REACT_APP_BACKEND_TVAS_SERVER =
 const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/5-latest-violation`;
 console.log("backendServerURL", backendServerURL);
 
-export const MyLatestViolation = () => {
+export const MyLatestViolation = (props) => {
   const navigate = useNavigate(); // Initialize useNavigate
+  const backEndPath = props.backEndPath;
+
+  // set specific backend path
+  const backEndURL = `${backEndPath}/5-latest-violation`;
+
   let [latestViolation, setLatestViolation] = useState([]);
 
   // fetch latest five TVAS
   useEffect(() => {
     const fetchLatestViolation = async () => {
       try {
-        const apiURL = `${backendServerURL}`;
-        const response = await fetch(apiURL);
+        const response = await fetch(backEndURL);
         if (response.ok) {
           const responseData = await response.json();
           console.log("5 latest violation: data", responseData);

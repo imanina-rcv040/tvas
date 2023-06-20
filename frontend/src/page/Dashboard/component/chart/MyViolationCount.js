@@ -2,14 +2,6 @@
 import { useState, useEffect } from "react";
 import { Card, Typography } from "@mui/material";
 
-// set backend server
-const REACT_APP_BACKEND_TVAS_SERVER =
-  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
-
-// set backend path
-const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/total-violation`;
-console.log("backendServerURL", backendServerURL);
-
 const styles = {
   card: {
     backgroundColor: "#f7f7f7",
@@ -35,16 +27,18 @@ const styles = {
   },
 };
 
-export const MyViolationCount = () => {
+export const MyViolationCount = (props) => {
+  const backEndPath = props.backEndPath;
   const [totalViolation, setTotalViolation] = useState([]);
-  let violationCount = 10;
+
+  // set specific backend path
+  const backEndURL = `${backEndPath}/total-violation`;
 
   // fetch TVAS based on trend violation
   useEffect(() => {
     const fetchTotalViolation = async () => {
       try {
-        const apiURL = `${backendServerURL}`;
-        const response = await fetch(apiURL);
+        const response = await fetch(backEndURL);
         if (response.ok) {
           const responseData = await response.json();
           console.log("Data for violation total:", responseData);
