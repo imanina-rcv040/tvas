@@ -12,24 +12,21 @@ import {
   Legend,
 } from "recharts";
 
-// set backend server
-const REACT_APP_BACKEND_TVAS_SERVER =
-  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
+export const MyMonthlyComparison = (props) => {
+  const backEndPath = props.backEndPath;
+  const configPath = props.configPath;
 
-// set backend path
-const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/monthly-comparison`;
-console.log("backendServerURL", backendServerURL);
+  // set specific backend path
+  const backEndURL = `${backEndPath}/monthly-comparison`;
 
-const colors = ["#DC143C", "#800020", "#CD581E", "#FFB020", "#FF7518"];
-
-export const MyMonthlyComparison = () => {
   const [monthlyViolation, setMonthlyViolation] = useState([]);
+  const [colors, setColors] = useState([]);
+
   // fetch TVAS based on monthly violation
   useEffect(() => {
     const fetchMonthlyViolation = async () => {
       try {
-        const apiURL = `${backendServerURL}`;
-        const response = await fetch(apiURL);
+        const response = await fetch(backEndURL);
         if (response.ok) {
           const responseData = await response.json();
           console.log("Monthly violation: data", responseData);
@@ -47,7 +44,25 @@ export const MyMonthlyComparison = () => {
       }
     };
 
+    const fetchColors = async () => {
+      try {
+        const response = await fetch(`${configPath}`);
+        if (response.ok) {
+          const responseData = await response.json();
+          console.log("Colors data:", responseData);
+          if (responseData.item && responseData.item.colors) {
+            setColors(responseData.item.colors);
+          }
+        } else {
+          console.log("Error response colors:", response.status);
+        }
+      } catch (error) {
+        console.log("Error fetching colors", error);
+      }
+    };
+
     fetchMonthlyViolation();
+    fetchColors();
   }, []);
 
   return (

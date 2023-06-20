@@ -10,14 +10,6 @@ import {
   Legend,
 } from "recharts";
 
-const REACT_APP_BACKEND_TVAS_SERVER =
-  process.env.REACT_APP_BACKEND_TVAS_SERVER || "http://172.17.0.143:20001";
-
-const backendServerURL = `${REACT_APP_BACKEND_TVAS_SERVER}/summary/daily-report-violation`;
-console.log("backendServerURL", backendServerURL);
-
-const colors = ["#DC143C", "#800020", "#CD581E", "#FFB020", "#FF7518"];
-
 const styles = {
   arrow: {
     fontSize: 50,
@@ -31,15 +23,21 @@ const styles = {
     height: 400,
   },
 };
-export const MyTodayViolationTypeReport = () => {
+export const MyTodayViolationTypeReport = (props) => {
+  const backEndPath = props.backEndPath;
+  const configPath = props.configPath;
+
+  // set specific backend path
+  const backEndURL = `${backEndPath}/daily-report-violation`;
+
   const [reportViolation, setReportViolation] = useState([]);
+  const [colors, setColors] = useState([]);
 
   // Fetch TVAS for violation report
   useEffect(() => {
     const fetchReportViolation = async () => {
       try {
-        const apiURL = `${backendServerURL}`;
-        const response = await fetch(apiURL);
+        const response = await fetch(backEndURL);
         if (response.ok) {
           const responseData = await response.json();
           console.log("Data for violation report:", responseData);
@@ -52,7 +50,25 @@ export const MyTodayViolationTypeReport = () => {
       }
     };
 
+    const fetchColors = async () => {
+      try {
+        const response = await fetch(configPath);
+        if (response.ok) {
+          const responseData = await response.json();
+          console.log("Colors data:", responseData);
+          if (responseData.item && responseData.item.colors) {
+            setColors(responseData.item.colors);
+          }
+        } else {
+          console.log("Error response colors:", response.status);
+        }
+      } catch (error) {
+        console.log("Error fetching colors", error);
+      }
+    };
+
     fetchReportViolation();
+    fetchColors();
   }, []);
 
   const data = reportViolation.map((violation, index) => ({
