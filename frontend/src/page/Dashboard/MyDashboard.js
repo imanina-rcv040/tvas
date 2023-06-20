@@ -34,12 +34,12 @@ export const MyDashboard = () => {
       <div className="flex">
         <div className="leftCol">
           <div className="singleCol">
-            <MyViolationCount />
+            <MyViolationCount backEndPath={backendServerURL} />
           </div>
         </div>
         <div className="rightCol">
           <div className="singleCol">
-            <MyLatestViolation />
+            <MyLatestViolation backEndPath={backendServerURL} />
           </div>
         </div>
         <div className="rightCol">
@@ -54,17 +54,26 @@ export const MyDashboard = () => {
       <div className="flex">
         <div className="leftCol">
           <div className="singleCol">
-            <MyTrafficViolationTrend />
+            <MyTrafficViolationTrend
+              backEndPath={backendServerURL}
+              configPath={configServerURL}
+            />
           </div>
         </div>
         <div className="rightCol">
           <div className="singleCol">
-            <MyTodayViolationTypeReport />
+            <MyTodayViolationTypeReport
+              backEndPath={backendServerURL}
+              configPath={configServerURL}
+            />
           </div>
         </div>
         <div className="rightCol">
           <div className="singleCol">
-            <MyTop5Camera />
+            <MyTop5Camera
+              backEndPath={backendServerURL}
+              configPath={configServerURL}
+            />
           </div>
         </div>
       </div>
