@@ -64,7 +64,7 @@ export const MyDashboard = () => {
         </div>
         <div className="rightCol">
           <div className="singleCol">
-          <MyTop5Camera />
+            <MyTop5Camera />
           </div>
         </div>
       </div>
