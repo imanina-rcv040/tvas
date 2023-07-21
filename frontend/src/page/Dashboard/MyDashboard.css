@@ -18,6 +18,14 @@ h2.dashboard-title {
   justify-content: center;
   align-items: center;
 }
+
+.dashboard.chart-title {
+  font-family: "Poppins";
+  font-weight: bolder;
+  line-height: 1.5;
+}
+
+/*  */
 h3.dashboard-title-2,
 span {
   font-family: "Poppins";
