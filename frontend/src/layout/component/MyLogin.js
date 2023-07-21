@@ -43,8 +43,8 @@ export const MyLogin = () => {
     // set the username and password to the local storage
     const username = auth.username;
     const password = auth.password;
-    localStorage.setItem('username', username);
-    localStorage.setItem('password', password);
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
 
     login(auth, location.state ? location.state.nextPathname : "/").catch(
       (error) => {
