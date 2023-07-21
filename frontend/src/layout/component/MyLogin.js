@@ -73,37 +73,13 @@ export const MyLogin = () => {
 
   return (
     <Form onSubmit={handleSubmit} noValidate>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100vh",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
-      >
-        <Card
-          sx={{
-            minWidth: 350,
-            marginTop: "6em",
-            border: 3,
-            borderColor: "text.secondary",
-            borderRadius: "16px",
-          }}
-        >
-          <Box
-            sx={{
-              margin: "1em",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
+      <Box className="my-login-container">
+        <Card className="my-login-card">
+          <Box className="my-login-logo-container">
             <MyLogo width="300px" />
           </Box>
-          <Box sx={{ padding: "0 1em 1em 1em" }}>
-            <Box sx={{ marginTop: "1em" }}>
+          <Box className="my-container-padding">
+            <Box className="my-login-input">
               <TextInput
                 autoFocus
                 source="username"
@@ -113,7 +89,7 @@ export const MyLogin = () => {
                 fullWidth
               />
             </Box>
-            <Box sx={{ marginTop: "1em" }}>
+            <Box className="my-login-input">
               <TextInput
                 source="password"
                 label={"Password"}
@@ -140,14 +116,15 @@ export const MyLogin = () => {
               />
             </Box>
           </Box>
-          <CardActions sx={{ padding: "0 1em 1em 1em" }}>
+          <CardActions className="my-container-padding">
             <Button
               variant="contained"
               type="submit"
               color="warning"
               disabled={loading}
               fullWidth
-              className="btn-layout-sign-in"
+              className="my-login-btn custom-login"
+              startIcon={<LockOpenIcon />}
             >
               {loading && <CircularProgress size={25} thickness={2} />}
               {"sign in"}
