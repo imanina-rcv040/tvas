@@ -28,7 +28,6 @@ import { MyLogo } from "./MyLogo";
 
 // import styling
 import "../MyLayout.css";
-import { MyLogo } from "./MyLogo";
 
 export const MyLogin = () => {
   const [loading, setLoading] = useState(false);
