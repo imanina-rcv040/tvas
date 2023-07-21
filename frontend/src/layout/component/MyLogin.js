@@ -31,6 +31,7 @@ import "../MyLayout.css";
 
 export const MyLogin = () => {
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const notify = useNotify();
   const login = useLogin();
