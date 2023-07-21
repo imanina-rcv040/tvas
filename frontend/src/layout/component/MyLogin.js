@@ -17,6 +17,12 @@ import {
   Box,
   IconButton,
 } from "@mui/material";
+
+// import Material UI icon components
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+
 // import custom component
 import { MyLogo } from "./MyLogo";
 
