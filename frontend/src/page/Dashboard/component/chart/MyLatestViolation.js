@@ -15,30 +15,29 @@ import {
 } from "@mui/material";
 
 export const MyLatestViolation = (props) => {
+  // use props & state
   const backEndPath = props.backEndPath;
+  let [latestViolation, setLatestViolation] = useState([]);
 
   // set specific backend path
   const backEndURL = `${backEndPath}/5-latest-violation`;
 
-  let [latestViolation, setLatestViolation] = useState([]);
-
-  // fetch latest five TVAS
+  // fetch data on component mount for latest violation (5)
   useEffect(() => {
     const fetchLatestViolation = async () => {
       try {
         const response = await fetch(backEndURL);
         if (response.ok) {
           const responseData = await response.json();
-          console.log("5 latest violation: data", responseData);
+          console.log("[Data] Latest Violation:", responseData);
           setLatestViolation(responseData);
         } else {
-          console.log("Error response:", response.status);
+          console.log("[5 Latest Violation] Error response:", response.status);
         }
       } catch (error) {
-        console.log("Error fetch 5 latest violations:", error);
+        console.log("[Error] Fetching 5 Latest Violation", error);
       }
     };
-
     fetchLatestViolation();
   }, []);
 
