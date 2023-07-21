@@ -1,31 +1,33 @@
-// import libraries
+// import React Hook component
 import { useState, useEffect } from "react";
+
+// import Material UI components
 import { Card, Typography } from "@mui/material";
 
 export const MyViolationCount = (props) => {
+  // use props & state
   const backEndPath = props.backEndPath;
   const [totalViolation, setTotalViolation] = useState([]);
 
   // set specific backend path
   const backEndURL = `${backEndPath}/total-violation`;
 
-  // fetch TVAS based on trend violation
+  // fetch data on component mount for violation count
   useEffect(() => {
     const fetchTotalViolation = async () => {
       try {
         const response = await fetch(backEndURL);
         if (response.ok) {
           const responseData = await response.json();
-          console.log("Data for violation total:", responseData);
+          console.log("[Data] Violation Count:", responseData);
           setTotalViolation(responseData);
         } else {
-          console.log("Error response total:", response.status);
+          console.log("[Violation Count] Error response:", response.status);
         }
       } catch (error) {
-        console.log("Error fetch total violations", error);
+        console.log("[Error] Fetching Violation Count", error);
       }
     };
-
     fetchTotalViolation();
   }, []);
 
