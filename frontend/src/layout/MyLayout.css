@@ -1,20 +1,51 @@
-span {
-  font-family: "Nunito";
-  font-weight: bolder;
-}
-
 input[type="text"] {
   font-family: "Nunito";
   font-weight: bolder;
 }
 
-button.btn-layout-sign-in {
-  font-family: "Nunito";
-  font-size: 14px;
-  font-weight: 900;
-}
-
 #username-helper-text,
 #password-helper-text {
   font-family: "Nunito";
+}
+
+/* Apply styles to the root box container for login page */
+.my-login-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: flex-start;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Apply styles to the card container */
+.my-login-card {
+  min-width: 350px;
+  margin-top: 6em;
+  border: 3px solid #757575;
+  border-radius: 16px !important;
+}
+
+/* Apply styles to the logo container */
+.my-login-logo-container {
+  margin: 1em;
+  display: flex;
+  justify-content: center;
+}
+
+.my-container-padding {
+  padding: 0 1em 1em 1em !important;
+}
+
+/* Apply styles to the input fields */
+.my-login-input {
+  margin-top: 1em;
+}
+
+.my-login-btn.custom-login {
+  font-family: "Nunito";
+  font-size: 18px;
+  font-weight: bolder;
+  text-transform: none;
 }
