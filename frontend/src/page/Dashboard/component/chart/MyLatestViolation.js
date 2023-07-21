@@ -11,7 +11,6 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  Tooltip,
 } from "@mui/material";
 
 export const MyLatestViolation = (props) => {
@@ -88,11 +87,6 @@ export const MyLatestViolation = (props) => {
             ))}
           </TableBody>
         </Table>
-        <Box className="box-tooltip">
-          <Tooltip title="View more details in History" arrow>
-            <span onClick={handleCameraFeedClick}>View more...</span>
-          </Tooltip>
-        </Box>
       </TableContainer>
     </Card>
   );
