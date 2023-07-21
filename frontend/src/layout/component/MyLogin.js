@@ -1,8 +1,14 @@
-// import libraries
+// import React Hook components
 import { useState } from "react";
 import PropTypes from "prop-types";
+
+// import React Router component
 import { useLocation } from "react-router-dom";
+
+// import React Admin components
 import { Form, required, TextInput, useLogin, useNotify } from "react-admin";
+
+// import Material UI components
 import {
   Button,
   Card,
@@ -10,6 +16,8 @@ import {
   CircularProgress,
   Box,
 } from "@mui/material";
+// import custom component
+import { MyLogo } from "./MyLogo";
 
 // import styling
 import "../MyLayout.css";
