@@ -1,6 +1,10 @@
-// import libraries
+// import React Hook component
 import { useState, useEffect } from "react";
+
+// import React Router component
 import { useNavigate } from "react-router-dom";
+
+// import Material UI components
 import {
   Card,
   Typography,
