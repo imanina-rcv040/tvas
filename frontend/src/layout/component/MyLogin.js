@@ -109,7 +109,7 @@ export const MyLogin = () => {
                 source="username"
                 label={"Username"}
                 disabled={loading}
-                validate={required()}
+                validate={[required("Please enter your username")]}
                 fullWidth
               />
             </Box>
@@ -117,9 +117,9 @@ export const MyLogin = () => {
               <TextInput
                 source="password"
                 label={"Password"}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 disabled={loading}
-                validate={required()}
+                validate={[required("Please enter your password")]}
                 fullWidth
               />
             </Box>
