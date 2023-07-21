@@ -126,8 +126,10 @@ export const MyLogin = () => {
               className="my-login-btn custom-login"
               startIcon={<LockOpenIcon />}
             >
-              {loading && <CircularProgress size={25} thickness={2} />}
-              {"sign in"}
+              {loading && (
+                <CircularProgress size={25} thickness={2} color="inherit" />
+              )}
+              {"Login"}
             </Button>
           </CardActions>
         </Card>
