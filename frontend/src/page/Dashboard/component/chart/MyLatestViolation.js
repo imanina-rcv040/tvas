@@ -1,8 +1,6 @@
 // import React Hook component
 import { useState, useEffect } from "react";
 
-// import React Router component
-import { useNavigate } from "react-router-dom";
 
 // import Material UI components
 import {
@@ -17,7 +15,6 @@ import {
 } from "@mui/material";
 
 export const MyLatestViolation = (props) => {
-  const navigate = useNavigate(); // Initialize useNavigate
   const backEndPath = props.backEndPath;
 
   // set specific backend path
@@ -52,11 +49,6 @@ export const MyLatestViolation = (props) => {
       engineTimestamp: date.toLocaleString(),
     };
   });
-
-  const handleCameraFeedClick = () => {
-    navigate("/history"); // Navigate to history
-    console.log("Navigate to history");
-  };
 
   return (
     <Card className="card">
