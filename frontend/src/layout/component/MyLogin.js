@@ -121,6 +121,22 @@ export const MyLogin = () => {
                 disabled={loading}
                 validate={[required("Please enter your password")]}
                 fullWidth
+                InputProps={{
+                  endAdornment: (
+                    <IconButton
+                      edge="end"
+                      aria-label="toggle password visibility"
+                      onClick={() => setShowPassword(!showPassword)}
+                      onMouseDown={(event) => event.preventDefault()}
+                    >
+                      {showPassword ? (
+                        <VisibilityOffIcon />
+                      ) : (
+                        <VisibilityIcon />
+                      )}
+                    </IconButton>
+                  ),
+                }}
               />
             </Box>
           </Box>
