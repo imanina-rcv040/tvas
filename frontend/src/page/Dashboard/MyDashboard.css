@@ -1,22 +1,3 @@
-div {
-  color: black;
-}
-
-tr td {
-  vertical-align: top;
-}
-
-input[type="text"] {
-  border: #333;
-  font-size: 18px;
-  color: #333;
-  pointer-events: none;
-}
-
-div.dashboard-page {
-  background-color: black;
-}
-
 h2.dashboard-title {
   font-family: "Poppins";
   font-weight: bolder;
@@ -183,16 +164,4 @@ td.typeEvent {
   border: 1px solid #706abf;
   padding: 5px 10px;
   color: white;
-}
-
-.box-tooltip {
-  margin: 1%;
-}
-
-.box-tooltip span {
-  text-decoration: underline;
-  color: #3b76a6;
-  cursor: pointer;
-  padding: 4px 8px;
-  transition: background-color 0.3s ease;
 }
