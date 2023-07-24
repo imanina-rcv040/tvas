@@ -32,7 +32,7 @@ export const MyViolationCount = (props) => {
   }, []);
 
   return (
-    <Card className="card">
+    <Card className="card chart-1">
       <Typography
         variant="h4"
         component="h2"
